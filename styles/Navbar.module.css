@@ -1,0 +1,25 @@
+.mainnav {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: normal;
+  font-size: 1.6rem;
+  font-family: "Rubik Wet Paint", cursive;
+}
+
+.mainnav ul {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navlinks {
+  font-weight: 600;
+  list-style: none;
+  padding-left: 60px;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
