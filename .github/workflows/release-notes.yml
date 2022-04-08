@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: release-drafter/release-drafter@v5.19.0
         env:
-          GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ env.NPM_TOKEN }}
