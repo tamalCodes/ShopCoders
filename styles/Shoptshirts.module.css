@@ -1,0 +1,11 @@
+.shirtpage_parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.shirtcard {
+  width: 20rem;
+  margin: 20px 10px;
+  cursor: pointer;
+}

@@ -9,6 +9,7 @@
   font-weight: normal;
   font-size: 1.6rem;
   font-family: "Rubik Wet Paint", cursive;
+  cursor: pointer;
 }
 
 .mainnav ul {
@@ -22,4 +23,23 @@
   padding-left: 60px;
   cursor: pointer;
   font-family: "Open Sans", sans-serif;
+}
+
+.dropdowndiv {
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 132px;
+  top: 41px;
+  z-index: 9;
+  text-align: center;
+  border: 1px solid rgb(104, 104, 104, 0.5);
+  width: 100px;
+
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.dropdowndiv .navlinks {
+  padding-left: 0px;
 }
