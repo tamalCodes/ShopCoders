@@ -1,38 +1,3 @@
-/* .container {
-  padding: 0 2rem;
-} */
-
-/* .mainparent{
-  disp
-} */
-/* .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: aquamarine;
-} */
-
-/* .footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-  max-height: 20px !important;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-} */
-
 .mainparent {
   display: flex;
 }
@@ -42,4 +7,66 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.shopwithusdiv {
+  margin-top: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.shopwithus_textdiv {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 600px;
+  margin-right: 2rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.shopwithus_textdiv h2 {
+  font-weight: 600;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.shopwithus_textdiv p {
+  line-height: 32px;
+  font-size: 18px;
+}
+
+.shopwithusdiv2 {
+  margin-top: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.shopwithus2_imagediv {
+  margin-right: 2rem;
+}
+
+.shopwithus2_textdiv {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 600px;
+
+  font-family: "Open Sans", sans-serif;
+}
+
+.shopwithus2_textdiv h2 {
+  font-weight: 600;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.shopwithus2_textdiv p {
+  line-height: 32px;
+  font-size: 18px;
 }
