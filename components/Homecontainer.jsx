@@ -5,6 +5,7 @@ import sales from "../public/assets/sale.svg";
 import shopwithus from "../public/assets/shopwithus.svg";
 import payment from "../public/assets/payment.svg";
 
+
 const Homecontainer = () => {
     return (<>
 
@@ -40,12 +41,17 @@ const Homecontainer = () => {
 
 
             <div className={styles.shopwithus2_textdiv}>
-                <h2>Why shop with us ?</h2>
-                <p>We at ShopCoders offer you official merchandise from all the coding event. These are mostly left out/ not gave-away. We tied up with 50+ official code companies like Github, Digital Ocean to bring you the best of the swags at an affordable price !! </p>
+                <h2>Pay less with us !! </h2>
+                <p>We at ShopCoders have ocassional sales, lottery days, and even we sponser other hackathons where you can get to select a swag as a winner !! <br />
+                    In case you want to gift it to someone, we provide huge discounts from 20 all the way to 80% !!
+                </p>
             </div>
 
 
         </div>
+
+
+
     </>
 
     )

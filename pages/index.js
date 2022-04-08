@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "../components/Footer";
 import Homecontainer from "../components/Homecontainer";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
@@ -16,6 +17,8 @@ export default function Home() {
         <Navbar />
         <Homecontainer />
       </div>
+
+      <Footer />
     </>
   );
 }
