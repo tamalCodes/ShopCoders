@@ -38,6 +38,9 @@
   font-size: 18px;
 }
 
+@media screen and (max-width: 425px) {
+}
+
 .shopwithusdiv2 {
   margin-top: 8rem;
   display: flex;
@@ -69,4 +72,154 @@
 .shopwithus2_textdiv p {
   line-height: 32px;
   font-size: 18px;
+}
+
+.imagediv1 {
+  display: none;
+}
+.imagediv2 {
+  display: contents;
+}
+
+@media (max-width: 425px) and (min-width: 0px) {
+  .imagediv1 {
+    display: contents;
+  }
+  .imagediv2 {
+    display: none;
+  }
+  .shopwithusdiv {
+    flex-direction: column;
+    margin-top: 4rem;
+  }
+
+  .shopwithus_textdiv {
+    width: auto;
+    margin-right: 0px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .shopwithus_imagediv {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .shopwithus_textdiv h2 {
+    font-size: 2rem;
+  }
+
+  .shopwithus_textdiv p {
+    line-height: 25px;
+    font-size: 13px;
+  }
+
+  .shopwithusdiv2 {
+    flex-direction: column;
+  }
+
+  .shopwithus2_textdiv {
+    width: auto;
+
+    margin-right: 0px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .shopwithus2_imagediv {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .shopwithus2_textdiv h2 {
+    font-size: 2rem;
+  }
+
+  .shopwithus2_textdiv p {
+    line-height: 25px;
+    font-size: 13px;
+  }
+}
+
+/* ------------------------------- */
+/* //* For Laptops  - 1024px*/
+@media (max-width: 1024px) and (min-width: 769px) {
+  .login_bramhin_img {
+    margin-top: 2.5rem;
+    width: 10vw;
+  }
+  .login-form-control {
+    width: 30vw;
+  }
+  .gmail_icon,
+  .pass_icon {
+    width: 4vw;
+    margin-bottom: 5px;
+  }
+}
+
+/* ------------------------------- */
+/* //* For Laptops - 2K */
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .login_header {
+    font-size: 3rem;
+  }
+  .text-muted {
+    font-size: 1.2rem;
+  }
+
+  .login_bramhin_img {
+    margin-top: 2.5rem;
+    width: 10vw;
+  }
+  .login-form-control {
+    width: 30vw;
+    height: 6vh;
+    margin-bottom: 40px;
+  }
+  .gmail_icon,
+  .pass_icon {
+    width: 4vw;
+    margin-bottom: 5px;
+  }
+
+  .login_submit {
+    width: 15vw;
+    height: 6vh;
+    margin-top: 2rem;
+  }
+}
+
+/* ------------------------------- */
+/* //* For Laptops - 4K */
+@media (max-width: 2560px) and (min-width: 1441px) {
+  .login_header {
+    font-size: 3rem;
+  }
+  .text-muted {
+    font-size: 1.2rem;
+  }
+
+  .login_bramhin_img {
+    margin-top: 2.5rem;
+    width: 10vw;
+  }
+  .login-form-control {
+    width: 25vw;
+    height: 6vh;
+    margin-bottom: 40px;
+  }
+  .gmail_icon,
+  .pass_icon {
+    width: 4vw;
+    margin-bottom: 5px;
+  }
+
+  .login_submit {
+    width: 15vw;
+    height: 6vh;
+    margin-top: 2rem;
+  }
 }
