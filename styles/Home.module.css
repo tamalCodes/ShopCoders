@@ -9,6 +9,13 @@
   justify-content: center;
 }
 
+.imagediv2 {
+  margin-top: 30px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
 .shopwithusdiv {
   margin-top: 8rem;
   display: flex;
