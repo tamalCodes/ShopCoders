@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from "../styles/Navbar.module.css"
 import Link from 'next/link'
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import ShopContext from '../context/ShopContext';
 
 
 const Navbar = () => {
 
     const [showdropdown, setshowdropdown] = useState(false);
+    const context = useContext(ShopContext);
+    const { anchor, state, setState } = context;
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light ">
             <div className="container-fluid">
@@ -73,12 +78,17 @@ const Navbar = () => {
 
 
 
-                        <Link href={"/auth/signin"} passHref>
+                        {/* <Link href={"/auth/signin"} passHref>
                             <li className={`nav-item ${styles.navlinks}`}>
                                 Login
                             </li>
 
-                        </Link>
+                        </Link> */}
+
+
+                        <li className={`nav-item ${styles.navlinks}`}>
+                            <AiOutlineShoppingCart fontSize={"1.5rem"} onClick={() => { setState({ ...state, [anchor]: true }); }} />
+                        </li>
 
                     </ul>
 
