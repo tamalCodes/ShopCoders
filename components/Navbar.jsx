@@ -87,7 +87,7 @@ const Navbar = () => {
 
 
                         <li className={`nav-item ${styles.navlinks}`}>
-                            <AiOutlineShoppingCart fontSize={"1.5rem"} onClick={() => { setState({ ...state, [anchor]: true }); }} />
+                            <AiOutlineShoppingCart fontSize={"1.5rem"} onClick={() => { setState({ ...state, [anchor]: true }); console.log(state) }} />
                         </li>
 
                     </ul>

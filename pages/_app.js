@@ -8,6 +8,7 @@ import theme from "../components/theme";
 import createEmotionCache from "../components/createEmotionCache";
 import Script from "next/script";
 import ShopState from "../context/ShopState";
+import SideDrawer from "../components/SideDrawer";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -38,6 +39,7 @@ export default function MyApp(props) {
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <Component {...pageProps} />
+          <SideDrawer />
         </ThemeProvider>
       </CacheProvider>
     </ShopState>
