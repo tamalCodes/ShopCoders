@@ -3,25 +3,29 @@
 }
 
 .imagediv1 {
-  margin-top: 30px;
+  /* margin-top: 30px; */
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .imagediv2 {
-  margin-top: 30px;
+  margin-top: 0px;
   display: flex !important;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .shopwithusdiv {
-  margin-top: 8rem;
+  /* margin-top: 8rem; */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 5rem;
+  min-height: 100vh;
 }
 
 .shopwithus_textdiv {
@@ -49,11 +53,12 @@
 }
 
 .shopwithusdiv2 {
-  margin-top: 8rem;
+  /* margin-top: 8rem; */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 5rem;
+  min-height: 100vh;
 }
 
 .shopwithus2_imagediv {
@@ -93,7 +98,7 @@
     display: contents;
   }
   .imagediv2 {
-    display: none;
+    display: none !important;
   }
   .shopwithusdiv {
     flex-direction: column;
@@ -114,12 +119,12 @@
   }
 
   .shopwithus_textdiv h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .shopwithus_textdiv p {
-    line-height: 25px;
-    font-size: 13px;
+    line-height: 24px;
+    font-size: 12px;
   }
 
   .shopwithusdiv2 {
@@ -141,12 +146,12 @@
   }
 
   .shopwithus2_textdiv h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .shopwithus2_textdiv p {
-    line-height: 25px;
-    font-size: 13px;
+    line-height: 24px;
+    font-size: 12px;
   }
 }
 
