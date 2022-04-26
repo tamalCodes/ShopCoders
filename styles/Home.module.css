@@ -4,11 +4,11 @@
 
 .imagediv1 {
   /* margin-top: 30px; */
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  max-height: 100vh;
+  /* max-height: 100vh; */
 }
 
 .imagediv2 {
@@ -20,7 +20,7 @@
 }
 
 .shopwithusdiv {
-  /* margin-top: 8rem; */
+  margin-top: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@
 }
 
 .shopwithusdiv2 {
-  /* margin-top: 8rem; */
+  margin-top: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,10 +87,10 @@
 }
 
 .imagediv1 {
-  display: none;
+  display: none !important;
 }
 .imagediv2 {
-  display: contents;
+  display: contents !important;
 }
 
 @media (max-width: 425px) and (min-width: 0px) {
@@ -103,6 +103,7 @@
   .shopwithusdiv {
     flex-direction: column;
     margin-top: 4rem;
+    min-height: auto;
   }
 
   .shopwithus_textdiv {
@@ -129,6 +130,7 @@
 
   .shopwithusdiv2 {
     flex-direction: column;
+    min-height: auto;
   }
 
   .shopwithus2_textdiv {
