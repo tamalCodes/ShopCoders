@@ -4,7 +4,7 @@
 
 .imagediv1 {
   /* margin-top: 30px; */
- display: flex !important;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -20,7 +20,7 @@
 }
 
 .shopwithusdiv {
-margin-top: 3rem;
+  margin-top: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@ margin-top: 3rem;
 }
 
 .shopwithusdiv2 {
-margin-top: 3rem;
+  margin-top: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,7 +95,7 @@ margin-top: 3rem;
 
 @media (max-width: 425px) and (min-width: 0px) {
   .imagediv1 {
-    display: contents;
+    display: contents !important;
   }
   .imagediv2 {
     display: none !important;
