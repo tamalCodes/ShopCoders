@@ -95,7 +95,7 @@
 
 @media (max-width: 425px) and (min-width: 0px) {
   .imagediv1 {
-    display: contents;
+    display: contents !important;
   }
   .imagediv2 {
     display: none !important;
