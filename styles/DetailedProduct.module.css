@@ -1,0 +1,64 @@
+.detailedproduct_parentmain {
+  position: relative;
+  height: 80vh;
+}
+
+.detailedproduct_parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.detailedproduct_textdiv {
+  width: 500px;
+}
+.detailedproduct_brandname {
+  font-size: 17px;
+  font-weight: 500;
+  color: gray;
+  margin-bottom: 0px !important;
+}
+
+.detailedproduct_textdiv h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.detailedproduct_ratings {
+  margin-bottom: 1rem;
+}
+
+.detailedproduct_desc {
+  font-size: 1.2rem;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.detailedproduct_textdivhr {
+  height: 0px !important;
+  color: gray;
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.detailedproduct_btnandprice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailedproduct_buybtn {
+  width: 100px;
+  height: 45px;
+  background-color: #ffc107;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-family: "Mulish", sans-serif;
+  color: black;
+  margin-right: 1rem;
+}
