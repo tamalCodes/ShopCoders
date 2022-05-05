@@ -8,6 +8,7 @@ import mobilegh from "../public/assets/MobileGithubImage.jpg"
 
 
 const Homecontainer = () => {
+
     return (<>
 
         <div className={styles.imagediv1}>

@@ -90,12 +90,12 @@
   display: none !important;
 }
 .imagediv2 {
-  display: contents !important;
+  display: flex !important;
 }
 
 @media (max-width: 425px) and (min-width: 0px) {
   .imagediv1 {
-    display: contents !important;
+    display: flex !important;
   }
   .imagediv2 {
     display: none !important;
