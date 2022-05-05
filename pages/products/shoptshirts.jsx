@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TshirtCard from '../../components/TshirtCard'
 import styles from "../../styles/Shoptshirts.module.css"
 import Navbar from "../../components/Navbar.jsx"
 
 
+
 const Shoptshirts = () => {
+    // const [shirts, setshirts] = useState([]);
+
+
+
+
     return (
         <>
             <Navbar />
