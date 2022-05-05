@@ -6,6 +6,7 @@ import Head from "next/head";
 import styles from "../styles/Shoptshirts.module.css"
 
 const Mugscard = () => {
+    const slug = "randomly"
     return (
         <>
             <Head>
@@ -14,7 +15,7 @@ const Mugscard = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Link href={"/detailed-product/lmao"} passHref>
+            <Link href={`/detailed-product/${slug}`} passHref>
                 <div className={`card ${styles.shirtcard}`} >
                     <Image src={sales} className="card-img-top" alt="..." height={400} width={400} />
                     <div className="card-body">

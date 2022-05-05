@@ -4,6 +4,7 @@ import ShopContext from "./ShopContext";
 const ShopState = (props) => {
 
 
+    const [cart, setcart] = react.useState([]);
     const [bramhins, setBramhins] = react.useState("Welcome");
     const [drawerOpen, setDrawerOpen] = react.useState(true);
     const anchor = "right";
@@ -13,7 +14,6 @@ const ShopState = (props) => {
         bottom: false,
         right: false,
     });
-
     return (<ShopContext.Provider value={{ bramhins, setBramhins, drawerOpen, setDrawerOpen, anchor, state, setState }}>
 
         {props.children};

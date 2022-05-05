@@ -1,5 +1,9 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+const connectToMongo = require("../../middleware/db");
+// import ProductModel from "../../models/Product";
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+connectToMongo();
+
+export default async function handler(req, res) {
+  // let products = await ProductModel.find();
+  res.json("products");
 }
