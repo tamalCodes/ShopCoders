@@ -1,64 +1,113 @@
-.detailedproduct_parentmain {
-  position: relative;
-  height: 80vh;
-}
-
-.detailedproduct_parent {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+.parent {
+  background: rgb(255, 255, 255);
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
 
-.detailedproduct_textdiv {
-  width: 500px;
+.dp_parent {
+  padding-bottom: 3rem;
 }
-.detailedproduct_brandname {
-  font-size: 17px;
-  font-weight: 500;
+
+.dp_shoeimg {
+  /* width: 358px !important;
+  height: 225px !important; */
+  width: 358px !important;
+  height: 225px !important;
+  min-width: 0px !important;
+  min-height: 0px !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.dp_companyname {
+  font-size: 0.8rem;
+  font-weight: bold;
   color: gray;
-  margin-bottom: 0px !important;
-}
-
-.detailedproduct_textdiv h1 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 0;
   font-family: "Open Sans", sans-serif;
+  margin-left: 6px;
 }
 
-.detailedproduct_ratings {
-  margin-bottom: 1rem;
-}
-
-.detailedproduct_desc {
-  font-size: 1.2rem;
-  font-family: "Open Sans", sans-serif;
-  margin-bottom: 1rem;
-}
-
-.detailedproduct_textdivhr {
-  height: 0px !important;
-  color: gray;
-  margin-top: 2rem !important;
-  margin-bottom: 2rem !important;
-}
-
-.detailedproduct_btnandprice {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.detailedproduct_buybtn {
-  width: 100px;
-  height: 45px;
-  background-color: #ffc107;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  font-family: "Mulish", sans-serif;
+.dp_companyname h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
   color: black;
-  margin-right: 1rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.dp_rating {
+  font-size: 0.7rem;
+  margin-bottom: 20px;
+}
+
+.dp_desc {
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.8;
+}
+
+/* //* RESPONSIVENESS */
+
+@media (max-width: 768px) and (min-width: 426px) {
+}
+
+/* ------------------------------- */
+/* //* For Laptops  - 1024px*/
+@media (max-width: 1024px) and (min-width: 769px) {
+}
+
+/* ------------------------------- */
+/* //* For Laptops - 2K */
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .parent {
+    overflow: hidden;
+  }
+
+  .dp_parent {
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dp_shoeinfo {
+    max-width: 600px;
+  }
+
+  .dp_shoeimg {
+    /* width: 417px !important;
+    height: 266px !important; */
+
+    width: auto !important;
+    height: auto !important;
+  }
+}
+
+/* ------------------------------- */
+/* //* For Laptops - 4K */
+@media (max-width: 2560px) and (min-width: 1441px) {
+  .parent {
+    overflow: hidden;
+  }
+
+  .dp_parent {
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dp_shoeinfo {
+    max-width: 600px;
+  }
+
+  .dp_shoeimg {
+    /* width: 417px !important;
+    height: 266px !important; */
+
+    width: auto !important;
+    height: auto !important;
+  }
 }

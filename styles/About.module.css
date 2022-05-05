@@ -5,12 +5,9 @@
   align-items: center;
   padding-left: 30px;
   padding-right: 30px;
-  /* padding: 4rem 0; */
-  /* flex: 1; */
-  /* 
-  flex-direction: column;
-   */
-  /*  */
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .abouttextdiv {
