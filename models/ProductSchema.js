@@ -7,6 +7,14 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    qty: {
+      type: String,
+      required: true,
+    },
+    size: {
+      type: String,
+      required: true,
+    },
     slug: {
       type: String,
       required: true,
@@ -26,6 +34,7 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
     image: {
       type: String,
     },
