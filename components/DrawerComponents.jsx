@@ -29,27 +29,60 @@ const DrawerComponents = (anchor) => {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <p>Explore</p>
+                <ListItem button key="T-Shirts">
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="T-Shirts" />
+                </ListItem>
+
+                <ListItem button key="Hoodies">
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Hoodies" />
+                </ListItem>
+
+                <ListItem button key="Mugs">
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Mugs" />
+                </ListItem>
+
+                <ListItem button key="Stickers">
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Stickers" />
+                </ListItem>
             </List>
             <Divider />
+
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <ListItem button key="Your Cart">
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Your Cart" />
+                </ListItem>
+
+                <ListItem button key="Your Orders">
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Your Orders" />
+                </ListItem>
+
+                <ListItem button key="Report">
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Report" />
+                </ListItem>
             </List>
-        </Box>
+        </Box >
     )
 }
 
