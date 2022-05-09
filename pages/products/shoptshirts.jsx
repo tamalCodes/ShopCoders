@@ -9,6 +9,7 @@ import products from "../../models/ProductSchema"
 const Shoptshirts = ({ allproducts }) => {
 
 
+
     return (
         <>
             <Navbar />
@@ -18,7 +19,9 @@ const Shoptshirts = ({ allproducts }) => {
                     return (
                         <TshirtCard key={product._id} product={product} />
                     )
+
                 })}
+
 
             </div>
 
