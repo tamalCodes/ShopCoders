@@ -7,8 +7,6 @@ import products from "../../models/ProductSchema"
 
 
 const Shoptshirts = ({ allproducts }) => {
-    // const [shirts, setshirts] = useState([]);
-
 
 
 
@@ -21,9 +19,9 @@ const Shoptshirts = ({ allproducts }) => {
                     return (
                         <TshirtCard key={product._id} product={product} />
                     )
-                })
-                }
-                {/* <TshirtCard /> */}
+
+                })}
+
 
             </div>
 
