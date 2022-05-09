@@ -26,7 +26,7 @@ const Detailedproduct = ({ product }) => {
 
                 <div className={`container ${styles.dp_parent}`}>
 
-                    <Image src={Shoe} width={600} height={350} alt="shoe" className={styles.dp_shoeimg} />
+                    <Image src={product.img} width={600} height={350} alt="shoe" className={styles.dp_shoeimg} />
 
                     <div className={styles.dp_shoeinfo}>
                         <span className={styles.dp_companyname}>Nike</span>

@@ -5,7 +5,13 @@
 }
 
 .shirtcard {
-  width: 20rem;
+  width: 18rem;
   margin: 20px 10px;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+.product_cardimg {
+  width: auto !important;
+  height: auto !important;
 }
