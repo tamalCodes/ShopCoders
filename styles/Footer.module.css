@@ -2,6 +2,8 @@
   padding: 50px 0;
   background-color: #f5f5f5;
   color: #4b4c4d;
+  position: absolute;
+  min-width: 100%;
 }
 
 .footer_clean h3 {
