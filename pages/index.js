@@ -3,8 +3,6 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import Homecontainer from "../components/Homecontainer";
 import Navbar from "../components/Navbar";
-import SideDrawer from "../components/SideDrawer";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const [state, setState] = useState({
@@ -35,6 +33,7 @@ export default function Home() {
 
       <div className="container-fluid">
         <Navbar />
+
         <Homecontainer />
       </div>
 
