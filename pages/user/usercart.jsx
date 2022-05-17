@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar"
 import styles from "../../styles/Usercart.module.css"
 import connectDb from '../../middleware/db'
 import User from "../../models/UserSchema.js";
+import mongoose from 'mongoose';
 
 const Usercart = ({ userdetails }) => {
     const { user, error, isLoading } = useUser();
@@ -21,13 +22,13 @@ const Usercart = ({ userdetails }) => {
                     {user ? <div>user cart</div> : <div>please login</div>}
                 </div>
 
-                <p> {userdetails.cart[0]} </p>
-                {/* {userdetails.cart.map((product) => {
+                {/* <p> {userdetails.cart[0]} </p> */}
+                {userdetails.cart.map((product) => {
                     return (
                         <h3 key={1}>hello</h3>
                     )
 
-                })} */}
+                })}
 
 
             </div>
@@ -43,14 +44,18 @@ const Usercart = ({ userdetails }) => {
 // and we are storing and passing them as props !!
 
 export async function getServerSideProps(context) {
-    connectDb()
+    if (!mongoose.connections[0].readyState) {
+        await mongoose.connect(process.env.MONGO_URI);
+    }
+
 
     let userdetails = await User.findOne({ name: "Tamal" });
 
-
+    // res.status(200).json({ allproducts });
     return {
         props: { userdetails: JSON.parse(JSON.stringify(userdetails)) }, // will be passed to the page component as props
     }
+
 }
 
 export default Usercart
