@@ -1,16 +1,10 @@
-const Products = require("../../../models/ProductSchema");
-const connectToMongo = require("../../../middleware/db");
-// import ProductModel from "../../models/Product";
+import connectDb from "../../../middleware/db";
+import Products from "../../../models/ProductSchema";
 
-connectToMongo();
+const handler = async (req, res) => {
+  let products = await Products.find();
 
-export default async function viewallproducts(req, res) {
-  try {
-    // const cat = req.body.cat;
-    const allproducts = await Products.find();
+  res.status(200).json({ products });
+};
 
-    res.json(allproducts);
-  } catch (error) {
-    console.log(error);
-  }
-}
+export default connectDb(handler);

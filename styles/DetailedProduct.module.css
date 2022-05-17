@@ -9,16 +9,19 @@
 
 .dp_parent {
   padding-bottom: 3rem;
+  width: fit-content;
+  margin: auto;
 }
 
 .dp_shoeimg {
   /* width: 358px !important;
   height: 225px !important; */
-  width: 358px !important;
+  /* width: 358px !important;
   height: 225px !important;
   min-width: 0px !important;
   min-height: 0px !important;
-  max-width: none !important;
+  max-width: none !important; */
+  width: 100% !important;
 }
 
 .dp_companyname {

@@ -3,8 +3,8 @@ import TshirtCard from '../../components/TshirtCard'
 import styles from "../../styles/Shoptshirts.module.css"
 import Navbar from "../../components/Navbar.jsx"
 import Stickerscard from '../../components/Stickerscard'
-import connectToMongo from '../../middleware/db'
 import products from "../../models/ProductSchema"
+import connectDb from '../../middleware/db'
 
 
 const shopstickers = ({ allproducts }) => {
@@ -28,7 +28,7 @@ const shopstickers = ({ allproducts }) => {
 
 // get server side props
 export async function getServerSideProps(context) {
-    connectToMongo();
+    connectDb();
     let allproducts = await products.find({ category: "stickers" });
     return {
         props: { allproducts: JSON.parse(JSON.stringify(allproducts)) },

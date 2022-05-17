@@ -27,6 +27,10 @@ export default async function updateproducts(req, res) {
       newProducts.desc = desc;
     }
 
+    if (img) {
+      newProducts.img = img;
+    }
+
     const updatedproduct = await Products.findByIdAndUpdate(
       req.body._id,
       { $set: newProducts },
