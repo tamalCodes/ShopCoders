@@ -2,9 +2,8 @@ import React, { useEffect } from 'react'
 import TshirtCard from '../../components/TshirtCard'
 import styles from "../../styles/Shoptshirts.module.css"
 import Navbar from "../../components/Navbar.jsx"
-import products from "../../models/ProductSchema"
 import connectDb from '../../middleware/db'
-
+import Products from "../../models/ProductSchema.js";
 
 const Shoptshirts = ({ allproducts }) => {
 
@@ -35,8 +34,11 @@ const Shoptshirts = ({ allproducts }) => {
 // and we are storing and passing them as props !!
 
 export async function getServerSideProps(context) {
-    connectDb();
-    let allproducts = await products.find({ category: "tshirt" });
+    connectDb()
+
+    let allproducts = await Products.find({ category: "tshirt" });
+
+    // res.status(200).json({ allproducts });
     return {
         props: { allproducts: JSON.parse(JSON.stringify(allproducts)) }, // will be passed to the page component as props
     }

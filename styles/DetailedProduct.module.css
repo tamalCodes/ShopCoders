@@ -85,6 +85,11 @@
     width: auto !important;
     height: auto !important;
   }
+  .shoppingcart {
+    font-size: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+  }
 }
 
 /* ------------------------------- */
@@ -111,5 +116,10 @@
 
     width: auto !important;
     height: auto !important;
+  }
+  .shoppingcart {
+    font-size: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
   }
 }
