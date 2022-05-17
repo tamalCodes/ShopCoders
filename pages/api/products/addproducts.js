@@ -1,32 +1,3 @@
-// import connectDb from "../../../middleware/db";
-// import Products from "../../../models/ProductSchema";
-
-// connectToMongo();
-
-// export default async function addproduct(req, res) {
-//   try {
-//     const prod = req.body;
-
-//     const newprod = Products({
-//       name: prod.name,
-//       qty: prod.qty,
-//       size: prod.size,
-//       slug: prod.slug,
-//       price: prod.price,
-//       category: prod.category,
-//       desc: prod.desc,
-//       img: prod.img,
-//     });
-
-//     await newprod.save();
-
-//     return res.json(newprod);
-//   } catch (error) {
-//     console.log(error);
-//     res.json(error);
-//   }
-// }
-
 import connectDb from "../../../middleware/db";
 import Product from "../../../models/ProductSchema";
 
