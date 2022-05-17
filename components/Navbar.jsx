@@ -11,7 +11,7 @@ const Navbar = () => {
     const [showdropdown, setshowdropdown] = useState(false);
     const { user, error, isLoading } = useUser();
     const context = useContext(ShopContext);
-    const { anchor, state, setState } = context;
+    const { state, setState } = context;
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light ">
@@ -83,9 +83,9 @@ const Navbar = () => {
                         <li className={`nav-item ${styles.navlinks}`}>
 
                             {user ? (
-                                <Image src={user.picture} alt="user" height={35} width={35} className={styles.userimage} onClick={() => { setState({ ...state, [anchor]: true }); }} />
+                                <Image src={user.picture} alt="user" height={35} width={35} className={styles.userimage} onClick={() => { setState({ ...state, right: true }); }} />
                             ) : (
-                                <AiOutlineShoppingCart fontSize={"1.5rem"} onClick={() => { setState({ ...state, [anchor]: true }); }} />
+                                <AiOutlineShoppingCart fontSize={"1.5rem"} onClick={() => { setState({ ...state, right: true }); }} />
                             )}
 
 

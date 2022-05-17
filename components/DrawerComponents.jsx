@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { useContext } from 'react';
 import ShopContext from '../context/ShopContext';
 import { useUser } from "@auth0/nextjs-auth0";
+import styles from "../styles/Drawer.module.css";
 
 
 const DrawerComponents = () => {
@@ -37,7 +38,7 @@ const DrawerComponents = () => {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                <p>Explore</p>
+                <p className={styles.welcomediv}>Explore</p>
 
                 <Link href={"/products/shoptshirts"} passHref>
                     <ListItem button key="T-Shirts">

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from "next/image";
 import sales from "../public/assets/sale.svg";
 import Link from 'next/link'
 import Head from "next/head";
 import styles from "../styles/Shoptshirts.module.css"
 
-const Hoodiescard = () => {
+const Hoodiescard = ({ product }) => {
+
+
     return (
         <>
             <Head>
@@ -14,12 +16,16 @@ const Hoodiescard = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Link href={"/detailed-product/lmao"} passHref>
+            <Link href={`/detailed-product/${product.slug}`} passHref>
                 <div className={`card ${styles.shirtcard}`} >
-                    <Image src={sales} className="card-img-top" alt="..." height={400} width={400} />
+
                     <div className="card-body">
-                        <h5 className={`card-title`}>Card title</h5>
-                        <p className={`card-text`}>Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+                        <Image className={`${styles.product_cardimg}`} alt="..." src={product.img} width={300} height={300} />
+
+                        <h5 className={`card-title`}>{product.name}</h5>
+                        <p className={`card-text`}>{product.desc}</p>
+                        <p className={`card-text`}>${product.price}</p>
+
 
                     </div>
                 </div>

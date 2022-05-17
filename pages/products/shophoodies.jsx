@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import TshirtCard from '../../components/TshirtCard'
 import styles from "../../styles/Shoptshirts.module.css"
 import Navbar from "../../components/Navbar.jsx"
 import Hoodiescard from '../../components/Hoodiescard'
-import connectToMongo from '../../middleware/db'
+import connectDb from '../../middleware/db'
 import products from "../../models/ProductSchema"
 
 
 const Shophoodies = ({ allproducts }) => {
+
     return (
         <>
             <Navbar />
@@ -27,8 +28,8 @@ const Shophoodies = ({ allproducts }) => {
 
 // get server side props
 export async function getServerSideProps(context) {
-    connectToMongo();
-    let allproducts = await products.find({ category: "hoodie" });
+    connectDb();
+    let allproducts = await products.find({ category: "hoodies" });
     return {
         props: { allproducts: JSON.parse(JSON.stringify(allproducts)) },
     }

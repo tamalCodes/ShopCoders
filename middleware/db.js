@@ -1,14 +1,14 @@
-//This is a demo db , the original files are safe
+import mongoose, { connect } from "mongoose";
 
-const mongoose = require("mongoose");
+const connectDb = (handler) => async (req, res) => {
+  if (mongoose.connections[0].readyState) {
+    return handler(req, res);
+  }
 
-const mongoURI =
-  "mongodb+srv://tamaldas69:tamaldas69@cluster0.ewwdt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
-const connectToMongo = () => {
-  mongoose.connect(mongoURI, () => {
-    console.log("CONNECTED TO MONGO DB DATABASE 🌐");
-  });
+  await mongoose.connect(
+    "mongodb+srv://tamaldas69:tamaldas69@cluster0.ewwdt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  );
+  return handler(req, res);
 };
 
-module.exports = connectToMongo;
+export default connectDb;

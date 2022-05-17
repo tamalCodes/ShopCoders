@@ -10,6 +10,7 @@ import Script from "next/script";
 import ShopState from "../context/ShopState";
 import SideDrawer from "../components/SideDrawer";
 import { UserProvider } from "@auth0/nextjs-auth0";
+import "../styles/globals.css";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
