@@ -28,10 +28,16 @@ const Shopmugs = ({ allproducts }) => {
 
 // get server side props
 export async function getServerSideProps(context) {
-    connectDb();
+    if (!mongoose.connections[0].readyState) {
+        await mongoose.connect(process.env.MONGO_URI);
+    }
+
+
     let allproducts = await products.find({ category: "mugs" });
+
+
     return {
-        props: { allproducts: JSON.parse(JSON.stringify(allproducts)) },
+        props: { allproducts: JSON.parse(JSON.stringify(allproducts)) }, // will be passed to the page component as props
     }
 }
 

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import TshirtCard from '../../components/TshirtCard'
 import styles from "../../styles/Shoptshirts.module.css"
 import Navbar from "../../components/Navbar.jsx"
-import connectDb from '../../middleware/db'
 import Products from "../../models/ProductSchema.js";
+import mongoose from 'mongoose'
 
 const Shoptshirts = ({ allproducts }) => {
 
@@ -34,7 +34,11 @@ const Shoptshirts = ({ allproducts }) => {
 // and we are storing and passing them as props !!
 
 export async function getServerSideProps(context) {
-    connectDb()
+
+    if (!mongoose.connections[0].readyState) {
+        await mongoose.connect(process.env.MONGO_URI);
+    }
+
 
     let allproducts = await Products.find({ category: "tshirt" });
 
