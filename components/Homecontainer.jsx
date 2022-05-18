@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import sales from "../public/assets/sale.svg";
 import shopwithus from "../public/assets/shopwithus.svg";
 import payment from "../public/assets/payment.svg";
 import mobilegh from "../public/assets/MobileGithubImage.jpg"
+import { useUser } from '@auth0/nextjs-auth0';
 
 
 const Homecontainer = () => {
+    const { user, error, isLoading } = useUser();
+
+    useEffect(() => {
+        if (!user) {
+            return
+        }
+        console.log(user);
+        localStorage.setItem('useremail', user.email);
+    }, [user]);
 
     return (<>
 
