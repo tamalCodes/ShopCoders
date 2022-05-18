@@ -1,17 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from "../../components/Navbar.jsx"
 import Image from 'next/image'
-import Shoe from "../../public/assets/shoe.png"
 import styles from "../../styles/DetailedProduct.module.css"
-import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
-import connectToMongo from '../../middleware/db.js'
-import products from "../../models/ProductSchema"
+import Products from "../../models/ProductSchema.js";
 import Rating from '@mui/material/Rating';
 import Head from "next/head";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useUser } from '@auth0/nextjs-auth0'
+import mongoose from 'mongoose'
+import axios from "axios";
+import { getsingleuser } from '../../service/ShopApi.js';
 
-const Detailedproduct = ({ product }) => {
 
+const Detailedproduct = ({ singleproduct }) => {
+
+    //* This is done to get the user details from the database
+    //* We need the email from localstorage and we are sending it to the api
+    //* so that we can get the cart data and use it to update the cart in this page
+    const [creds, setcreds] = useState({ email: "" });
+
+
+    useEffect(() => {
+        const useremail = localStorage.getItem("useremail");
+        creds.email = useremail;
+
+    }, []);
+
+    const getUserfromDB = async (e) => {
+        e.preventDefault();
+
+        fetch("http://localhost:3001/api/user/viewuserdetails", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(creds)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+            }
+            )
+            .catch(err => console.log(err));
+
+    }
 
 
     return (
@@ -28,14 +61,14 @@ const Detailedproduct = ({ product }) => {
                 <div className={`row ${styles.dp_parent}`} >
                     <div className="col-lg-6">
 
-                        <Image src={product.img} width={700} height={650} alt="shoe" className={styles.dp_shoeimg} />
+                        <Image src={singleproduct.img} width={700} height={650} alt="shoe" className={styles.dp_shoeimg} />
 
                     </div>
                     <div className="col-lg-6">
 
                         <div className={styles.dp_shoeinfo}>
                             <span className={styles.dp_companyname}>Nike</span>
-                            <h1> {product.name}</h1>
+                            <h1> {singleproduct.name}</h1>
 
                             <div className={styles.dp_rating}>
                                 <Rating name="read-only" value={4} readOnly />
@@ -43,21 +76,21 @@ const Detailedproduct = ({ product }) => {
 
                             <div className={styles.dp_desc_div}>
 
-                                <p className={styles.dp_desc}> {product.desc}</p>
+                                <p className={styles.dp_desc}> {singleproduct.desc}</p>
                             </div>
 
                             <hr />
 
                             <div className={styles.dp_buydiv}>
                                 <div className={styles.dp_buydiv_price}>
-                                    <p>  <strong>Price : </strong>${product.price} </p>
-                                    {product.qty === 0 ? <p className={styles.dp_outofstock}>Out of Stock</p> : <p><strong>Items left : </strong>{product.qty}</p>}
+                                    <p>  <strong>Price : </strong>${singleproduct.price} </p>
+                                    {singleproduct.qty === 0 ? <p className={styles.dp_outofstock}>Out of Stock</p> : <p><strong>Items left : </strong>{singleproduct.qty}</p>}
 
                                 </div>
 
                                 <div className={styles.dp_buydiv_button}>
-                                    <button className={`btn btn-warning ${styles.dp_buybutton}`}>Buy Now</button>
-                                    <AiOutlineShoppingCart className={styles.shoppingcart} />
+                                    <button className={`btn btn-warning ${styles.dp_buybutton}`}  >Buy Now</button>
+                                    <AiOutlineShoppingCart className={styles.shoppingcart} onClick={(e) => { getUserfromDB(e) }} />
                                 </div>
                             </div>
                         </div>
@@ -77,11 +110,18 @@ const Detailedproduct = ({ product }) => {
 // also then we are passing the product as props to the component
 
 export async function getServerSideProps(context) {
-    connectToMongo();
-    let product = await products.findOne({ slug: context.query.slug });
+
+    if (!mongoose.connections[0].readyState) {
+        await mongoose.connect(process.env.MONGO_URI);
+    }
+
+
+    let singleproduct = await Products.findOne({ slug: context.query.slug });
 
     return {
-        props: { product: JSON.parse(JSON.stringify(product)) }, // will be passed to the page component as props
+        props: {
+            singleproduct: JSON.parse(JSON.stringify(singleproduct)),
+        }, // will be passed to the page component as props
     }
 }
 

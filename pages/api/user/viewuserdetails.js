@@ -2,9 +2,9 @@ import connectDb from "../../../middleware/db";
 import User from "../../../models/UserSchema";
 
 const handler = async (req, res) => {
-  let userdetail = await User.find();
+  let userdetail = await User.findOne({ email: req.body.email });
 
-  res.status(200).json({ userdetail });
+  return res.status(200).json(userdetail);
 };
 
 export default connectDb(handler);
