@@ -18,6 +18,7 @@ const Detailedproduct = ({ singleproduct }) => {
     //* We need the email from localstorage and we are sending it to the api
     //* so that we can get the cart data and use it to update the cart in this page
     const [creds, setcreds] = useState({ email: "" });
+    const [cart, setcart] = useState({ email: "", cartproducts: [] });
 
 
     useEffect(() => {
@@ -26,23 +27,26 @@ const Detailedproduct = ({ singleproduct }) => {
 
     }, []);
 
-    const getUserfromDB = async (e) => {
-        e.preventDefault();
+    const addproducttocart = async (e) => {
+        e.preventDefault()
+        cart.email = creds.email;
+        cart.cartproducts.push(singleproduct);
+        console.log(cart);
 
-        fetch("http://localhost:3001/api/user/viewuserdetails", {
+        fetch("http://localhost:3000/api/products/addproductstocart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(creds)
+            body: JSON.stringify(cart)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-
             }
             )
             .catch(err => console.log(err));
+
 
     }
 
@@ -90,7 +94,7 @@ const Detailedproduct = ({ singleproduct }) => {
 
                                 <div className={styles.dp_buydiv_button}>
                                     <button className={`btn btn-warning ${styles.dp_buybutton}`}  >Buy Now</button>
-                                    <AiOutlineShoppingCart className={styles.shoppingcart} onClick={(e) => { getUserfromDB(e) }} />
+                                    <AiOutlineShoppingCart className={styles.shoppingcart} onClick={(e) => { addproducttocart(e) }} />
                                 </div>
                             </div>
                         </div>
