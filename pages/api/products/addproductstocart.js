@@ -13,6 +13,7 @@ const handler = async (req, res) => {
   }
 
   console.log(req.body.cartproducts);
+  console.log(req.body.email);
   let p = new Users({
     email: req.body.email,
     cartproducts: req.body.cartproducts,
