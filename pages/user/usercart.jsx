@@ -11,10 +11,10 @@ const Usercart = () => {
     //* We need the email from localstorage and we are sending it to the api
     //* so that we can get the cart data and use it to update the cart in this page
     const [creds, setcreds] = useState({ email: "" });
-    const [cart, setcart] = useState([]);
-    const [element, setelement] = useState({ slug: "" });
+    const [cart, setcart] = useState([{}]);
 
     const [cartproducts, setcartproducts] = useState([]);
+    // var cartproducts = [];
 
 
     const additem = (singleitem) => {
@@ -32,7 +32,7 @@ const Usercart = () => {
 
     const getUserfromDB = async () => {
 
-        fetch("http://localhost:3001/api/user/viewuserdetails", {
+        fetch("http://localhost:3000/api/user/viewuserdetails", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -41,7 +41,7 @@ const Usercart = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                console.log(data);
                 setcart(data.cart);
 
             }
@@ -60,27 +60,37 @@ const Usercart = () => {
         if (!cart)
             return;
 
-        for (let index = 0; index < cart.length; index++) {
-            element.slug = cart[index];
-
-            fetch("http://localhost:3001/api/products/viewproductbyid", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(element)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    additem(data);
-
-                }
-                )
-                .catch(err => console.log(err));
+        for (let i = 0; i < cart.length; i++) {
+            let a = {
+                "slug": cart[i],
+            }
+            cartproducts.push(a);
+            console.log(cartproducts);
 
         }
+
+
+
+
     }, [cart]);
+
+
+    const getcartproducts = async () => {
+        fetch("http://localhost:3000/api/products/viewproductbyid", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.parse(JSON.stringify(cartproducts))
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+            }
+            )
+            .catch(err => console.log(err));
+    }
 
 
 

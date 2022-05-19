@@ -5,6 +5,7 @@ import Navbar from "../../components/Navbar.jsx"
 import Hoodiescard from '../../components/Hoodiescard'
 import connectDb from '../../middleware/db'
 import products from "../../models/ProductSchema"
+import mongoose from 'mongoose'
 
 
 const Shophoodies = ({ allproducts }) => {

@@ -3,17 +3,41 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
     },
-    cart: [
+    cartproducts: [
       {
-        type: String,
+        name: {
+          type: String,
+        },
+        qty: {
+          type: String,
+        },
+        size: {
+          type: String,
+        },
+        slug: {
+          type: String,
+
+          unique: true,
+        },
+
+        price: {
+          type: Number,
+        },
+        category: {
+          type: String,
+        },
+
+        desc: {
+          type: String,
+        },
+
+        img: {
+          type: String,
+        },
       },
     ],
   },
