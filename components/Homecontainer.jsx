@@ -6,6 +6,8 @@ import shopwithus from "../public/assets/shopwithus.svg";
 import payment from "../public/assets/payment.svg";
 import mobilegh from "../public/assets/MobileGithubImage.jpg"
 import { useUser } from '@auth0/nextjs-auth0';
+import HomeParticles from './HomeParticles';
+import Shoplanding from "../public/assets/Shoplanding.svg"
 
 
 const Homecontainer = () => {
@@ -20,13 +22,25 @@ const Homecontainer = () => {
     }, [user]);
 
     return (<>
+        <HomeParticles />
 
         <div className={styles.imagediv1}>
             <Image src={mobilegh} width={600} height={600} alt="wear" className={styles.image1} />
         </div>
 
         <div className={styles.imagediv2}>
-            <Image src={sales} width={1500} height={600} alt="wear" className={styles.image1} />
+            <div className="row">
+                <div className="col-lg-6"><Image src={Shoplanding} width={800} height={800} alt="wear" className={styles.image1} /></div>
+
+                <div className="col-lg-6"> <div className={styles.imagediv2_textdiv}>
+                    <h3>Wear the Code 🥑</h3>
+                    <p>Welcome to ShopCoders, a place for the coders by the coders to get you some premium quality merchendise !!</p>
+                    <button className={`btn btn-warning ${styles.explorebtn}`}>Explore</button>
+
+                </div></div>
+            </div>
+
+
         </div>
 
         <div className={` ${styles.shopwithusdiv}`}>
