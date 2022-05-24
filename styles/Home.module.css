@@ -20,11 +20,16 @@
   cursor: pointer;
 }
 
+.rowmobile {
+  display: none;
+}
+
 .imagediv2_textdiv {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   justify-content: center;
+  margin: auto;
   width: 100%;
   height: 100%;
 }
@@ -127,9 +132,9 @@
 }
 
 .hrbar {
-  width: 60%;
+  width: 20%;
   margin: auto;
-  height: 3px !important;
+  height: 2px !important;
   color: gray;
   margin-top: 3.5rem;
   border-radius: 3px;
@@ -143,14 +148,26 @@
     text-align: center;
   }
 
+  .rowmobile {
+    display: flex;
+  }
+
+  .rowdesktop {
+    display: none;
+  }
+
+  .imagediv2_textdiv {
+    padding-left: 0px !important;
+  }
+
   .imagediv2_textdiv h3 {
     font-size: 2.8rem;
     margin-bottom: 1rem;
   }
 
   .imagediv2_textdiv p {
-    padding-left: 20px;
-    padding-right: 20px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
   }
 
   .explorebtn {
@@ -212,6 +229,15 @@
   .shopwithus2_textdiv p {
     line-height: 24px;
     font-size: 12px;
+  }
+
+  .hrbar {
+    width: 60%;
+    margin: auto;
+    height: 3px !important;
+    color: gray;
+    margin-top: 3.5rem;
+    border-radius: 3px;
   }
 }
 
