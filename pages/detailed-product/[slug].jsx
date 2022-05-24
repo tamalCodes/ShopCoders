@@ -10,6 +10,7 @@ import { useUser } from '@auth0/nextjs-auth0'
 import mongoose from 'mongoose'
 import axios from "axios";
 import { getsingleuser } from '../../service/ShopApi.js';
+import { CallEndRounded } from '@mui/icons-material';
 
 
 const Detailedproduct = ({ singleproduct }) => {
@@ -19,19 +20,61 @@ const Detailedproduct = ({ singleproduct }) => {
     //* so that we can get the cart data and use it to update the cart in this page
     const [creds, setcreds] = useState({ email: "" });
     const [cart, setcart] = useState({ email: "", cartproducts: [] });
+    const [oldproducts, setoldproducts] = useState([]);
+    const [newproducts, setnewproducts] = useState([]);
+
 
 
     useEffect(() => {
         const useremail = localStorage.getItem("useremail");
         creds.email = useremail;
+        setnewproducts(singleproduct);
 
     }, []);
 
+
+    useEffect(() => {
+        fetch("http://localhost:3000/api/user/viewuserdetails", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(creds)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                cart.email = data.email;
+                cart.cartproducts = data.cartproducts;
+                setoldproducts(data.cartproducts);
+
+            }
+            )
+            .catch(err => console.log(err));
+    }, []);
+
+
+
+
+    // we are basically adding items to the cart and then we are reloading it
+    // oldproducrs have the prodducts that are already there in the database
+    // newproducts have the products that are to be added to the cart
+    // and then finally we are concating it.
+
     const addproducttocart = async (e) => {
-        e.preventDefault()
-        cart.email = creds.email;
-        cart.cartproducts.push(singleproduct);
-        console.log(cart);
+        e.preventDefault();
+
+
+        cart.cartproducts = oldproducts.concat(newproducts);
+        setoldproducts([]);
+        alert("Product added to cart");
+        window.location.reload();
+
+
+
+
+
+
 
         fetch("http://localhost:3000/api/products/addproductstocart", {
             method: "POST",
@@ -46,6 +89,8 @@ const Detailedproduct = ({ singleproduct }) => {
             }
             )
             .catch(err => console.log(err));
+
+
 
 
     }
