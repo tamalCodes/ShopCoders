@@ -20,11 +20,16 @@
   cursor: pointer;
 }
 
+.rowmobile {
+  display: none;
+}
+
 .imagediv2_textdiv {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   justify-content: center;
+  margin: auto;
   width: 100%;
   height: 100%;
 }
@@ -85,9 +90,6 @@
   font-size: 18px;
 }
 
-@media screen and (max-width: 425px) {
-}
-
 .shopwithusdiv2 {
   margin-top: 3rem;
   display: flex;
@@ -129,13 +131,50 @@
   display: flex !important;
 }
 
-@media (max-width: 425px) and (min-width: 0px) {
-  .imagediv1 {
-    display: flex !important;
+.hrbar {
+  width: 20%;
+  margin: auto;
+  height: 2px !important;
+  color: gray;
+  margin-top: 3.5rem;
+  border-radius: 3px;
+}
+
+/* ------------------------------- */
+/* //* For MOBILE  - 425px*/
+
+@media (max-width: 430px) and (min-width: 0px) {
+  .imagediv2_textdiv {
+    text-align: center;
   }
-  .imagediv2 {
-    display: none !important;
+
+  .rowmobile {
+    display: flex;
   }
+
+  .rowdesktop {
+    display: none;
+  }
+
+  .imagediv2_textdiv {
+    padding-left: 0px !important;
+  }
+
+  .imagediv2_textdiv h3 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .imagediv2_textdiv p {
+    /* padding-left: 20px;
+    padding-right: 20px; */
+  }
+
+  .explorebtn {
+    margin: auto;
+    width: 30%;
+  }
+
   .shopwithusdiv {
     flex-direction: column;
     margin-top: 4rem;
@@ -190,6 +229,15 @@
   .shopwithus2_textdiv p {
     line-height: 24px;
     font-size: 12px;
+  }
+
+  .hrbar {
+    width: 60%;
+    margin: auto;
+    height: 3px !important;
+    color: gray;
+    margin-top: 3.5rem;
+    border-radius: 3px;
   }
 }
 
