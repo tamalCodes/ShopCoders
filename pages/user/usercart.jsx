@@ -42,7 +42,7 @@ const Usercart = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setcart(data.cart);
+                setcart(data.cartproducts);
 
             }
             )
@@ -56,23 +56,23 @@ const Usercart = () => {
     }, []);
 
 
-    useEffect(() => {
-        if (!cart)
-            return;
+    // useEffect(() => {
+    //     if (!cart)
+    //         return;
 
-        for (let i = 0; i < cart.length; i++) {
-            let a = {
-                "slug": cart[i],
-            }
-            cartproducts.push(a);
-            console.log(cartproducts);
+    //     for (let i = 0; i < cart.length; i++) {
+    //         let a = {
+    //             "slug": cart[i],
+    //         }
+    //         cartproducts.push(a);
+    //         console.log(cartproducts);
 
-        }
-
-
+    //     }
 
 
-    }, [cart]);
+
+
+    // }, [cart]);
 
 
     const getcartproducts = async () => {
@@ -104,7 +104,7 @@ const Usercart = () => {
                 <div className={`container ${styles.cart_parent}`}>
                     {/* {user ? <div>user cart</div> : <div>please login</div>} */}
                     <h3>Hello there</h3>
-                    {cartproducts.map((item, index) => {
+                    {cart.map((item, index) => {
                         return (
                             <div className={styles.cart_item} key={index}>
                                 <h4>{item.name}</h4>
