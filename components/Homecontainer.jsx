@@ -32,7 +32,7 @@ const Homecontainer = () => {
         <HomeParticles />
 
         <div className={styles.imagediv1}>
-            <Image src={mobilegh} width={600} height={600} alt="wear" className={styles.image1} />
+            <Image src={mobilegh} width={700} height={700} alt="wear" className={styles.image1} />
         </div>
 
         <div className={styles.imagediv2}>

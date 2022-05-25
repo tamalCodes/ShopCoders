@@ -44,7 +44,7 @@ const Detailedproduct = ({ singleproduct }) => {
             .then(res => res.json())
             .then(data => {
 
-                cart.email = data.email;
+
                 cart.cartproducts = data.cartproducts;
                 setoldproducts(data.cartproducts);
 
@@ -64,17 +64,8 @@ const Detailedproduct = ({ singleproduct }) => {
     const addproducttocart = async (e) => {
         e.preventDefault();
 
-
+        cart.email = creds.email;
         cart.cartproducts = oldproducts.concat(newproducts);
-        setoldproducts([]);
-        alert("Product added to cart");
-        window.location.reload();
-
-
-
-
-
-
 
         fetch("http://localhost:3000/api/products/addproductstocart", {
             method: "POST",
@@ -89,6 +80,13 @@ const Detailedproduct = ({ singleproduct }) => {
             }
             )
             .catch(err => console.log(err));
+
+        console.log(cart);
+
+
+        setoldproducts([]);
+        alert("Product added to cart");
+        window.location.reload();
 
 
 
