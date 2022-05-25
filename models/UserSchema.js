@@ -20,8 +20,6 @@ const UserSchema = new mongoose.Schema(
         },
         slug: {
           type: String,
-
-          unique: true,
         },
 
         price: {

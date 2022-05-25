@@ -11,6 +11,8 @@ import mongoose from 'mongoose'
 import axios from "axios";
 import { getsingleuser } from '../../service/ShopApi.js';
 import { CallEndRounded } from '@mui/icons-material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Detailedproduct = ({ singleproduct }) => {
@@ -44,7 +46,7 @@ const Detailedproduct = ({ singleproduct }) => {
             .then(res => res.json())
             .then(data => {
 
-                cart.email = data.email;
+
                 cart.cartproducts = data.cartproducts;
                 setoldproducts(data.cartproducts);
 
@@ -56,25 +58,16 @@ const Detailedproduct = ({ singleproduct }) => {
 
 
 
-    // we are basically adding items to the cart and then we are reloading it
-    // oldproducrs have the prodducts that are already there in the database
-    // newproducts have the products that are to be added to the cart
-    // and then finally we are concating it.
+    //* we are basically adding items to the cart and then we are reloading it
+    //* oldproducrs have the prodducts that are already there in the database
+    //* newproducts have the products that are to be added to the cart
+    //* and then finally we are concating it.
 
     const addproducttocart = async (e) => {
         e.preventDefault();
 
-
+        cart.email = creds.email;
         cart.cartproducts = oldproducts.concat(newproducts);
-        setoldproducts([]);
-        alert("Product added to cart");
-        window.location.reload();
-
-
-
-
-
-
 
         fetch("http://localhost:3000/api/products/addproductstocart", {
             method: "POST",
@@ -93,6 +86,21 @@ const Detailedproduct = ({ singleproduct }) => {
 
 
 
+        setoldproducts([]);
+
+
+        toast('🌈 Added to cart', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            onClose: () => {
+                window.location.reload();
+            }
+        });
     }
 
 
@@ -106,6 +114,17 @@ const Detailedproduct = ({ singleproduct }) => {
 
             <div className={styles.parent}>
                 <Navbar />
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
 
                 <div className={`row ${styles.dp_parent}`} >
                     <div className="col-lg-6">
@@ -163,7 +182,6 @@ export async function getServerSideProps(context) {
     if (!mongoose.connections[0].readyState) {
         await mongoose.connect(process.env.MONGO_URI);
     }
-
 
     let singleproduct = await Products.findOne({ slug: context.query.slug });
 
