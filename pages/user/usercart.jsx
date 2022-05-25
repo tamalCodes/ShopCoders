@@ -14,7 +14,7 @@ const Usercart = () => {
     const [cart, setcart] = useState([{}]);
 
     const [cartproducts, setcartproducts] = useState([]);
-    // var cartproducts = [];
+
 
 
     const additem = (singleitem) => {
@@ -102,8 +102,10 @@ const Usercart = () => {
                 <Navbar />
 
                 <div className={`container ${styles.cart_parent}`}>
-                    {/* {user ? <div>user cart</div> : <div>please login</div>} */}
+
+
                     <h3>Hello there</h3>
+
                     {cart.map((item, index) => {
                         return (
                             <div className={styles.cart_item} key={index}>
