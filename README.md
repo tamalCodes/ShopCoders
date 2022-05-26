@@ -1,41 +1,95 @@
 ![Shopcoders](https://user-images.githubusercontent.com/72851613/165623055-1026d392-31a5-438e-a3eb-4d9a61cbea41.png)
 
-## What is ShopCoders ? 🤔
+<br/>
+
+# What is ShopCoders ? 🤔
+
 An Open source e-commerce application on the way to help all the devs out there get affordable yet authentic swags.
 
-## Why shop at ShopCoders ? 🛒
+<br/>
+
+# Why shop at ShopCoders ? 🛒
+
 We at ShopCoders offer you official merchandise from all the coding event. These are mostly left out/ not gave-away. We tied up with 50+ official code companies like Github, Digital Ocean to bring you the best of the swags at an affordable price !!
 
-## Some technical information about the app ⚙
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<br/>
 
-## Getting Started 👩‍💻
+# Some technical information about the app ⚙
 
-First, run the development server:
+⭐ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+⭐ We used **Material UI, Bootstrap 5.0 and CSS** for styling it.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+⭐ We also used **Google Fonts** for awesome fonts.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<br/>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# Getting Started 👩‍💻
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+⭐ **`fork`** the repository to your account
 
-## Checkout my releases here  🚀
+⭐ **`git clone`** to clone the repo into your local system.
 
-🔥 **[Releases](https://github.com/IAmTamal/ShopCoders/releases)**
+⭐ **`npm install`** to add all dependencies.
+
+⭐ Add **`.env`** file with your personal **`MONGO_URI`**
+
+⭐ Make your own personal **`OAuth application`** and copy the **client ID** in **`.env`** file.
+
+⭐ **`npm run dev`** to start the next app on **`http://localhost:3000`**
+
+⭐ **That's it you have it ready.**
+
+🍟 Open **[http://localhost:3000](http://localhost:3000)** with your browser to see the result.
+
+🍟 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+🍟 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+
+🍟 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+<br/>
+
+# Checkout my releases here 🚀
+
+🔥 Latest releases here : **[Releases](https://github.com/IAmTamal/ShopCoders/releases)**
 
 ![Screenshot_3](https://user-images.githubusercontent.com/72851613/165623875-ff4907bb-0682-410a-8073-9ed5512789e3.png)
 
+<br/>
 
-## Deploy on Vercel 🪐
+# Deploy on Vercel 🪐
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🚀 We have deployed our application on **VERCEL**.
 
-**Here's the link to the App [ShopCoders](https://shop-coders.vercel.app/)**
+🚀 You can acess it with : **[ShopCoders](https://shop-coders.vercel.app/)**
+
+🚀 Share this amazing work with your friends !!
+
+<br/>
+
+# OpenSource and ShopCoders 🍺
+
+We are Open Source, and here's how you can contribute :
+
+🧁 **`fork, star`** the repository.
+
+🧁 **`git clone** to clone the repo.
+
+🧁 **[Setup the repo]()** with the guides.
+
+🧁 Make all the changes you desire
+
+🧁 **`git checkout -b`** to make a new branch.
+
+🧁 **`Raise a PR`** with proper name.
+
+🧁 Include **`Screenshot, Description, Issue Number`** in the PR.
+
+🧁 **`WAIT`** for us to review !!
+
+🧁 **That's it !!**
+
+---
+
+### Do give us a star, and follow me on [Twitter](https://twitter.com/mrTamall)
