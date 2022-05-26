@@ -54,7 +54,10 @@ We at ShopCoders offer you official merchandise from all the coding event. These
 
 🔥 Latest releases here : **[Releases](https://github.com/IAmTamal/ShopCoders/releases)**
 
-![Screenshot_3](https://user-images.githubusercontent.com/72851613/165623875-ff4907bb-0682-410a-8073-9ed5512789e3.png)
+<br/>
+
+![1](https://user-images.githubusercontent.com/72851613/170461126-14a6429a-fee4-493e-b854-d596f84d5365.png)
+
 
 <br/>
 
@@ -74,9 +77,9 @@ We are Open Source, and here's how you can contribute :
 
 🧁 **`fork, star`** the repository.
 
-🧁 **`git clone** to clone the repo.
+🧁 **`git clone`** to clone the repo.
 
-🧁 **[Setup the repo]()** with the guides.
+🧁 **[Setup the repo](https://github.com/IAmTamal/ShopCoders/edit/main/README.md#getting-started-)** with the guides.
 
 🧁 Make all the changes you desire
 
