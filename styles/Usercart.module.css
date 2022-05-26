@@ -7,7 +7,33 @@
   background-size: cover;
 }
 
-/* .cart_parent {
-  width: 100%;
-  min-height: 100vh;
-} */
+.cart_cartcardsparent {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+.cart_cartusername {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600 !important;
+}
+
+.cartcard {
+  width: 15rem;
+  border-radius: 10px;
+  margin-right: 4rem;
+  cursor: pointer;
+}
+
+.cart_details h3 {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600 !important;
+}
+
+.cart_details p {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  font-weight: 600 !important;
+}

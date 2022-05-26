@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -19,7 +19,14 @@ const DrawerComponents = () => {
     const context = useContext(ShopContext);
     const { anchor, state, setState } = context;
     const { user, error, isLoading } = useUser();
+    const [creds, setcreds] = useState("");
 
+    useEffect(() => {
+        const useremail = localStorage.getItem("useremail");
+        setcreds(useremail);
+        console.log(useremail);
+
+    }, []);
 
 
     const toggleDrawer = (anchor, open) => (event) => {
@@ -84,7 +91,7 @@ const DrawerComponents = () => {
             {/* //* USER SECTION */}
 
             {user ? <List>
-                <Link href={"/user/usercart"} passHref>
+                <Link href={`/usercart/${creds}`} passHref>
                     <ListItem button key="Your Cart">
                         <ListItemIcon>
                             <InboxIcon />

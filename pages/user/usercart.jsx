@@ -2,26 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useUser } from "@auth0/nextjs-auth0";
 import Navbar from "../../components/Navbar"
 import styles from "../../styles/Usercart.module.css"
-import connectDb from '../../middleware/db'
-import mongoose from 'mongoose';
+import styles2 from "../../styles/Shoptshirts.module.css"
+import Link from 'next/link';
+import Image from 'next/image';
+
 
 const Usercart = () => {
 
     //* This is done to get the user details from the database
     //* We need the email from localstorage and we are sending it to the api
     //* so that we can get the cart data and use it to update the cart in this page
+
     const [creds, setcreds] = useState({ email: "" });
     const [cart, setcart] = useState([{}]);
-
-    const [cartproducts, setcartproducts] = useState([]);
-
-
-
-    const additem = (singleitem) => {
-        const newTodos = [...cartproducts];
-        newTodos.push(singleitem);
-        setcartproducts(newTodos);
-    }
 
 
     useEffect(() => {
@@ -55,45 +48,6 @@ const Usercart = () => {
         getUserfromDB();
     }, []);
 
-
-    // useEffect(() => {
-    //     if (!cart)
-    //         return;
-
-    //     for (let i = 0; i < cart.length; i++) {
-    //         let a = {
-    //             "slug": cart[i],
-    //         }
-    //         cartproducts.push(a);
-    //         console.log(cartproducts);
-
-    //     }
-
-
-
-
-    // }, [cart]);
-
-
-    const getcartproducts = async () => {
-        fetch("http://localhost:3000/api/products/viewproductbyid", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.parse(JSON.stringify(cartproducts))
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-
-            }
-            )
-            .catch(err => console.log(err));
-    }
-
-
-
     return (
 
         <>
@@ -108,26 +62,34 @@ const Usercart = () => {
 
                     {cart.map((item, index) => {
                         return (
-                            <div className={styles.cart_item} key={index}>
-                                <h4>{item.name}</h4>
-                            </div>
+                            <>
+
+
+
+                                <Link href={`/detailed-product/${item.slug}`} passHref>
+                                    <div className={`card ${styles2.shirtcard}`} >
+
+                                        <div className="card-body" >
+                                            {/* <Image height={300} width={300} src={item.img} className={`${styles2.product_cardimg}`} alt="..." /> */}
+
+                                            <Image src={item.img} layout='fill' alt='ldlld' />
+                                            <h5>{item.img}</h5>
+
+                                            <h5 className={`card-title`}>{item.name}</h5>
+                                            <p className={`card-text`}>{item.desc}</p>
+                                            <p className={`card-text`}>${item.price}</p>
+
+
+                                        </div>
+                                    </div>
+                                </Link>
+
+                            </>
+
                         )
                     })}
 
-
-
-
-
                 </div>
-
-
-                {/* {userdetails.cart.map((product) => {
-                    return (
-                        <h3 key={1}>hello</h3>
-                    )
-
-                })} */}
-
 
             </div>
 
@@ -135,6 +97,5 @@ const Usercart = () => {
 
     )
 }
-
 
 export default Usercart
