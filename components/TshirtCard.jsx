@@ -18,7 +18,7 @@ const TshirtCard = ({ product }) => {
                 <div className={`card ${styles.shirtcard}`} >
 
                     <div className="card-body">
- <Image src={product.img} className={`${styles.product_cardimg}`} alt="..." height={300} width={300} />
+                        <Image src={product.img} className={`${styles.product_cardimg}`} alt="..." height={300} width={300} />
 
                         <h5 className={`card-title`}>{product.name}</h5>
                         <p className={`card-text`}>{product.desc}</p>
