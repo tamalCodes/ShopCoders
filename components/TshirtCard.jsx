@@ -16,18 +16,7 @@ const TshirtCard = ({ product }) => {
             </Head>
 
             <Link href={`/detailed-product/${product.slug}`} passHref>
-                {/* <div className={`card ${styles.shirtcard}`} >
 
-                    <div className="card-body">
-                        <Image src={product.img} className={`${styles.product_cardimg}`} alt="..." height={300} width={300} />
-
-                        <h5 className={`card-title`}>{product.name}</h5>
-                        <p className={`card-text`}>{product.desc}</p>
-                        <p className={`card-text`}>${product.price}</p>
-
-
-                    </div>
-                </div> */}
 
 
 
