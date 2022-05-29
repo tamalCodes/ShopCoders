@@ -15,3 +15,56 @@
   width: auto !important;
   height: auto !important;
 }
+
+.itemscard_parent {
+  margin: 0px;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 0px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.itemscard_card {
+  border-radius: 20px;
+  margin-right: 5rem;
+  margin-bottom: 5rem;
+  padding-top: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+}
+
+.itemscard_img {
+  object-fit: cover;
+  min-height: 150px;
+  max-height: 150px;
+}
+
+.itemscard_title {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+
+.itemcard_price {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+
+.Items-container-header {
+  margin-top: 5rem;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
+@media (max-width: 430px) {
+  .itemscard_card {
+    border-radius: 20px;
+    margin-right: 0rem;
+    margin-bottom: 3rem;
+    padding-top: 1rem;
+    font-family: "Ubuntu", sans-serif;
+  }
+}

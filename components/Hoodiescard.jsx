@@ -4,6 +4,7 @@ import sales from "../public/assets/sale.svg";
 import Link from 'next/link'
 import Head from "next/head";
 import styles from "../styles/Shoptshirts.module.css"
+import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
 
 const Hoodiescard = ({ product }) => {
 
@@ -16,19 +17,32 @@ const Hoodiescard = ({ product }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <Link href={`/detailed-product/${product.slug}`} passHref>
-                <div className={`card ${styles.shirtcard}`} >
+            <Link href={`/detailed-product/${product.slug}`} passHref  >
+                <div className={`card ${styles.itemscard_card}`} style={{ width: "18rem" }}>
+                    <Image src={product.img} className={`card-img-top ${styles.itemscard_img}`} alt="..." height={300} width={300} />
 
                     <div className="card-body">
-                        <Image className={`${styles.product_cardimg}`} alt="..." src={product.img} width={300} height={300} />
 
-                        <h5 className={`card-title`}>{product.name}</h5>
-                        <p className={`card-text`}>{product.desc}</p>
-                        <p className={`card-text`}>${product.price}</p>
+                        <h5 className={`card-title ${styles.itemscard_title}`}>{product.name}</h5>
 
+
+
+
+                        <h5 className={styles.itemcard_price}>$ {product.price}</h5>
+
+                        <BsFillCartFill
+                            size={20}
+                            style={{ fill: "#C70A80", marginRight: "1rem", cursor: "pointer" }}
+                        />
+
+                        <BsFillHeartFill
+                            size={20}
+                            style={{ fill: "#F24C4C", marginRight: "5px", cursor: "pointer" }}
+                        />
 
                     </div>
                 </div>
+
             </Link>
         </>
     )
