@@ -1,125 +1,83 @@
 .parent {
-  background: rgb(255, 255, 255);
+  background-color: #edf2f8;
   position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
+  overflow-x: hidden !important;
+}
+
+.parent2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background-color: red; */
+  width: 100vw;
 }
 
 .dp_parent {
-  padding-bottom: 3rem;
-  width: fit-content;
+  background-color: white;
+  padding: 2rem;
+  overflow-x: hidden !important;
+  max-width: 65%;
+  border-radius: 20px;
   margin: auto;
+  margin-top: 5rem;
 }
 
-.dp_shoeimg {
-  /* width: 358px !important;
-  height: 225px !important; */
-  /* width: 358px !important;
-  height: 225px !important;
-  min-width: 0px !important;
-  min-height: 0px !important;
-  max-width: none !important; */
-  width: 100% !important;
+.dp_shoeinfo {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.dp_shoeinfo_child1 {
+  margin-top: 3rem;
 }
 
 .dp_companyname {
-  font-size: 0.8rem;
-  font-weight: bold;
   color: gray;
-  font-family: "Open Sans", sans-serif;
-  margin-left: 6px;
-}
-
-.dp_companyname h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: black;
-  font-family: "Open Sans", sans-serif;
-}
-
-.dp_rating {
+  font-weight: 700;
   font-size: 0.7rem;
-  margin-bottom: 20px;
 }
 
-.dp_desc {
-  font-size: 1rem;
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.8;
+.dp_shoeinfo h1 {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
 }
 
-/* //* RESPONSIVENESS */
-
-@media (max-width: 768px) and (min-width: 426px) {
+.shoppingcart {
+  font-size: 1.5rem;
+  margin-left: 2rem;
 }
 
-/* ------------------------------- */
-/* //* For Laptops  - 1024px*/
-@media (max-width: 1024px) and (min-width: 769px) {
-}
-
-/* ------------------------------- */
-/* //* For Laptops - 2K */
-@media (max-width: 1440px) and (min-width: 1025px) {
-  .parent {
-    overflow: hidden;
-  }
-
+@media (max-width: 430px) {
   .dp_parent {
+    max-width: 90%;
+    margin-bottom: 5rem;
+  }
+
+  .dp_shoeinfo_child1 {
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .dp_desc {
+    margin-bottom: 1rem;
+  }
+
+  .dp_companyname {
+    display: none;
+  }
+
+  .dp_shoeinfo_child1 {
+    margin-top: 0rem;
+  }
+
+  .dp_buydiv_button {
     display: flex;
-    height: 90vh;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2rem;
   }
 
-  .dp_shoeinfo {
-    max-width: 600px;
-  }
-
-  .dp_shoeimg {
-    /* width: 417px !important;
-    height: 266px !important; */
-
-    width: auto !important;
-    height: auto !important;
-  }
   .shoppingcart {
     font-size: 2rem;
-    margin-left: 2rem;
-    cursor: pointer;
-  }
-}
-
-/* ------------------------------- */
-/* //* For Laptops - 4K */
-@media (max-width: 2560px) and (min-width: 1441px) {
-  .parent {
-    overflow: hidden;
-  }
-
-  .dp_parent {
-    display: flex;
-    height: 90vh;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .dp_shoeinfo {
-    max-width: 600px;
-  }
-
-  .dp_shoeimg {
-    /* width: 417px !important;
-    height: 266px !important; */
-
-    width: auto !important;
-    height: auto !important;
-  }
-  .shoppingcart {
-    font-size: 2rem;
-    margin-left: 2rem;
-    cursor: pointer;
+    margin-left: 0rem;
   }
 }
