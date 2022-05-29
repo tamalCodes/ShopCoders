@@ -151,12 +151,14 @@ const Detailedproduct = ({ singleproduct }) => {
                                         <Rating name="read-only" value={4} readOnly />
                                     </div>
 
+                                    <hr />
+
                                     <div className={styles.dp_desc_div}>
 
                                         <p className={styles.dp_desc}> {singleproduct.desc}</p>
                                     </div>
 
-                                    <hr />
+
 
                                     <div className={styles.dp_buydiv}>
                                         <div className={styles.dp_buydiv_price}>

@@ -46,6 +46,19 @@
   margin-left: 2rem;
 }
 
+.dp_desc_div {
+  margin-top: 1.5rem;
+}
+
+.dp_buydiv {
+  line-height: 12px;
+  margin-top: 1.5rem;
+}
+
+.dp_buydiv_button {
+  margin-top: 2rem;
+}
+
 @media (max-width: 430px) {
   .dp_parent {
     max-width: 90%;
