@@ -12,6 +12,12 @@ import { useContext } from 'react';
 import ShopContext from '../context/ShopContext';
 import { useUser } from "@auth0/nextjs-auth0";
 import styles from "../styles/Drawer.module.css";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import FlagIcon from '@mui/icons-material/Flag';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import LoginIcon from '@mui/icons-material/Login';
 
 
 const DrawerComponents = () => {
@@ -50,36 +56,36 @@ const DrawerComponents = () => {
                 <Link href={"/products/shoptshirts"} passHref>
                     <ListItem button key="T-Shirts">
                         <ListItemIcon>
-                            <InboxIcon />
+                            <ShoppingBagIcon />
                         </ListItemIcon>
-                        <ListItemText primary="T-Shirts" />
+                        <ListItemText primary="T-Shirts" className={styles.drawerlistitems} style={{ fontFamily: "Ubuntu" }} />
                     </ListItem>
                 </Link>
 
                 <Link href={"/products/shophoodies"} passHref>
                     <ListItem button key="Hoodies">
                         <ListItemIcon>
-                            <InboxIcon />
+                            <ShoppingBagIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Hoodies" />
+                        <ListItemText primary="Hoodies" className={styles.drawerlistitems} />
                     </ListItem>
                 </Link>
 
                 <Link href={"/products/shopmugs"} passHref>
                     <ListItem button key="Mugs">
                         <ListItemIcon>
-                            <InboxIcon />
+                            <ShoppingBagIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Mugs" />
+                        <ListItemText primary="Mugs" className={styles.drawerlistitems} />
                     </ListItem>
                 </Link>
 
                 <Link href={"/products/shopstickers"} passHref>
                     <ListItem button key="Stickers">
                         <ListItemIcon>
-                            <InboxIcon />
+                            <ShoppingBagIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Stickers" />
+                        <ListItemText primary="Stickers" className={styles.drawerlistitems} />
                     </ListItem>
                 </Link>
 
@@ -94,9 +100,9 @@ const DrawerComponents = () => {
                 <Link href={`/usercart/${creds}`} passHref>
                     <ListItem button key="Your Cart">
                         <ListItemIcon>
-                            <InboxIcon />
+                            <ShoppingCartIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Your Cart" />
+                        <ListItemText primary="Your Cart" className={styles.drawerlistitems} />
                     </ListItem>
                 </Link>
 
@@ -105,9 +111,9 @@ const DrawerComponents = () => {
 
                     <ListItem button key="Your Orders">
                         <ListItemIcon>
-                            <InboxIcon />
+                            <BorderColorIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Your Orders" />
+                        <ListItemText primary="Your Orders" className={styles.drawerlistitems} />
                     </ListItem>
 
                 </Link>
@@ -117,9 +123,9 @@ const DrawerComponents = () => {
 
                     <ListItem button key="Report">
                         <ListItemIcon>
-                            <InboxIcon />
+                            <FlagIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Report" />
+                        <ListItemText primary="Report" className={styles.drawerlistitems} />
                     </ListItem>
 
                 </Link>
@@ -129,9 +135,10 @@ const DrawerComponents = () => {
 
                     <ListItem button key="Logout">
                         <ListItemIcon>
-                            <InboxIcon />
+
+                            <LogoutIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Logout" />
+                        <ListItemText primary="Logout" className={styles.drawerlistitems} />
                     </ListItem>
 
                 </Link>
@@ -143,9 +150,10 @@ const DrawerComponents = () => {
                     <Link href={"/api/auth/login"} passHref>
                         <ListItem button key="Login">
                             <ListItemIcon>
-                                <InboxIcon />
+
+                                <LoginIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Login" />
+                            <ListItemText primary="Login" className={styles.drawerlistitems} />
                         </ListItem>
                     </Link>
 
