@@ -2,27 +2,79 @@ import connectDb from "../../../middleware/db";
 import Users from "../../../models/UserSchema";
 
 const handler = async (req, res) => {
-  console.log(req.body.email);
-  console.log(req.body.cartproducts.length);
+  const { email, cartproducts, address, state, pincode, city, phone } =
+    req.body;
+  const newuser = {};
 
-  let searcheduser = await Users.findOne({ email: req.body.email });
+  let searcheduser = await Users.findOne({ email: email });
+
   if (searcheduser) {
-    let u = await Users.findOneAndUpdate(
-      { email: req.body.email },
-      { cartproducts: req.body.cartproducts }
-    );
+    if (email) {
+      newuser.email = email;
+    }
+
+    if (cartproducts) {
+      newuser.cartproducts = cartproducts;
+    }
+
+    if (address) {
+      newuser.address = address;
+    }
+
+    if (state) {
+      newuser.state = state;
+    }
+
+    if (pincode) {
+      newuser.pincode = pincode;
+    }
+
+    if (city) {
+      newuser.city = city;
+    }
+
+    if (phone) {
+      newuser.phone = phone;
+    }
+
+    let u = await Users.findOneAndUpdate({ email: email }, newuser);
 
     return res.status(200).json({ sucess: "sucess" });
+  } else {
+    if (email) {
+      newuser.email = email;
+    }
+
+    if (cartproducts) {
+      newuser.cartproducts = cartproducts;
+    }
+
+    if (address) {
+      newuser.address = address;
+    }
+
+    if (state) {
+      newuser.state = state;
+    }
+
+    if (pincode) {
+      newuser.pincode = pincode;
+    }
+
+    if (city) {
+      newuser.city = city;
+    }
+
+    if (phone) {
+      newuser.phone = phone;
+    }
+
+    let p = new Users(newuser);
+
+    await p.save();
+
+    return res.status(200).json(p);
   }
-
-  let p = new Users({
-    email: req.body.email,
-    cartproducts: req.body.cartproducts,
-  });
-
-  await p.save();
-
-  return res.status(200).json(p);
 };
 
 export default connectDb(handler);
