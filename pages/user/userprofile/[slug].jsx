@@ -36,6 +36,39 @@ const Profile = ({ singleuser }) => {
 
     }, [])
 
+    const handleChange = (e) => {
+        setprofiledetails({
+            ...profiledetails,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        console.log(profiledetails);
+
+        fetch("http://localhost:3000/api/products/addproductstocart", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(profiledetails)
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.sucess === "sucess") {
+                    alert("Profile Updated");
+                }
+            }
+            )
+            .catch(err => console.log(err))
+
+    }
+
+
+
+
 
     return (
         <>
@@ -67,27 +100,69 @@ const Profile = ({ singleuser }) => {
 
                         <div className={`col-lg-6 col-md-12 ${styles.profiledetailscol}`}>
 
-                            {singleuser && <>
+                            {singleuser && <div className={styles.profiledets}>
 
-                                <input type="text" className='form-control' value={singleuser.email} />
-                                <input type="text" className='form-control' />
-                                <input type="text" className='form-control' />
-                                <input type="text" className='form-control' />
-                                <input type="text" className='form-control' />
-                                <input type="text" className='form-control' />
-                                <input type="text" className='form-control' />
-                                <input type="text" className='form-control' />
-                                <input type="text" className='form-control' />
+                                <p className={`${styles.profile_inputs}`}  >Email : <span className={styles.profile_inputs_child}>{singleuser.email}</span> </p>
 
-                            </>}
+                                <p className={`${styles.profile_inputs}`}  >Address : <span className={styles.profile_inputs_child}>{singleuser.address}</span> </p>
+
+                                <p className={`${styles.profile_inputs}`}  >State : <span className={styles.profile_inputs_child}>{singleuser.state}</span> </p>
+
+                                <p className={`${styles.profile_inputs}`}  >Pincode : <span className={styles.profile_inputs_child}>{singleuser.city}</span> </p>
+
+                                <p className={`${styles.profile_inputs}`}  >City : <span className={styles.profile_inputs_child}>{singleuser.pincode}</span> </p>
+
+                                <p className={`${styles.profile_inputs}`}  >Phone : <span className={styles.profile_inputs_child}>{singleuser.phone}</span> </p>
+
+
+
+
+
+
+
+                                <button type="button" className={`btn btn-warning ${styles.updatebtn}`} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Update profile
+                                </button>
+
+
+                                <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div className="modal-dialog">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="staticBackdropLabel">Update Profile</h5>
+                                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <input type="text" className={`form-control ${styles.profile_inputsf1}`} value={profiledetails.email} name="email" placeholder='' />
+
+                                                <input type="text" className={`form-control ${styles.profile_inputsf1}`} value={profiledetails.address} name="address" placeholder='Address' onChange={(e) => { handleChange(e) }} />
+
+                                                <input type="text" className={`form-control ${styles.profile_inputsf1}`} value={profiledetails.state} name="state" placeholder='State' onChange={(e) => { handleChange(e) }} />
+
+                                                <input type="text" className={`form-control ${styles.profile_inputsf1}`} value={profiledetails.pincode} name="pincode" placeholder='Pincode' onChange={(e) => { handleChange(e) }} />
+
+                                                <input type="text" className={`form-control ${styles.profile_inputsf1}`} value={profiledetails.city} name="city" placeholder='City' onChange={(e) => { handleChange(e) }} />
+
+                                                <input type="text" className={`form-control ${styles.profile_inputsf1}`} value={profiledetails.phone} name="phone" placeholder='Phone' onChange={(e) => { handleChange(e) }} />
+                                            </div>
+
+                                            <div className="modal-footer">
+                                                <button type="button" className={`btn btn-warning ${styles.updatebtn}`} style={{ marginTop: "0" }} data-bs-dismiss="modal" onClick={() => { handleSubmit() }} >Update</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>}
                         </div>
                     </div>
 
                     <br />
 
-                    <Link href="/checkout" passHref >
-                        <button className={`btn btn-warning ${styles.cart_checkoutbtn}`}> Update </button>
-                    </Link>
+
 
 
 

@@ -2,6 +2,8 @@ import connectDb from "../../../middleware/db";
 import Users from "../../../models/UserSchema";
 
 const handler = async (req, res) => {
+  console.log(req.body);
+
   const { email, cartproducts, address, state, pincode, city, phone } =
     req.body;
   const newuser = {};
