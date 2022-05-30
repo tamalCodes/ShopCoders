@@ -16,8 +16,67 @@ import Head from 'next/head';
 const Usercart = ({ singleuser }) => {
 
     const { user, error, isLoading } = useUser();
+    const [sumprice, setsumprice] = useState(0);
+    const [cart, setcart] = useState({ email: "", cartproducts: [] });
+    const [creds, setcreds] = useState({ email: "" });
+
+    //* Finding the email from local storage and saving it in the creds object
+
+    useEffect(() => {
+        const useremail = localStorage.getItem("useremail");
+        creds.email = useremail;
+    }, []);
+
+    //* check if there is a user with this email in the DB
+    //* if there is, then okay.
+    //* else
+
+    const addproducttocart = async (e) => {
+        e.preventDefault();
+
+        cart.email = creds.email;
+        cart.cartproducts = oldproducts.concat(newproducts);
+
+        fetch("http://localhost:3000/api/products/addproductstocart", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cart)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
+            .catch(err => console.log(err));
 
 
+
+
+        setoldproducts([]);
+
+
+
+    }
+    useEffect(() => {
+
+
+
+
+    }, []);
+
+
+    useEffect(() => {
+        let sum = 0;
+        for (let i = 0; i < singleuser.cartproducts.length; i++) {
+            const element = singleuser.cartproducts[i].price;
+
+            sum = sum + element;
+            console.log(sum);
+            setsumprice(sum);
+        }
+    }, []);
 
 
 
@@ -89,9 +148,22 @@ const Usercart = ({ singleuser }) => {
                     })}
 
 
+                </div>
+
+                <hr style={{ width: "70%", margin: "auto" }} />
+
+                <div className="container" style={{ marginTop: "5rem", marginBottom: "5rem" }}>
+                    <h3 className={styles.cart_cartusername}> Total Price of your order : $ {sumprice} </h3>
+                    <br />
+
+                    <Link href="/checkout" passHref >
+                        <button className={`btn btn-warning ${styles.cart_checkoutbtn}`}> Checkout </button>
+                    </Link>
+
 
 
                 </div>
+
 
             </div>
 

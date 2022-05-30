@@ -18,6 +18,8 @@ import FlagIcon from '@mui/icons-material/Flag';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import LoginIcon from '@mui/icons-material/Login';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import Router from 'next/router'
 
 
 const DrawerComponents = () => {
@@ -27,12 +29,17 @@ const DrawerComponents = () => {
     const { user, error, isLoading } = useUser();
     const [creds, setcreds] = useState("");
 
-    useEffect(() => {
-        const useremail = localStorage.getItem("useremail");
-        setcreds(useremail);
-        console.log(useremail);
 
-    }, []);
+
+    useEffect(() => {
+
+        if (user) {
+            const useremail = localStorage.getItem("useremail");
+            setcreds(useremail);
+        }
+
+
+    }, [user]);
 
 
     const toggleDrawer = (anchor, open) => (event) => {
@@ -42,6 +49,14 @@ const DrawerComponents = () => {
 
         setState({ ...state, [anchor]: open });
     };
+
+    const handleLogin = async (e) => {
+        await Router.push("/api/auth/login");
+
+
+    }
+
+
 
     return (
         <Box
@@ -97,6 +112,15 @@ const DrawerComponents = () => {
             {/* //* USER SECTION */}
 
             {user ? <List>
+                <Link href={`/user/userprofile/${creds}`} passHref>
+                    <ListItem button key="Your Profile">
+                        <ListItemIcon>
+                            <ManageAccountsIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Your Profile" className={styles.drawerlistitems} />
+                    </ListItem>
+                </Link>
+
                 <Link href={`/usercart/${creds}`} passHref>
                     <ListItem button key="Your Cart">
                         <ListItemIcon>
@@ -105,6 +129,7 @@ const DrawerComponents = () => {
                         <ListItemText primary="Your Cart" className={styles.drawerlistitems} />
                     </ListItem>
                 </Link>
+
 
 
                 <Link href={"/user/userorders"} passHref>
@@ -147,7 +172,7 @@ const DrawerComponents = () => {
             </List> :
                 <List>
 
-                    <Link href={"/api/auth/login"} passHref>
+                    {/* <Link href={"/api/auth/login"} passHref>
                         <ListItem button key="Login">
                             <ListItemIcon>
 
@@ -155,7 +180,14 @@ const DrawerComponents = () => {
                             </ListItemIcon>
                             <ListItemText primary="Login" className={styles.drawerlistitems} />
                         </ListItem>
-                    </Link>
+                    </Link> */}
+                    <ListItem button key="Login" onClick={(e) => handleLogin(e)}>
+                        <ListItemIcon>
+
+                            <LoginIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Login" className={styles.drawerlistitems} />
+                    </ListItem>
 
 
                 </List>}

@@ -82,6 +82,15 @@
   font-weight: 700;
 }
 
+.cart_checkoutbtn {
+  border-radius: 7px;
+  text-decoration: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
 @media (max-width: 430px) {
   .cart_cartusername {
     text-align: center;

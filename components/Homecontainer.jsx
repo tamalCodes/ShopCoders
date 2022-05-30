@@ -13,13 +13,61 @@ import paylesswithus from "../public/assets/paylesswithus.svg";
 const Homecontainer = () => {
     const { user, error, isLoading } = useUser();
     const [win, setwin] = useState();
+    const [creds, setcreds] = useState({ email: "" });
+
+    const addusertoDB = () => {
+        fetch(`http://localhost:3000/api/products/addproductstocart`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(creds)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
+            .catch(err => console.log(err));
+
+        // console.log(creds);
+    }
+
+    const searchuserinDB = () => {
+
+        fetch(`http://localhost:3000/api/user/getoneuser`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                creds
+            )
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.sucess === "nosucess") {
+                    console.log("User not found");
+                    addusertoDB();
+                }
+            })
+            .catch(err => console.log(err));
+
+    }
+
 
     useEffect(() => {
-        if (!user) {
-            return
+
+        if (user) {
+            console.log(user);
+            localStorage.setItem("useremail", user.email);
+
+            const useremail = localStorage.getItem("useremail");
+            creds.email = useremail;
+
+            searchuserinDB();
         }
-        console.log(user);
-        localStorage.setItem('useremail', user.email);
+
     }, [user]);
 
     useEffect(() => {

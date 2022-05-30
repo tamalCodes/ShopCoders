@@ -38,6 +38,21 @@ const UserSchema = new mongoose.Schema(
         },
       },
     ],
+    address: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+    pincode: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    phone: {
+      type: Number,
+    },
   },
   { timetamps: true }
 );
