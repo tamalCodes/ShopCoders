@@ -10,7 +10,7 @@ An Open source e-commerce application on the way to help all the devs out there 
 
 # Why shop at ShopCoders ? 🛒
 
-We at ShopCoders offer you official merchandise from all the coding event. These are mostly left out/ not gave-away. We tied up with 50+ official code companies like Github, Digital Ocean to bring you the best of the swags at an affordable price !!
+We at ShopCoders offer you official merchandise from all the coding event. These are mostly left out/ not gave-away merchs. So we tied up with 50+ official code companies like Github, Digital Ocean to bring you the best of the swags at an affordable price !!
 
 <br/>
 
@@ -57,7 +57,6 @@ We at ShopCoders offer you official merchandise from all the coding event. These
 <br/>
 
 ![1](https://user-images.githubusercontent.com/72851613/170461126-14a6429a-fee4-493e-b854-d596f84d5365.png)
-
 
 <br/>
 
