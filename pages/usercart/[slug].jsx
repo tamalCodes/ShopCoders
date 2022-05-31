@@ -37,7 +37,7 @@ const Usercart = ({ singleuser }) => {
         cart.email = creds.email;
         cart.cartproducts = oldproducts.concat(newproducts);
 
-        fetch("http://localhost:3000/api/products/addproductstocart", {
+        fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

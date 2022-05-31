@@ -15,8 +15,10 @@ const Homecontainer = () => {
     const [win, setwin] = useState();
     const [creds, setcreds] = useState({ email: "" });
 
+
+
     const addusertoDB = () => {
-        fetch(`http://localhost:3000/api/products/addproductstocart`, {
+        fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +37,7 @@ const Homecontainer = () => {
 
     const searchuserinDB = () => {
 
-        fetch(`http://localhost:3000/api/user/getoneuser`, {
+        fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/getoneuser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

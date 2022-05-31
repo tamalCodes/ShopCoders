@@ -27,6 +27,9 @@ const Detailedproduct = ({ singleproduct }) => {
     const [newproducts, setnewproducts] = useState([]);
 
 
+    useEffect(() => {
+        console.log(process.env.NEXT_PUBLIC_SHOP_URL);
+    }, []);
 
     useEffect(() => {
         const useremail = localStorage.getItem("useremail");
@@ -38,7 +41,7 @@ const Detailedproduct = ({ singleproduct }) => {
 
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/user/viewuserdetails", {
+        fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -71,7 +74,7 @@ const Detailedproduct = ({ singleproduct }) => {
         cart.email = creds.email;
         cart.cartproducts = oldproducts.concat(newproducts);
 
-        fetch("http://localhost:3000/api/products/addproductstocart", {
+        fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

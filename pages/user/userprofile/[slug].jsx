@@ -46,7 +46,7 @@ const Profile = ({ singleuser }) => {
     const handleSubmit = (e) => {
         console.log(profiledetails);
 
-        fetch("http://localhost:3000/api/products/addproductstocart", {
+        fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
