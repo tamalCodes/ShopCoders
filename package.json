@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "env-cmd -f .env.development next dev",
     "build": "next build",
-    "start": "next start",
+    "build:prod": "env-cmd -f .env.production next build",
+    "start": "env-cmd -f .env.development next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "@mui/material": "^5.6.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.0",
+    "env-cmd": "^10.1.0",
     "framer-motion": "^6.3.3",
     "mongoose": "^6.3.2",
     "next": "12.1.4",

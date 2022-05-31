@@ -5,9 +5,7 @@ const connectDb = (handler) => async (req, res) => {
     return handler(req, res);
   }
 
-  await mongoose.connect(
-    "mongodb+srv://tamaldas69:tamaldas69@cluster0.ewwdt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-  );
+  await mongoose.connect(process.env.MONGO_URI);
   return handler(req, res);
 };
 
