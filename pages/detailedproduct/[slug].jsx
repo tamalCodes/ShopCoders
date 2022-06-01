@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Products from "../../models/ProductSchema.js";
 import User from "../../models/UserSchema.js";
@@ -9,8 +9,71 @@ import styles from "../../styles/Detailedproduct.module.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Rating from '@mui/material/Rating';
 import Head from 'next/head';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
+
+
+    const [cart, setcart] = useState({ email: "", cartproducts: [] });
+    const [oldproducts, setoldproducts] = useState([]);
+    const [newproducts, setnewproducts] = useState([]);
+
+    useEffect(() => {
+
+        setnewproducts(detailedproduct);
+
+
+    }, []);
+
+    //* we are basically adding items to the cart and then we are reloading it
+    //* oldproducrs have the prodducts that are already there in the database
+    //* newproducts have the products that are to be added to the cart
+    //* and then finally we are concating it.
+
+    const addproducttocart = async () => {
+
+
+
+        cart.email = usermail;
+
+        cart.cartproducts = singleuser.cartproducts.concat(newproducts);
+
+        fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(cart)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
+            .catch(err => console.log(err));
+
+
+
+
+        // setoldproducts([]);
+
+
+
+
+        toast('🌈 Added to cart !', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            onClose: () => {
+                window.location.reload();
+            }
+        });
+    }
 
 
     return (
@@ -27,16 +90,36 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
 
 
 
+
             <div className={styles.absoluteparent}>
 
+
+
+
                 <Navbar />
+
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
 
 
                 <div className={styles.productparent}>
 
+
+
                     <div className={styles.productdiv}>
 
                         <div className='row'>
+
+
 
                             <div className={`col-lg-6 col-md-12 col-sm-12 ${styles.imgcol}`} >
 
@@ -78,7 +161,7 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
 
                                             <button className={`btn btn-warning ${styles.dp_addtocartbutton}`}  >Add to cart</button>
 
-                                            <AiOutlineShoppingCart className={styles.shoppingcart} />
+                                            <AiOutlineShoppingCart className={styles.shoppingcart} onClick={(e) => { addproducttocart(e) }} />
                                         </div>
                                     </div>
 

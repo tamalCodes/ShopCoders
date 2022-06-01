@@ -10,6 +10,7 @@ import Shoplanding from "../public/assets/Shoplanding.svg"
 import paylesswithus from "../public/assets/paylesswithus.svg";
 
 
+
 const Homecontainer = () => {
     const { user, error, isLoading } = useUser();
     const [win, setwin] = useState();
@@ -78,8 +79,15 @@ const Homecontainer = () => {
         setwin(window.innerHeight);
     }, []);
 
+
+
+
+
+
     return (<>
         <HomeParticles />
+
+
 
         <div className={styles.imagediv1}>
             <Image src={mobilegh} width={700} height={700} alt="wear" className={styles.image1} />
@@ -92,7 +100,7 @@ const Homecontainer = () => {
                 <div className="col-lg-6 col-sm-12"> <div className={styles.imagediv2_textdiv}>
                     <h3>Wear the Code 🥑</h3>
                     <p>Welcome to ShopCoders, a place for the coders by the coders to get you some premium quality merchendise !!</p>
-                    <button className={`btn btn-warning ${styles.explorebtn}`}>Explore</button>
+                    <button className={`btn btn-warning ${styles.explorebtn}`} onClick={() => { handleToast() }} >Explore</button>
 
                 </div></div>
             </div>
