@@ -1,96 +1,87 @@
-.parent {
-  background-color: #edf2f8;
+.absoluteparent {
   position: absolute;
-  overflow-x: hidden !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #edf2f8;
 }
 
-.parent2 {
+.productparent {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  /* background-color: red; */
-  width: 100vw;
-}
-
-.dp_parent {
-  background-color: white;
-  padding: 2rem;
-  overflow-x: hidden !important;
-  max-width: 65%;
-  border-radius: 20px;
-  margin: auto;
   margin-top: 5rem;
 }
 
-.dp_shoeinfo {
+.productdiv {
+  background-color: white;
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 60%;
+}
+
+.detailscol {
   font-family: "Ubuntu", sans-serif;
 }
 
-.dp_shoeinfo_child1 {
-  margin-top: 3rem;
+.dp_header {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.dp_companyname {
-  color: gray;
-  font-weight: 700;
-  font-size: 0.7rem;
-}
-
-.dp_shoeinfo h1 {
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 700;
+.dp_addtocartbutton {
+  display: none;
 }
 
 .shoppingcart {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-left: 2rem;
 }
 
-.dp_desc_div {
-  margin-top: 1.5rem;
-}
-
-.dp_buydiv {
-  line-height: 12px;
-  margin-top: 1.5rem;
-}
-
-.dp_buydiv_button {
-  margin-top: 2rem;
-}
-
 @media (max-width: 430px) {
-  .dp_parent {
-    max-width: 90%;
-    margin-bottom: 5rem;
-  }
-
-  .dp_shoeinfo_child1 {
-    text-align: center;
-    padding-top: 2rem;
-  }
-
-  .dp_desc {
-    margin-bottom: 1rem;
+  .productdiv {
+    width: 90%;
+    max-width: 1000%;
   }
 
   .dp_companyname {
     display: none;
   }
 
-  .dp_shoeinfo_child1 {
-    margin-top: 0rem;
+  .dp_header {
+    text-align: center;
+  }
+  .dp_rating {
+    text-align: center;
+  }
+
+  .dp_desc_div {
+    text-align: justify;
+  }
+
+  .dp_buydiv_price {
+    display: flex;
+    justify-content: space-evenly;
   }
 
   .dp_buydiv_button {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 2rem;
+    flex-direction: column;
   }
 
   .shoppingcart {
-    font-size: 2rem;
-    margin-left: 0rem;
+    display: none;
+  }
+
+  .dp_buybutton {
+    font-weight: 600;
+  }
+  .dp_addtocartbutton {
+    display: flex;
+    text-align: center;
+    margin-top: 1rem;
+    justify-content: center;
+    font-weight: 600;
   }
 }
