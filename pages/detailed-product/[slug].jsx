@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import Navbar from "../../components/Navbar.jsx"
-import Image from 'next/image'
-import styles from "../../styles/DetailedProduct.module.css"
-import Products from "../../models/ProductSchema.js";
-import User from "../../models/UserSchema.js";
-import Rating from '@mui/material/Rating';
-import Head from "next/head";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useUser } from '@auth0/nextjs-auth0'
-import mongoose from 'mongoose'
-import axios from "axios";
-import { getsingleuser } from '../../service/ShopApi.js';
-import { CallEndRounded } from '@mui/icons-material';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import React, { useEffect, useState } from 'react'
+// import Navbar from "../../components/Navbar.jsx"
+// import Image from 'next/image'
+// import styles from "../../styles/DetailedProduct.module.css"
+// import Products from "../../models/ProductSchema.js";
+// import User from "../../models/UserSchema.js";
+// import Rating from '@mui/material/Rating';
+// import Head from "next/head";
+// import { AiOutlineShoppingCart } from "react-icons/ai";
+// import { useUser } from '@auth0/nextjs-auth0'
+// import mongoose from 'mongoose'
+// import axios from "axios";
+// import { getsingleuser } from '../../service/ShopApi.js';
+// import { CallEndRounded } from '@mui/icons-material';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 
-const Detailedproduct = () => {
+// const Detailedproduct = () => {
 
     //* This is done to get the user details from the database
     //* We need the email from localstorage and we are sending it to the api
@@ -91,12 +91,12 @@ const Detailedproduct = () => {
     // }
 
 
-    return (
+    // return (
 
-        <>
+    //     <>
 
-            <h3>Hello there</h3>
-        </>
+    //         <h3>Hello there</h3>
+    //     </>
 
         // <>
         //     <Head>
@@ -181,8 +181,8 @@ const Detailedproduct = () => {
         // </>
 
 
-    )
-}
+//     )
+// }
 
 
 
@@ -248,4 +248,4 @@ const Detailedproduct = () => {
 //     }
 // }
 
-export default Detailedproduct
+// export default Detailedproduct

@@ -4,7 +4,8 @@ import Products from "../../models/ProductSchema.js";
 import User from "../../models/UserSchema.js";
 import mongoose from 'mongoose'
 import Image from 'next/image';
-import styles from "../../styles/Detailedproduct.module.css"
+// import styles from "../../styles/Detailedproduct.module.css"
+import styles from "../../styles/Detailedproduct.module.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Rating from '@mui/material/Rating';
 import Head from 'next/head';
