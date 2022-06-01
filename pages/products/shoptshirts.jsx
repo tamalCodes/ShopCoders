@@ -37,7 +37,7 @@ const Shoptshirts = ({ allproducts }) => {
 
                 {allproducts.map((item) => {
                     return (
-                        // <TshirtCard key={product._id} product={product} />
+
                         <Link href={`/detailedproduct/${item.slug}&${creds}`} passHref={true} key={item._id}>
 
 

@@ -11,6 +11,7 @@ import Rating from '@mui/material/Rating';
 import Head from 'next/head';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
 
 const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
 
@@ -18,6 +19,11 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
     const [cart, setcart] = useState({ email: "", cartproducts: [] });
     const [oldproducts, setoldproducts] = useState([]);
     const [newproducts, setnewproducts] = useState([]);
+    const router = useRouter();
+
+    const refreshData = () => {
+        router.replace(router.asPath);
+    }
 
     useEffect(() => {
 
@@ -70,7 +76,7 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
             draggable: true,
             progress: undefined,
             onClose: () => {
-                window.location.reload();
+                refreshData();
             }
         });
     }
