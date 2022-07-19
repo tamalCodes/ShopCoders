@@ -172,15 +172,7 @@ const DrawerComponents = () => {
             </List> :
                 <List>
 
-                    {/* <Link href={"/api/auth/login"} passHref>
-                        <ListItem button key="Login">
-                            <ListItemIcon>
 
-                                <LoginIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Login" className={styles.drawerlistitems} />
-                        </ListItem>
-                    </Link> */}
                     <ListItem button key="Login" onClick={(e) => handleLogin(e)}>
                         <ListItemIcon>
 
