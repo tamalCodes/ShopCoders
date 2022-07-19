@@ -1,5 +1,4 @@
-name: Import open source standard labels
-
+name: Import labels
 on:
   push:
     branches: [main]
@@ -8,14 +7,24 @@ jobs:
   labels:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [14.x]
+
     steps:
-      - uses: actions/setup-node@v2
+      - name: checkout source files
+        uses: actions/checkout@v2
+
+      - name: use node.js v${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: "14"
-      - uses: EddieHubCommunity/gh-action-open-source-labels@main
-        with:
-          github-token: ${{ secrets.NPM_TOKEN }}
-          owner-name: "IAmTamal"
-          repository-name: "ShopCoders"
-          force: true
-          # force: true # optional to clear existing labels, default to true
+          node-version: ${{ matrix.node-version }}
+
+      - name: install deps
+        run: npm ci
+
+      - name: clear existing labels
+        run: npx ghlbl -o eddiejaoude -r stargate -t ${{ secrets.NPM_TOKEN }} -d
+
+      - name: import labels from json
+        run: npx ghlbl -o eddiejaoude -r stargate -t ${{ secrets.NPM_TOKEN }} -i docs/labels.json
