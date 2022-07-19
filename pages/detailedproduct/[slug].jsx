@@ -4,7 +4,6 @@ import Products from "../../models/ProductSchema.js";
 import User from "../../models/UserSchema.js";
 import mongoose from 'mongoose'
 import Image from 'next/image';
-// import styles from "../../styles/Detailedproduct.module.css"
 import styles from "../../styles/Detailedproduct.module.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Rating from '@mui/material/Rating';
@@ -12,6 +11,7 @@ import Head from 'next/head';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
+import { useUser } from "@auth0/nextjs-auth0";
 
 const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
 
@@ -20,24 +20,34 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
     const [oldproducts, setoldproducts] = useState([]);
     const [newproducts, setnewproducts] = useState([]);
     const router = useRouter();
+    const { user, error, isLoading } = useUser();
 
     const refreshData = () => {
         router.replace(router.asPath);
     }
 
+
+    // const checkForUser = async () => {
+    //     const user = await auth0.getUser();
+    // }
+
     useEffect(() => {
 
+
         setnewproducts(detailedproduct);
-
-
     }, []);
 
-    //* we are basically adding items to the cart and then we are reloading it
-    //* oldproducrs have the prodducts that are already there in the database
-    //* newproducts have the products that are to be added to the cart
-    //* and then finally we are concating it.
+    // we are basically adding items to the cart and then we are reloading it
+    // oldproducrs have the prodducts that are already there in the database
+    // newproducts have the products that are to be added to the cart
+    // and then finally we are concating it.
 
     const addproducttocart = async () => {
+
+        if (!user) {
+            toast.error("Please login to add products to cart");
+            return;
+        }
 
 
 

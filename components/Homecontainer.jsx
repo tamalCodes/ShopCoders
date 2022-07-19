@@ -8,6 +8,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import HomeParticles from './HomeParticles';
 import Shoplanding from "../public/assets/Shoplanding.svg"
 import paylesswithus from "../public/assets/paylesswithus.svg";
+import Link from 'next/link';
 
 
 
@@ -95,12 +96,14 @@ const Homecontainer = () => {
 
         <div className={styles.imagediv2}>
             <div className="row">
-                <div className="col-lg-6 col-sm-12"><Image src={Shoplanding} width={800} height={800} alt="wear" className={styles.image1} /></div>
+                <div className="col-lg-6 col-sm-12"><Image src={Shoplanding} width={800} height={800} alt="wear" className={styles.image1} priority="true" /></div>
 
                 <div className="col-lg-6 col-sm-12"> <div className={styles.imagediv2_textdiv}>
                     <h3>Wear the Code 🥑</h3>
                     <p>Welcome to ShopCoders, a place for the coders by the coders to get you some premium quality merchendise !!</p>
-                    <button className={`btn btn-warning ${styles.explorebtn}`} onClick={() => { handleToast() }} >Explore</button>
+
+                    <Link href={"/products/shoptshirts"} passHref><button className={`btn btn-warning ${styles.explorebtn}`}>Explore</button></Link>
+
 
                 </div></div>
             </div>
@@ -126,7 +129,7 @@ const Homecontainer = () => {
                 </div>
 
                 <div className="col-lg-6 col-sm-12">
-                    <Image src={whyshopwithus} width={800} height={800} alt="wear" className={styles.image1} />
+                    <Image src={whyshopwithus} width={800} height={800} alt="wear" className={styles.image1} priority="true" />
                 </div>
 
 
@@ -135,7 +138,7 @@ const Homecontainer = () => {
             <div className={`row ${styles.rowmobile}`}>
 
                 <div className="col-lg-6 col-sm-12">
-                    <Image src={whyshopwithus} width={800} height={800} alt="wear" className={styles.image1} />
+                    <Image src={whyshopwithus} width={800} height={800} alt="wear" className={styles.image1} priority="true" />
                 </div>
 
                 <div className="col-lg-6 col-sm-12">
