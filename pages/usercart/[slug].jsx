@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { BsFillCartFill, BsFillHeartFill, BsFillEyeFill } from "react-icons/bs";
 import Head from 'next/head';
 import Script from 'next/script.js';
+import getStripe from '../../service/GetStripe.js';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 
@@ -35,14 +37,43 @@ const Usercart = ({ singleuser }) => {
             const element = singleuser.cartproducts[i].price;
 
             sum = sum + element;
-            console.log(sum);
+
             setsumprice(sum);
         }
     }, []);
 
-    // checkout for stripe
+    //* STRIPE PAYMENT
 
-    const stripeCheckout = () => {
+    const stripeCheckout = async () => {
+        const stripe = await getStripe();
+
+        const response = await fetch("/api/stripe", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(singleuser.cartproducts)
+        });
+
+        if (response.status === 500) {
+            return;
+        }
+
+        const data = await response.json();
+        const { error } = data;
+        if (error) {
+            return;
+        }
+
+
+
+
+        stripe.redirectToCheckout({
+            sessionId: data.id
+        });
+
+
+
     }
 
 
@@ -131,12 +162,11 @@ const Usercart = ({ singleuser }) => {
                 <hr style={{ width: "70%", margin: "auto" }} />
 
                 <div className="container" style={{ marginTop: "5rem", marginBottom: "5rem" }}>
-                    <h3 className={styles.cart_cartusername}> Total Price of your order : $ {sumprice} </h3>
+                    <h3 className={styles.cart_cartusername}> Total Price of your order : ₹ {sumprice} </h3>
                     <br />
 
-                    <Link href="/checkout" passHref >
-                        <button className={`btn btn-warning ${styles.cart_checkoutbtn}`} onClick={() => { stripeCheckout() }} > Checkout </button>
-                    </Link>
+                    <button className={`btn btn-warning ${styles.cart_checkoutbtn}`} onClick={() => { stripeCheckout() }} > Pay with stripe </button>
+
 
 
 
