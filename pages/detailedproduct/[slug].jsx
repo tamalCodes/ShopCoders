@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Products from "../../models/ProductSchema.js";
@@ -167,7 +168,8 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
 
                                     <div className={styles.dp_buydiv}>
                                         <div className={styles.dp_buydiv_price}>
-                                            <p>  <strong>Price : </strong>${detailedproduct.price} </p>
+
+                                            <p>  <strong>Price : </strong> ₹ {detailedproduct.price} </p>
                                             {detailedproduct.qty === 0 ? <p className={styles.dp_outofstock}>Out of Stock</p> : <p><strong>Items left : </strong>{detailedproduct.qty}</p>}
 
                                         </div>
