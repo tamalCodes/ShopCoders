@@ -26,7 +26,7 @@ export default async function handler(req, res) {
             quantity: 1,
           };
         }),
-        success_url: `${req.headers.origin}`,
+        success_url: `${req.headers.origin}/paymentsucess`,
         cancel_url: `${req.headers.origin}/canceled`,
       };
 
@@ -34,7 +34,6 @@ export default async function handler(req, res) {
       const session = await stripe.checkout.sessions.create(params);
 
       res.status(200).json(session);
-      window.alert("Payment Successful");
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);
     }
