@@ -166,8 +166,9 @@
   }
 
   .imagediv2_textdiv p {
-    /* padding-left: 20px;
-    padding-right: 20px; */
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .explorebtn {

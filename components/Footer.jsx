@@ -1,53 +1,42 @@
-import React from 'react'
-import styles from "../styles/Footer.module.css"
+import React from 'react';
+import styles from '../styles/Footer.module.css';
+import EmailIcon from '@mui/icons-material/Email';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import ReportIcon from '@mui/icons-material/Report';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 const Footer = () => {
     return (
-        <>
-            <div className={styles.footer_clean}>
-                <footer>
-                    <div className="container">
-                        <div className="row justify-content-center">
-                            <div className="col-sm-4 col-md-3 item">
-                                <h3>Services</h3>
-                                <ul>
-                                    <li><a href="#">Web design</a></li>
-                                    <li><a href="#">Development</a></li>
-                                    <li><a href="#">Hosting</a></li>
-                                </ul>
-                            </div>
-                            <div className="col-sm-4 col-md-3 item">
-                                <h3>About</h3>
-                                <ul>
-                                    <li><a href="#">Company</a></li>
-                                    <li><a href="#">Team</a></li>
-                                    <li><a href="#">Legacy</a></li>
-                                </ul>
-                            </div>
-                            <div className="col-sm-4 col-md-3 item">
-                                <h3>Careers</h3>
-                                <ul>
-                                    <li><a href="#">Job openings</a></li>
-                                    <li><a href="#">Employee success</a></li>
-                                    <li><a href="#">Benefits</a></li>
-                                </ul>
-                            </div>
-                            <div className={`col-lg-3 ${styles.item} ${styles.social}`}>
-                                <a href="#"><i className={`${styles.icon} ion-social-facebook`}></i></a>
+        <div className={` ${styles.footer_parent}`}>
+            <div className={styles.footer_flexparent}>
 
-                                <a href="#"><i className={`${styles.icon} ion-social-twitter`} ></i></a>
+                <div className={styles.footer_flexbox1}>
+                    <h4>Our Aim</h4>
+                    <p>
+                        With Milan we aim at bringing all the various NGOs and donors under one single roof to ease the burden of going to find their appropriate donors and the appropriate communities to donate to. With the help of our search filters and ask platform, it becomes easier for the people to find their right community to serve.
+                    </p>
+                </div>
 
-                                <a href="#"><i className={`${styles.icon} ion-social-snapchat`} ></i></a>
+                <div className={styles.footer_flexbox2}>
+                    <h4>Contact Us</h4>
+                    <p>Feel free to reach out to us</p>
+                    <div className={styles.footer_flexbox1_icons}>
+                        <EmailIcon className={styles.footer_icons} />
+                        <TwitterIcon className={styles.footer_icons} />
+                        <FacebookIcon className={styles.footer_icons} />
 
-                                <a href="#"><i className={`${styles.icon} ion-social-instagram`} ></i></a>
-
-                                <p className="copyright">Company Name © 2018</p>
-                            </div>
-                        </div>
                     </div>
-                </footer>
-            </div >
-        </>
+                </div>
+
+                <div className={styles.footer_flexbox3}>
+                    <h4>Something wrong ?</h4>
+                    <p>Feel free to report</p>
+                    {/* <ReportIcon className={styles.footer_icons} /> */}
+                    <button type="submit" className={`btn btn-warning`}>Report</button>
+                </div>
+
+            </div>
+        </div>
     )
 }
 
