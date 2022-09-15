@@ -51,6 +51,23 @@ const Sellswags = ({ singleuser, usermail }) => {
             }
         )
             .then((res) => res.json())
+
+            .catch((err) => console.log(err));
+    };
+
+    const addproductstoProducts = async () => {
+        addproducttocart();
+        fetch(
+            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproducts`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(productdetails),
+            }
+        )
+            .then((res) => res.json())
             .then((data) => {
                 if (data.sucess === "sucess") {
                     toast("🌈 Added to cart !", {
@@ -73,7 +90,6 @@ const Sellswags = ({ singleuser, usermail }) => {
     };
 
     const [creds, setcreds] = useState("");
-
     useEffect(() => {
         const usermail = localStorage.getItem("useremail");
         setcreds(usermail);
@@ -157,7 +173,7 @@ const Sellswags = ({ singleuser, usermail }) => {
                                             className="btn btn-primary"
                                             onClick={(e) => {
                                                 e.preventDefault();
-                                                addproducttocart();
+                                                addproductstoProducts();
                                             }}
                                             data-bs-dismiss="modal"
                                         >
@@ -172,7 +188,7 @@ const Sellswags = ({ singleuser, usermail }) => {
                     <div className={`col-lg-9 ${styles.products_parent}`}>
                         <div className={`container-fluid ${styles.shirtpage_parent}`}>
 
-                            {singleuser.sellproducts.map((item) => {
+                            {singleuser.sellproducts.length != 0 && singleuser.sellproducts.map((item) => {
                                 return (
 
                                     <Link href={`/detailedproduct/${item.slug}&${creds}`} passHref={true} key={item._id}>
