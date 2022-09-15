@@ -15,7 +15,7 @@ const handler = async (req, res) => {
     });
 
     await newprod.save();
-    res.status(200).json({ newprod });
+    res.status(200).json({ sucess: "sucess" });
   } else {
     res.status(400).json({ error: "This is not a good request" });
   }
