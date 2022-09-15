@@ -51,6 +51,7 @@ const Sellswags = ({ singleuser, usermail }) => {
             }
         )
             .then((res) => res.json())
+
             .catch((err) => console.log(err));
     };
 
@@ -89,7 +90,6 @@ const Sellswags = ({ singleuser, usermail }) => {
     };
 
     const [creds, setcreds] = useState("");
-
     useEffect(() => {
         const usermail = localStorage.getItem("useremail");
         setcreds(usermail);
