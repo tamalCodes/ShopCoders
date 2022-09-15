@@ -26,6 +26,8 @@ const ShopState = (props) => {
         img: "",
     });
 
+    
+
     return (
         <ShopContext.Provider
             value={{
