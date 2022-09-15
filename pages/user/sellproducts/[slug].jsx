@@ -7,19 +7,24 @@ import ShopContext from "../../../context/ShopContext";
 import mongoose from 'mongoose'
 import User from "../../../models/UserSchema.js";
 import { toast, ToastContainer } from 'react-toastify';
+import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Sellswags = ({ singleuser, usermail }) => {
     const context = useContext(ShopContext);
     const { productdetails, setproductdetails } = context;
     const [cart, setcart] = useState({ email: "", sellproducts: [] });
-    const [newproducts, setnewproducts] = useState([]);
-
-    useEffect(() => {
-        console.log(singleuser);
-    }, []);
-
-
+    const router = useRouter();
+    const initialstate = {
+        name: "",
+        qty: "",
+        size: "",
+        slug: "",
+        price: "",
+        category: "",
+        desc: "",
+        img: "",
+    };
 
     const refreshData = () => {
         router.replace(router.asPath);
@@ -29,8 +34,7 @@ const Sellswags = ({ singleuser, usermail }) => {
 
 
         cart.email = usermail;
-
-        cart.sellproducts = singleuser.sellproducts.concat(newproducts);
+        cart.sellproducts = singleuser.sellproducts.concat(productdetails);
 
         fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`, {
             method: "POST",
@@ -41,38 +45,31 @@ const Sellswags = ({ singleuser, usermail }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
+                if (data.sucess === "sucess") {
+                    toast('🌈 Added to cart !', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        onClose: () => {
+                            refreshData();
+                        }
+                    });
+
+                    setproductdetails(initialstate);
+                }
             }
             )
             .catch(err => console.log(err));
 
 
-
-
-        // setoldproducts([]);
-
-
-
-
-        toast('🌈 Added to cart !', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            onClose: () => {
-                refreshData();
-            }
-        });
     }
 
-    const setTheProduct = () => {
-        console.log("I am at setTheProduct");
-        setnewproducts(productdetails);
-        addproducttocart();
-    };
+
     return (
         <>
             <Head>
@@ -81,6 +78,18 @@ const Sellswags = ({ singleuser, usermail }) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
 
             <div className="container">
                 <button
@@ -100,6 +109,8 @@ const Sellswags = ({ singleuser, usermail }) => {
                     tabIndex="-1"
                     aria-labelledby="staticBackdropLabel"
                     aria-hidden="true"
+
+
                 >
                     <div className="modal-dialog modal-dialog-centered  modal-lg">
                         <div className="modal-content">
@@ -127,8 +138,11 @@ const Sellswags = ({ singleuser, usermail }) => {
                                 </button>
                                 <button type="button" className="btn btn-primary" onClick={(e) => {
                                     e.preventDefault();
-                                    setTheProduct();
-                                }} data-bs-dismiss="modal" >
+                                    addproducttocart();
+
+                                }}
+                                    data-bs-dismiss="modal"
+                                >
                                     Add product
                                 </button>
                             </div>
