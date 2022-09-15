@@ -11,7 +11,7 @@ const SellProductsForm = () => {
 
     return (
         <>
-            <form>
+            <form style={{ paddingLeft: "1rem", paddingRight: "1rem" }}>
                 <div className="mb-3 mt-6">
                     <label htmlFor="product_name" className="form-label">
                         Product name
@@ -152,16 +152,7 @@ const SellProductsForm = () => {
                     />
                 </div>
 
-                <button
-                    type="submit"
-                    className="btn btn-primary"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        console.log(productdetails);
-                    }}
-                >
-                    Submit
-                </button>
+
             </form>
         </>
     );

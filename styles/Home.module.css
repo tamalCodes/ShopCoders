@@ -34,12 +34,12 @@
   height: 100%;
 }
 
-.imagediv2_textdiv h3 {
+.imagediv2_textdiv h1 {
   font-family: "Ubuntu", sans-serif;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800 !important;
   line-height: 77px;
-  margin-bottom: 3.8rem;
+  margin-bottom: 2rem;
   cursor: pointer;
 }
 
@@ -160,7 +160,7 @@
     padding-left: 0px !important;
   }
 
-  .imagediv2_textdiv h3 {
+  .imagediv2_textdiv h1 {
     font-size: 2.8rem;
     margin-bottom: 1rem;
   }
