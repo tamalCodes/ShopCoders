@@ -1,89 +1,88 @@
-
-
-.footer_parent{
-    
-    background-color: rgb(41, 39, 39);
-    color: white;
-    position: absolute;
+.footer_parent {
+  background-color: rgb(41, 39, 39);
+  color: white;
+  position: absolute;
+  bottom: 0;
 }
 
-.footer_flexparent{
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 20px;
+.footer_flexparent {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
 }
 
-.footer_flexbox1{
-    max-width: 30%;
-    text-align: justify;
+.footer_flexbox1 {
+  max-width: 30%;
+  text-align: justify;
 }
 
-.footer_flexbox1_icons{
-    display: flex;
-   }
+.footer_flexbox1_icons {
+  display: flex;
+}
 
-.footer_flexbox1_icons .footer_icons{
-    font-size: 1.6rem;
-    margin-right: 10px;
-   }
+.footer_flexbox1_icons .footer_icons {
+  font-size: 1.6rem;
+  margin-right: 10px;
+}
 
-   .footer_flexparent h4{
-    font-size: 1.7rem;
+.footer_flexparent h4 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.footer_flexparent p {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 430px) and (min-width: 0px) {
+  .footer_parent {
+    margin-top: 50px;
+  }
+  .footer_flexparent {
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+  }
+
+  .footer_flexparent h4 {
+    font-size: 1.8rem;
     margin-bottom: 20px;
-}
+  }
+  .footer_flexparent p {
+    font-size: 18px;
+  }
 
-@media (max-width: 430px) and (min-width: 0px) 
-{
-    .footer_parent{
-        margin-top: 50px;
-    }
-    .footer_flexparent{
-        flex-direction: column;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 30px;
-        
-    }
+  .footer_flexbox1 {
+    max-width: 100%;
+    margin-top: 10px;
+  }
 
-    .footer_flexparent h4{
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-    }
-    .footer_flexparent p{
-       font-size: 18px;
-    }
+  .footer_flexbox1 h4 {
+    text-align: center;
+  }
+  .footer_flexbox1 p {
+    text-align: justify;
+  }
 
-    .footer_flexbox1{
-        max-width: 100%;
-      margin-top: 10px;
-    }
-    
-    .footer_flexbox1 h4{
-        text-align: center;
-    }
-    .footer_flexbox1 p{
-        text-align: justify;
-    }
-
-   .footer_flexbox2{
+  .footer_flexbox2 {
     text-align: center;
     margin-top: 30px;
-   }
+  }
 
-   .footer_flexbox3{
+  .footer_flexbox3 {
     text-align: center;
     margin-top: 40px;
-   }
+  }
 
-   .footer_flexbox1_icons{
+  .footer_flexbox1_icons {
     display: flex;
     justify-content: space-evenly;
-  padding-left: 40px;
-  padding-right: 40px;
-   }
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 
-   .footer_icons{
+  .footer_icons {
     font-size: 1.6rem;
-   }
-
+  }
 }
