@@ -37,7 +37,10 @@ export default function Home() {
         <Homecontainer />
       </div>
 
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
+
     </>
   )
 }
