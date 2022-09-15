@@ -1,9 +1,7 @@
-import react from "react";
+import react, { useState } from "react";
 import ShopContext from "./ShopContext";
 
 const ShopState = (props) => {
-
-
     const [cart, setcart] = react.useState([]);
     const [bramhins, setBramhins] = react.useState("Welcome");
     const [drawerOpen, setDrawerOpen] = react.useState(true);
@@ -14,13 +12,38 @@ const ShopState = (props) => {
         bottom: false,
         right: false,
     });
-    return (<ShopContext.Provider value={{ bramhins, setBramhins, drawerOpen, setDrawerOpen, anchor, state, setState }}>
 
-        {props.children};
+    const [userEmail, setuserEmail] = useState("");
 
-    </ShopContext.Provider>)
+    const [productdetails, setproductdetails] = useState({
+        name: "",
+        qty: "",
+        size: "",
+        slug: "",
+        price: "",
+        category: "",
+        desc: "",
+        img: "",
+    });
 
-}
-
+    return (
+        <ShopContext.Provider
+            value={{
+                bramhins,
+                setBramhins,
+                drawerOpen,
+                setDrawerOpen,
+                anchor,
+                state,
+                setState,
+                productdetails,
+                setproductdetails,
+                userEmail, setuserEmail
+            }}
+        >
+            {props.children};
+        </ShopContext.Provider>
+    );
+};
 
 export default ShopState;

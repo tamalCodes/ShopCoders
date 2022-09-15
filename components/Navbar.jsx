@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from "../styles/Navbar.module.css"
 import Link from 'next/link'
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -12,6 +12,7 @@ const Navbar = () => {
     const { user, error, isLoading } = useUser();
     const context = useContext(ShopContext);
     const { state, setState } = context;
+
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light ">
@@ -51,7 +52,7 @@ const Navbar = () => {
 
                         {showdropdown &&
                             <div className={styles.dropdowndiv}>
-                                <Link href={"/products/shoptshirts"} passHref>
+                                <Link href={"/products/shoptshirts"} passHref >
                                     <li className={`nav-item ${styles.navlinks}`}>
                                         T-Shirts
                                     </li>

@@ -53,6 +53,44 @@ const UserSchema = new mongoose.Schema(
     phone: {
       type: Number,
     },
+    sellproducts: [
+      {
+        name: {
+          type: String,
+          required: true,
+        },
+        qty: {
+          type: String,
+          required: true,
+        },
+        size: {
+          type: String,
+        },
+        slug: {
+          type: String,
+          required: true,
+        },
+
+        price: {
+          type: Number,
+          required: true,
+        },
+        category: {
+          type: String,
+          required: true,
+        },
+
+        desc: {
+          type: String,
+          required: true,
+        },
+
+        img: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
   },
   { timetamps: true }
 );

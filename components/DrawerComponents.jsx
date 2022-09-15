@@ -155,6 +155,17 @@ const DrawerComponents = () => {
 
                 </Link>
 
+                <Link href={`/user/sellproducts/${creds}`} passHref>
+
+                    <ListItem button key="Sell products">
+                        <ListItemIcon>
+                            <FlagIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Sell products" className={styles.drawerlistitems} />
+                    </ListItem>
+
+                </Link>
+
 
                 <Link href={"/api/auth/logout"} passHref>
 
