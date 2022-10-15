@@ -73,7 +73,7 @@ const Homecontainer = () => {
 
     return (
         <>
-            <HomeParticles />
+
 
             <div className={styles.imagediv1}>
                 <Image

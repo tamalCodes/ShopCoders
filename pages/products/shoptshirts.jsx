@@ -43,7 +43,7 @@ const Shoptshirts = ({ allproducts }) => {
 
 
 
-                            <div className={`card ${styles.itemscard_card}`} style={{ width: "18rem" }}>
+                            <div className={`card ${styles.itemscard_card}`} style={{ width: "15rem" }}>
                                 <Image src={item.img} className={`card-img-top ${styles.itemscard_img}`} alt="..." height={300} width={300} />
 
                                 <div className="card-body">
