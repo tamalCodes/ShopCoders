@@ -26,7 +26,7 @@ const ShopState = (props) => {
         img: "",
     });
 
-    
+    const [appbardrawer, setappbardrawer] = useState(false);
 
     return (
         <ShopContext.Provider
@@ -40,7 +40,7 @@ const ShopState = (props) => {
                 setState,
                 productdetails,
                 setproductdetails,
-                userEmail, setuserEmail
+                userEmail, setuserEmail, appbardrawer, setappbardrawer
             }}
         >
             {props.children};

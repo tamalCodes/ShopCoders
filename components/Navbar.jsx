@@ -30,7 +30,7 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className={`navbar-nav ms-auto mb-2 mb-lg-0 ${styles.navbarul}`}>
-                        <Link href={"/"} passHref>
+                        {/* <Link href={"/"} passHref>
                             <li className={`nav-item ${styles.navlinks}`}>
                                 Home
                             </li>
@@ -47,7 +47,7 @@ const Navbar = () => {
 
                         <li className={`nav-item ${styles.navlinks}`} onClick={() => { setshowdropdown(!showdropdown) }}>
                             Our products
-                        </li>
+                        </li> */}
 
 
                         {showdropdown &&
