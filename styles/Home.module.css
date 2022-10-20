@@ -17,6 +17,19 @@
   align-items: center;
   justify-content: center;
   min-height: 80vh;
+}
+
+.landingContent {
+  margin-top: 0px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagediv2 img {
+  object-fit: contain !important;
+  max-width: 90vw !important;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -34,8 +47,8 @@
   height: 100%;
 }
 
-.imagediv2_textdiv h1 {
-  font-family: "Ubuntu", sans-serif;
+.imagediv2_textdiv h2 {
+  font-family: "Poppins", sans-serif;
   font-size: 3rem;
   font-weight: 800 !important;
   line-height: 77px;
@@ -44,10 +57,10 @@
 }
 
 .imagediv2_textdiv p {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.1rem;
   font-weight: 600 !important;
-  max-width: 450px;
+
   margin-bottom: 1.8rem;
   cursor: pointer;
 }
@@ -140,6 +153,9 @@
   border-radius: 3px;
 }
 
+.rowdesktop {
+  width: 90%;
+}
 /* ------------------------------- */
 /* //* For MOBILE  - 425px*/
 

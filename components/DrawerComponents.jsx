@@ -105,9 +105,46 @@ const DrawerComponents = () => {
                 </Link>
 
             </List>
+
             <Divider />
 
+            <List>
 
+
+
+                <Link href={"/products/shophoodies"} passHref>
+                    <ListItem button key="Home">
+                        <ListItemIcon>
+                            <ShoppingBagIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Home" className={styles.drawerlistitems} />
+                    </ListItem>
+                </Link>
+
+                <Link href={"/products/shopmugs"} passHref>
+                    <ListItem button key="About Us">
+                        <ListItemIcon>
+                            <ShoppingBagIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="About Us" className={styles.drawerlistitems} />
+                    </ListItem>
+                </Link>
+
+                <Link href={"/products/shopstickers"} passHref>
+                    <ListItem button key=" Our products">
+                        <ListItemIcon>
+                            <ShoppingBagIcon />
+                        </ListItemIcon>
+                        <ListItemText primary=" Our products" className={styles.drawerlistitems} />
+                    </ListItem>
+                </Link>
+
+            </List>
+
+
+
+
+            <Divider />
 
             {/* //* USER SECTION */}
 

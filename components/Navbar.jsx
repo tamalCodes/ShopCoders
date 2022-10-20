@@ -30,24 +30,7 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className={`navbar-nav ms-auto mb-2 mb-lg-0 ${styles.navbarul}`}>
-                        {/* <Link href={"/"} passHref>
-                            <li className={`nav-item ${styles.navlinks}`}>
-                                Home
-                            </li>
 
-                        </Link>
-
-                        <Link href={"/about"} passHref>
-                            <li className={`nav-item ${styles.navlinks}`}>
-                                About us
-                            </li>
-
-                        </Link>
-
-
-                        <li className={`nav-item ${styles.navlinks}`} onClick={() => { setshowdropdown(!showdropdown) }}>
-                            Our products
-                        </li> */}
 
 
                         {showdropdown &&
@@ -84,7 +67,7 @@ const Navbar = () => {
                         <li className={`nav-item ${styles.navlinks}`}>
 
                             {user ? (
-                                <Image src={user.picture} alt="user" height={35} width={35} className={styles.userimage} onClick={() => { setState({ ...state, right: true }); }} />
+                                <Image src={user.picture} alt="user" height={30} width={30} className={styles.userimage} onClick={() => { setState({ ...state, right: true }); }} />
                             ) : (
                                 <AiOutlineShoppingCart fontSize={"1.5rem"} onClick={() => { setState({ ...state, right: true }); }} />
                             )}
