@@ -2,7 +2,6 @@
   background-color: rgb(41, 39, 39);
   color: white;
   position: absolute;
-  bottom: 0;
 }
 
 .footer_flexparent {
@@ -16,11 +15,11 @@
   text-align: justify;
 }
 
-.footer_flexbox1_icons {
+.footer_flexbox2_icons {
   display: flex;
 }
 
-.footer_flexbox1_icons .footer_icons {
+.footer_flexbox2_icons .footer_icons {
   font-size: 1.6rem;
   margin-right: 10px;
 }
@@ -34,8 +33,15 @@
   font-size: 0.9rem;
 }
 
+.footer_report_button {
+  font-family: "Poppins", sans-serif;
+  color: black;
+  font-weight: 700;
+}
+
 @media (max-width: 430px) and (min-width: 0px) {
   .footer_parent {
+    min-width: 100vw;
     margin-top: 50px;
   }
   .footer_flexparent {
@@ -54,15 +60,11 @@
   }
 
   .footer_flexbox1 {
-    max-width: 100%;
-    margin-top: 10px;
+    display: none;
   }
 
   .footer_flexbox1 h4 {
     text-align: center;
-  }
-  .footer_flexbox1 p {
-    text-align: justify;
   }
 
   .footer_flexbox2 {
@@ -70,19 +72,28 @@
     margin-top: 30px;
   }
 
+  .footer_flexbox2 p {
+    display: none;
+  }
+
   .footer_flexbox3 {
     text-align: center;
     margin-top: 40px;
   }
 
-  .footer_flexbox1_icons {
+  .footer_flexbox3 p {
+    display: none;
+  }
+
+  .footer_flexbox2_icons {
     display: flex;
     justify-content: space-evenly;
-    padding-left: 40px;
-    padding-right: 40px;
+    max-width: 50vw;
+    margin: auto;
   }
 
   .footer_icons {
     font-size: 1.6rem;
+    margin-right: 0px !important;
   }
 }
