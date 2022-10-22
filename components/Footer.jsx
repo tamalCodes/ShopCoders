@@ -20,7 +20,7 @@ const Footer = () => {
                 <div className={styles.footer_flexbox2}>
                     <h4>Contact Us</h4>
                     <p>Feel free to reach out to us</p>
-                    <div className={styles.footer_flexbox1_icons}>
+                    <div className={styles.footer_flexbox2_icons}>
                         <EmailIcon className={styles.footer_icons} />
                         <TwitterIcon className={styles.footer_icons} />
                         <FacebookIcon className={styles.footer_icons} />
@@ -32,7 +32,7 @@ const Footer = () => {
                     <h4>Something wrong ?</h4>
                     <p>Feel free to report</p>
                     {/* <ReportIcon className={styles.footer_icons} /> */}
-                    <button type="submit" className={`btn btn-warning`}>Report</button>
+                    <button type="submit" className={`btn btn-warning ${styles.footer_report_button}`}>Report us</button>
                 </div>
 
             </div>

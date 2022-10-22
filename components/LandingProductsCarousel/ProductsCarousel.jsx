@@ -61,95 +61,9 @@ const ProductsCarousel = () => {
     return (
         <>
 
-            {user ? <div className={styles.TeamCarousel} >
 
-                <h2>Our Top products for this season 🚀</h2>
-                <div onMouseEnter={handleMouse1} onMouseLeave={handleMouse2}>
-                    <Carousel
 
-                        ref={carouselRef}
-                        breakPoints={breakPoints}
-                        // enableAutoPlay
-                        // enableAutoPlay={autoPlay}
-                        isRTL={false}
-                        showButton={true}
-                        showArrows={false}
-                        pagination={false}
-                        autoPlaySpeed={2000}
-                        onNextEnd={handleEnd}
-                    >
-                        <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
-                            price="$ 35"
-                            link="https://shopcoders.com/product/red-linux-t-shirt/"
-                        />
-                        <CarouselItemTeam
-                            phot="https://pbs.twimg.com/profile_images/1564304831783010305/KbB8IkCC_400x400.jpg"
-                            name="Manish Kumar Barnwal"
-                            price="Lead Organizer"
-                            lid="https://www.linkedin.com/in/imanishbarnwal/"
-                            twt="https://twitter.com/imanishbarnwal"
-                            inst=""
-                            github=""
-                        />
-                        <CarouselItemTeam
-                            phot="https://pbs.twimg.com/profile_images/1563922949895487490/9AjjG3uW_400x400.jpg"
-                            name="Sugato Bagchi"
-                            price="PR & Outreach Lead"
-                            lid="https://www.linkedin.com/in/sugatobagchi/"
-                            twt="https://twitter.com/sugato_bagchi"
-                            inst=""
-                            github="https://github.com/sugatoBagchi/"
-                        />
-                        <CarouselItemTeam
-                            phot="https://pbs.twimg.com/profile_images/1564304831783010305/KbB8IkCC_400x400.jpg"
-                            name="Manish Kumar Barnwal"
-                            price="Lead Organizer"
-                            lid="https://www.linkedin.com/in/imanishbarnwal/"
-                            twt="https://twitter.com/imanishbarnwal"
-                            inst=""
-                            github=""
-                        />
-                        <CarouselItemTeam
-                            phot="https://pbs.twimg.com/profile_images/1563922949895487490/9AjjG3uW_400x400.jpg"
-                            name="Sugato Bagchi"
-                            price="PR & Outreach Lead"
-                            lid="https://www.linkedin.com/in/sugatobagchi/"
-                            twt="https://twitter.com/sugato_bagchi"
-                            inst=""
-                            github="https://github.com/sugatoBagchi/"
-                        />
-                        <CarouselItemTeam
-                            phot="https://pbs.twimg.com/profile_images/1564304831783010305/KbB8IkCC_400x400.jpg"
-                            name="Manish Kumar Barnwal"
-                            price="Lead Organizer"
-                            lid="https://www.linkedin.com/in/imanishbarnwal/"
-                            twt="https://twitter.com/imanishbarnwal"
-                            inst=""
-                            github=""
-                        />
-                        <CarouselItemTeam
-                            phot="https://pbs.twimg.com/profile_images/1563922949895487490/9AjjG3uW_400x400.jpg"
-                            name="Sugato Bagchi"
-                            price="PR & Outreach Lead"
-                            lid="https://www.linkedin.com/in/sugatobagchi/"
-                            twt="https://twitter.com/sugato_bagchi"
-                            inst=""
-                            github="https://github.com/sugatoBagchi/"
-                        />
-                        <CarouselItemTeam
-                            phot="https://pbs.twimg.com/profile_images/1564304831783010305/KbB8IkCC_400x400.jpg"
-                            name="Manish Kumar Barnwal"
-                            price="Lead Organizer"
-                            lid="https://www.linkedin.com/in/imanishbarnwal/"
-                            twt="https://twitter.com/imanishbarnwal"
-                            inst=""
-                            github=""
-                        />
-                    </Carousel>
-                </div>
-            </div> : <div className={styles.TeamCarousel} >
+            {(user && window.innerWidth > 431) ? <div className={styles.TeamCarousel} >
 
                 <h2>Our Top products for this season 🚀</h2>
                 <div onMouseEnter={handleMouse1} onMouseLeave={handleMouse2}>
@@ -167,42 +81,119 @@ const ProductsCarousel = () => {
                         onNextEnd={handleEnd}
                     >
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YZtZYPy/4-removebg-preview.png"
-                            name="GitHub T-shirt"
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
                             price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
                             phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
                             name="Red Linux T-shirt"
                             price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/tctP6Y5/5-removebg-preview.png"
-                            name="Python white T-shirt"
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
                             price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/zSYYb2b/2-removebg-preview.png"
-                            name="Google cloud T-shirt"
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
                             price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/6D4B8xv/1-removebg-preview.png"
-                            name="Variables T-shirt"
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
                             price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/FxTNzKb/3-removebg-preview.png"
-                            name="Home T-shirt"
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
                             price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
-
-
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
 
                     </Carousel>
                 </div>
-            </div>}
+            </div> : (user && window.innerWidth < 430) ? <div className={styles.TeamCarousel} >
 
+                <h2>Our Top products for this season 🚀</h2>
+                <div onMouseEnter={handleMouse1} onMouseLeave={handleMouse2}>
+                    <Carousel
+
+                        ref={carouselRef}
+                        breakPoints={breakPoints}
+                        // enableAutoPlay
+                        enableAutoPlay={autoPlay}
+                        isRTL={false}
+                        showButton={false}
+                        showArrows={false}
+                        pagination={false}
+                        autoPlaySpeed={2000}
+                        onNextEnd={handleEnd}
+                    >
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="https://shopcoders.com/product/red-linux-t-shirt/"
+                        />
+
+                    </Carousel>
+                </div>
+            </div> : null}
         </>
     );
 };

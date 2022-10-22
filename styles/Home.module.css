@@ -49,7 +49,7 @@
 
 .imagediv2_textdiv h2 {
   font-family: "Poppins", sans-serif;
-  font-size: 3rem;
+  font-size: 63.75px;
   font-weight: 800 !important;
   line-height: 77px;
   margin-bottom: 2rem;
@@ -66,11 +66,13 @@
 }
 
 .explorebtn {
-  width: 20%;
+  width: auto;
   border-radius: 7px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: black;
   font-weight: 700;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .shopwithusdiv {
@@ -153,13 +155,53 @@
   border-radius: 3px;
 }
 
-.rowdesktop {
-  width: 90%;
+.hrbar1 {
+  width: 20%;
+  margin: auto;
+  height: 2px !important;
+  color: gray;
+  margin-top: 3.5rem;
+  border-radius: 3px;
 }
+
+.exploreAndSales_btn_div {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.grandMobile {
+  display: none;
+}
+
+.rowdesktop {
+  width: 80vw;
+  margin: auto;
+}
+
 /* ------------------------------- */
 /* //* For MOBILE  - 425px*/
 
 @media (max-width: 430px) and (min-width: 0px) {
+  .grandDesktop {
+    display: none;
+  }
+
+  .grandMobile {
+    display: flex;
+    border-radius: 15px;
+    margin-top: 1.5rem;
+  }
+
+  .imagediv2 {
+    min-height: auto;
+  }
+  .imagediv2 img {
+    width: 100%;
+    max-width: auto !important;
+    border-radius: 5px !important;
+  }
+
   .imagediv2_textdiv {
     text-align: center;
   }
@@ -185,11 +227,6 @@
     text-align: justify;
     padding-left: 10px;
     padding-right: 10px;
-  }
-
-  .explorebtn {
-    margin: auto;
-    width: 30%;
   }
 
   .shopwithusdiv {
@@ -255,6 +292,13 @@
     color: gray;
     margin-top: 3.5rem;
     border-radius: 3px;
+  }
+  .hrbar1 {
+    display: none;
+  }
+
+  .exploreAndSales_btn_div {
+    justify-content: center;
   }
 }
 

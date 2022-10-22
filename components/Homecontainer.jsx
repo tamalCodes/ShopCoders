@@ -10,6 +10,7 @@ import LandingBanner from "../public/assets/LandingBanner.png";
 import paylesswithus from "../public/assets/paylesswithus.svg";
 import Link from "next/link";
 import ProductsCarousel from "./LandingProductsCarousel/ProductsCarousel";
+import Footer from "./Footer";
 
 const Homecontainer = () => {
     const { user, error, isLoading } = useUser();
@@ -97,11 +98,21 @@ const Homecontainer = () => {
             <div className={styles.imagediv2}  >
 
                 {/* on click navigate to the #products id  */}
-                <img src="https://i.ibb.co/KhJ619n/Landing-Banner.png" alt="" onClick={() => { gotoproducts() }} />
+
+                <img src="https://i.ibb.co/L6bDrkF/Grand.png" alt="" onClick={() => { gotoproducts() }} className={styles.grandMobile} />
+
+                <img src="https://i.ibb.co/KhJ619n/Landing-Banner.png" alt="" onClick={() => { gotoproducts() }} className={styles.grandDesktop} />
+
+
+
 
 
             </div>
-            <hr className={styles.hrbar} />
+
+            <hr className={styles.hrbar1} />
+
+
+
 
             <div id="products">
                 <ProductsCarousel />
@@ -124,6 +135,10 @@ const Homecontainer = () => {
                                 up with 50+ official code companies like Github, Digital Ocean
                                 to bring you the best of the swags at an affordable price !!{" "}
                             </p>
+
+                            <div className={`${styles.exploreAndSales_btn_div}`}>
+                                <button className={`btn btn-warning ${styles.explorebtn}`}  >Explore other products</button>
+                            </div>
                         </div>
                     </div>
 
@@ -156,14 +171,13 @@ const Homecontainer = () => {
                             <h1>Why shop with us ?</h1>
                             <p>
                                 We at ShopCoders offer you official merchandise from all the
-                                coding event. These are mostly left out/ not gave-away. We tied
-                                up with 50+ official code companies like Github, Digital Ocean
-                                to bring you the best of the swags at an affordable price !!{" "}
+                                coding events at an affordable price! These are mostly left out/ not gave-away.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div className={styles.landingContent}>
                 <div className={`row ${styles.rowdesktop}`}>
                     <div className="col-lg-6 col-sm-12">
@@ -182,14 +196,17 @@ const Homecontainer = () => {
                             className={styles.imagediv2_textdiv}
 
                         >
-                            <h2>Pay less with us !!</h2>
+                            <h2>Pay less with us !</h2>
                             <p>
                                 We at ShopCoders have ocassional sales, lottery days, and even
                                 we sponser other hackathons where you can get to select a swag
-                                as a winner !! <br />
+                                as a winner. <br />
                                 In case you want to gift it to someone, we provide huge
                                 discounts from 20 all the way to 80% !!
                             </p>
+                            <div className={`${styles.exploreAndSales_btn_div}`}>
+                                <button className={`btn btn-warning ${styles.explorebtn}`}  >Check out amazing sales</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,14 +225,15 @@ const Homecontainer = () => {
 
                     <div className="col-lg-6 col-sm-12">
                         <div className={styles.imagediv2_textdiv}>
-                            <h2>Pay less with us !!</h2>
+                            <h2>Pay less with us !</h2>
                             <p>
                                 We at ShopCoders have ocassional sales, lottery days, and even
                                 we sponser other hackathons where you can get to select a swag
-                                as a winner !! <br />
-                                In case you want to gift it to someone, we provide huge
-                                discounts from 20 all the way to 80% !!
+                                as a winner !
                             </p>
+                            <div className={`${styles.exploreAndSales_btn_div}`}>
+                                <button className={`btn btn-warning ${styles.explorebtn}`}  >Check out more amazing products</button>
+                            </div>
                         </div>
                     </div>
                 </div>
