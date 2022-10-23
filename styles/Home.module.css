@@ -16,7 +16,6 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
 }
 
 .landingContent {
@@ -26,9 +25,9 @@
   justify-content: center;
 }
 
-.imagediv2 img {
+.grandDesktop {
   object-fit: contain !important;
-  max-width: 90vw !important;
+  max-width: 80vw !important;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -37,19 +36,20 @@
   display: none;
 }
 
-.imagediv2_textdiv {
+.rowdesktop {
+  width: 80vw;
   display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  justify-content: center;
-  margin: auto;
-  width: 100%;
-  height: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.imagediv2_textdiv {
+  max-width: 50%;
 }
 
 .imagediv2_textdiv h2 {
   font-family: "Poppins", sans-serif;
-  font-size: 63.75px;
+  font-size: 3rem;
   font-weight: 800 !important;
   line-height: 77px;
   margin-bottom: 2rem;
@@ -63,6 +63,9 @@
 
   margin-bottom: 1.8rem;
   cursor: pointer;
+}
+.imagediv2_textdiv_mobile_p {
+  display: none;
 }
 
 .explorebtn {
@@ -142,9 +145,6 @@
 .imagediv1 {
   display: none !important;
 }
-.imagediv2 {
-  display: flex !important;
-}
 
 .hrbar {
   width: 20%;
@@ -174,15 +174,33 @@
   display: none;
 }
 
-.rowdesktop {
-  width: 80vw;
-  margin: auto;
+.landingContent_mobile {
+  display: none;
 }
 
 /* ------------------------------- */
 /* //* For MOBILE  - 425px*/
 
 @media (max-width: 430px) and (min-width: 0px) {
+  .rowdesktop {
+    flex-wrap: wrap;
+    width: 95%;
+  }
+
+  .imagediv2_imgdiv {
+    display: none;
+  }
+
+  .landingContent_mobile {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    display: flex !important;
+    justify-content: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .grandDesktop {
     display: none;
   }
@@ -203,19 +221,9 @@
   }
 
   .imagediv2_textdiv {
+    max-width: 100%;
     text-align: center;
-  }
-
-  .rowmobile {
-    display: flex;
-  }
-
-  .rowdesktop {
-    display: none;
-  }
-
-  .imagediv2_textdiv {
-    padding-left: 0px !important;
+    margin-top: 1rem;
   }
 
   .imagediv2_textdiv h1 {
@@ -224,7 +232,15 @@
   }
 
   .imagediv2_textdiv p {
-    text-align: justify;
+    display: none;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .imagediv2_textdiv_mobile_p {
+    display: block !important ;
+    text-align: center;
     padding-left: 10px;
     padding-right: 10px;
   }
