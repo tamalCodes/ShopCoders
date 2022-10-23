@@ -11,6 +11,7 @@ import paylesswithus from "../public/assets/paylesswithus.svg";
 import Link from "next/link";
 import ProductsCarousel from "./LandingProductsCarousel/ProductsCarousel";
 import Footer from "./Footer";
+import ShoppingBannerMobile from "../public/assets/ShoppingBannerMobile.svg";
 
 const Homecontainer = () => {
     const { user, error, isLoading } = useUser();
@@ -121,28 +122,32 @@ const Homecontainer = () => {
             <hr className={styles.hrbar} />
 
             <div className={styles.landingContent}>
-                <div className={`row ${styles.rowdesktop}`}>
-                    <div className="col-lg-6 col-sm-12">
-                        <div
-                            className={styles.imagediv2_textdiv}
 
-                        >
-                            <h2>Why shop with us ?</h2>
-                            <p>
-                                {" "}
-                                We at ShopCoders offer you official merchandise from all the
-                                coding event. These are mostly left out/ not gave-away. We tied
-                                up with 50+ official code companies like Github, Digital Ocean
-                                to bring you the best of the swags at an affordable price !!{" "}
-                            </p>
 
-                            <div className={`${styles.exploreAndSales_btn_div}`}>
-                                <button className={`btn btn-warning ${styles.explorebtn}`}  >Explore other products</button>
-                            </div>
+                <div className={styles.rowdesktop}>
+
+                    <div
+                        className={styles.imagediv2_textdiv}
+
+                    >
+                        <h2>Why shop with us ?</h2>
+                        <p>
+                            We at ShopCoders offer you official merchandise from all the
+                            coding event. These are mostly left out/ not gave-away. We tied
+                            up with 50+ official code companies like Github, Digital Ocean
+                            to bring you the best of the swags at an affordable price !!
+                        </p>
+                        <p className={styles.imagediv2_textdiv_mobile_p}>
+                            We at ShopCoders offer you official merchandise,the best  swags from all the
+                            coding events at at an affordable price !
+                        </p>
+
+                        <div className={`${styles.exploreAndSales_btn_div}`}>
+                            <button className={`btn btn-warning ${styles.explorebtn}`}  >Explore other products</button>
                         </div>
                     </div>
 
-                    <div className="col-lg-6 col-sm-12">
+                    <div className={styles.imagediv2_imgdiv}>
                         <Image
                             src={whyshopwithus}
                             width={600}
@@ -152,35 +157,29 @@ const Homecontainer = () => {
                             priority="true"
                         />
                     </div>
+
                 </div>
 
-                <div className={`row ${styles.rowmobile}`}>
-                    <div className="col-lg-6 col-sm-12">
-                        <Image
-                            src={whyshopwithus}
-                            width={800}
-                            height={800}
-                            alt="wear"
-                            className={styles.image1}
-                            priority="true"
-                        />
-                    </div>
 
-                    <div className="col-lg-6 col-sm-12">
-                        <div className={styles.imagediv2_textdiv}>
-                            <h1>Why shop with us ?</h1>
-                            <p>
-                                We at ShopCoders offer you official merchandise from all the
-                                coding events at an affordable price! These are mostly left out/ not gave-away.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            </div>
+
+            <div className={styles.landingContent_mobile} >
+                <Image
+                    src={ShoppingBannerMobile}
+                    width={500}
+                    height={500}
+                    alt="wear"
+                    className={styles.image1}
+                    priority="true"
+                />
             </div>
 
             <div className={styles.landingContent}>
-                <div className={`row ${styles.rowdesktop}`}>
-                    <div className="col-lg-6 col-sm-12">
+
+
+                <div className={styles.rowdesktop}>
+
+                    <div className={styles.imagediv2_imgdiv}>
                         <Image
                             src={paylesswithus}
                             width={600}
@@ -191,52 +190,35 @@ const Homecontainer = () => {
                         />
                     </div>
 
-                    <div className="col-lg-6 col-sm-12">
-                        <div
-                            className={styles.imagediv2_textdiv}
+                    <div
+                        className={styles.imagediv2_textdiv}
 
-                        >
-                            <h2>Pay less with us !</h2>
-                            <p>
-                                We at ShopCoders have ocassional sales, lottery days, and even
-                                we sponser other hackathons where you can get to select a swag
-                                as a winner. <br />
-                                In case you want to gift it to someone, we provide huge
-                                discounts from 20 all the way to 80% !!
-                            </p>
-                            <div className={`${styles.exploreAndSales_btn_div}`}>
-                                <button className={`btn btn-warning ${styles.explorebtn}`}  >Check out amazing sales</button>
-                            </div>
+                    >
+                        <h2>Pay less with us !</h2>
+                        <p>
+                            We at ShopCoders have ocassional sales, lottery days, and even
+                            we sponser other hackathons where you can get to select a swag
+                            as a winner. <br />
+                            In case you want to gift it to someone, we provide huge
+                            discounts from 20 all the way to 80% !!
+                        </p>
+
+
+                        <p className={styles.imagediv2_textdiv_mobile_p}>
+                            We at ShopCoders have ocassional sales, lottery days, and even
+                            we sponser other hackathons where you can get to select a swag
+                            as a winner.
+                        </p>
+
+                        <div className={`${styles.exploreAndSales_btn_div}`}>
+                            <button className={`btn btn-warning ${styles.explorebtn}`}  >Check out amazing sales</button>
                         </div>
                     </div>
+
+
+
                 </div>
 
-                <div className={`row ${styles.rowmobile}`}>
-                    <div className="col-lg-6 col-sm-12">
-                        <Image
-                            src={paylesswithus}
-                            width={800}
-                            height={800}
-                            alt="wear"
-                            className={styles.image1}
-                            priority="true"
-                        />
-                    </div>
-
-                    <div className="col-lg-6 col-sm-12">
-                        <div className={styles.imagediv2_textdiv}>
-                            <h2>Pay less with us !</h2>
-                            <p>
-                                We at ShopCoders have ocassional sales, lottery days, and even
-                                we sponser other hackathons where you can get to select a swag
-                                as a winner !
-                            </p>
-                            <div className={`${styles.exploreAndSales_btn_div}`}>
-                                <button className={`btn btn-warning ${styles.explorebtn}`}  >Check out more amazing products</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
