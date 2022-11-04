@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar'
 import Products from "../../models/ProductSchema.js";
 import User from "../../models/UserSchema.js";
 import mongoose from 'mongoose'
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import styles from "../../styles/Detailedproduct.module.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import Rating from '@mui/material/Rating';
@@ -219,8 +219,6 @@ export async function getServerSideProps(context) {
     const slug1 = JSON.stringify(context.query.slug);
     const slug2 = slug1.replace(/['"]+/g, '');
 
-    console.log(slug2.split('&')[0])
-    console.log(slug2.split('&')[1])
 
 
 

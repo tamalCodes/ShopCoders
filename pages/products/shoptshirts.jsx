@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react'
 import TshirtCard from '../../components/TshirtCard'
 import styles from "../../styles/Shoptshirts.module.css"
@@ -6,8 +7,9 @@ import Products from "../../models/ProductSchema.js";
 import mongoose from 'mongoose'
 import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
 import Link from 'next/link';
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Head from 'next/head';
+import TshirtsLandingBanner from "../../public/assets/TshirtsLandingBanner.png"
 
 const Shoptshirts = ({ allproducts }) => {
 
@@ -33,48 +35,79 @@ const Shoptshirts = ({ allproducts }) => {
             </Head>
 
             <Navbar />
-            <div className={`container-fluid ${styles.shirtpage_parent}`}>
+            <div>
 
-                {allproducts.map((item) => {
-                    return (
+                <div className={styles.shirtpage_header} >
 
-                        <Link href={`/detailedproduct/${item.slug}&${creds}`} passHref={true} key={item._id}>
-
-
-
-
-                            <div className={`card ${styles.itemscard_card}`} style={{ width: "15rem" }}>
-                                <Image src={item.img} className={`card-img-top ${styles.itemscard_img}`} alt="..." height={300} width={300} />
-
-                                <div className="card-body">
-
-                                    <h5 className={`card-title ${styles.itemscard_title}`}>{item.name}</h5>
+                    <div className={styles.ImageBannerDiv1}>
+                        <div className={styles.ImageBannerDiv2}>
+                            <Image src="https://i.ibb.co/DM53bY2/LB-XL-D.png" height={300} width={1500} className={styles.grandDesktop} priority alt="Grand new year sale" placeholder="shimmer" />
+                        </div>
+                    </div>
+                </div>
 
 
 
 
-                                    <h5 className={styles.itemcard_price}>$ {item.price}</h5>
+                <div className={`container-fluid ${styles.shirtpage_searchdiv}`}>
 
-                                    <BsFillCartFill
-                                        size={20}
-                                        style={{ fill: "#C70A80", marginRight: "1rem", cursor: "pointer" }}
-                                    />
+                    <div>
+                        <h1>All Tshirts</h1>
+                    </div>
 
-                                    <BsFillHeartFill
-                                        size={20}
-                                        style={{ fill: "#F24C4C", marginRight: "5px", cursor: "pointer" }}
-                                    />
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
 
+
+                </div>
+
+                <div className={`container-fluid ${styles.shirtpage_parent}`}>
+
+
+
+                    {allproducts.map((item) => {
+                        return (
+
+                            <Link href={`/detailedproduct/${item.slug}&${creds}`} passHref={true} key={item._id}>
+
+
+
+
+                                <div className={`card ${styles.itemscard_card}`} style={{ width: "15rem" }}>
+                                    <Image src={item.img} className={`card-img-top ${styles.itemscard_img}`} alt="..." height={300} width={300} />
+
+                                    <div className="card-body">
+
+                                        <h5 className={`card-title ${styles.itemscard_title}`}>{item.name}</h5>
+
+
+
+
+                                        <h5 className={styles.itemcard_price}>$ {item.price}</h5>
+
+                                        <BsFillCartFill
+                                            size={20}
+                                            style={{ fill: "#C70A80", marginRight: "1rem", cursor: "pointer" }}
+                                        />
+
+                                        <BsFillHeartFill
+                                            size={20}
+                                            style={{ fill: "#F24C4C", marginRight: "5px", cursor: "pointer" }}
+                                        />
+
+                                    </div>
                                 </div>
-                            </div>
 
 
-                        </Link>
-                    )
+                            </Link>
+                        )
 
-                })}
+                    })}
 
 
+                </div>
             </div>
 
         </>

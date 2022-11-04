@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar.jsx';
 import Users from "../../models/UserSchema.js"

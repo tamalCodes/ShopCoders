@@ -2,6 +2,8 @@
   background-color: rgb(41, 39, 39);
   color: white;
   position: absolute;
+  width: 100%;
+  padding-bottom: 20px;
 }
 
 .footer_flexparent {
@@ -32,11 +34,15 @@
 .footer_flexparent p {
   font-size: 0.9rem;
 }
-
+.footer_reportbuttondiv {
+  display: flex;
+  justify-content: center;
+}
 .footer_report_button {
   font-family: "Poppins", sans-serif;
   color: black;
   font-weight: 700;
+  margin: auto;
 }
 
 @media (max-width: 430px) and (min-width: 0px) {

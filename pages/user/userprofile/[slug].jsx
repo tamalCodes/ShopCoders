@@ -1,6 +1,6 @@
 
 import mongoose from 'mongoose';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../../components/Navbar.jsx';
 import Users from "../../../models/UserSchema.js"
@@ -44,7 +44,7 @@ const Profile = ({ singleuser }) => {
     }
 
     const handleSubmit = (e) => {
-        console.log(profiledetails);
+
 
         fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`, {
             method: "POST",
@@ -56,7 +56,7 @@ const Profile = ({ singleuser }) => {
 
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 if (data.sucess === "sucess") {
                     alert("Profile Updated");
                 }

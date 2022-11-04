@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React, { useEffect } from 'react'
 import styles from "../../styles/AdminManage.module.css"
 import { useUser } from "@auth0/nextjs-auth0";
@@ -24,10 +24,7 @@ const Profile = ({ allshirts, allhoodies }) => {
         }
     }, [user]);
 
-    useEffect(() => {
-        console.log(allshirts);
-        console.log(allhoodies);
-    }, [allshirts, allhoodies]);
+
 
 
 

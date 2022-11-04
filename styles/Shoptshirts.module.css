@@ -1,14 +1,60 @@
+.shirtpage_header {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.ImageBannerDiv1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.ImageBannerDiv2 {
+  display: flex;
+  min-width: 80vw;
+  justify-content: center;
+  max-width: 80vw;
+  position: relative;
+  border-radius: 10px;
+}
+
+.grandDesktop {
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.shirtpage_hr1 {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+  width: 70%;
+  text-align: center;
+  margin: auto;
+  height: 2px !important;
+  color: gray;
+}
+
+.shirtpage_searchdiv {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  align-items: center;
+  margin-bottom: 2rem;
+  min-width: 80vw;
+  max-width: 80vw;
+}
+
 .shirtpage_parent {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-color: #edf2f8;
-  position: absolute;
+  justify-content: space-between;
+  background-color: white;
+  min-width: 80vw;
+  max-width: 80vw;
 }
 
 .shirtcard {
   width: 18rem;
-  margin: 20px 10px;
+
   cursor: pointer;
   border-radius: 10px;
 }
@@ -36,6 +82,15 @@
   padding-top: 1rem;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
+}
+
+.itemscard_card:hover {
+  -webkit-box-shadow: 0px 0px 34px 1px rgba(209, 190, 115, 0.62);
+  -moz-box-shadow: 0px 0px 34px 1px rgba(209, 190, 115, 0.62);
+  box-shadow: 0px 0px 34px 1px rgba(209, 190, 115, 0.62);
+
+  -webkit-transition: box-shadow ease-in-out 0.3s;
+  transition: box-shadow ease-in-out 0.3s;
 }
 
 .itemscard_img {

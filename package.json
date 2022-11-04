@@ -16,8 +16,6 @@
     "@mui/icons-material": "^5.6.1",
     "@mui/material": "^5.10.9",
     "@mui/styles": "^5.10.10",
-    "react-elastic-carousel": "^0.11.5",
-    "styled-components": "^5.3.6",
     "@stripe/stripe-js": "^1.35.0",
     "axios": "^0.27.2",
     "babel-preset-next": "^1.4.0",
@@ -25,22 +23,24 @@
     "chart.js": "^3.9.1",
     "dotenv": "^16.0.0",
     "env-cmd": "^10.1.0",
+    "eslint-config-next": "^13.0.1",
     "framer-motion": "^6.3.3",
     "import-github-labels": "^1.5.4",
     "mongoose": "^6.3.2",
-    "next": "^12.2.5",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
+    "next": "^13.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-elastic-carousel": "^0.11.5",
     "react-icons": "^4.3.1",
     "react-toastify": "^9.0.1",
     "react-tsparticles": "^2.0.6",
     "stripe": "^10.1.0",
+    "styled-components": "^5.3.6",
     "tsparticles": "^2.0.6",
     "tsparticles-plugin-emitters": "^2.0.6"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.7",
-    "eslint": "8.12.0",
-    "eslint-config-next": "12.1.4"
+    "eslint": "8.12.0"
   }
 }

@@ -1,17 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import sales from "../public/assets/sale.svg";
-import whyshopwithus from "../public/assets/whyshopwithus.svg";
+import whyshopwithus from "../public/assets/whyshop.png";
 import mobilegh from "../public/assets/MobileGithubImage.jpg";
 import { useUser } from "@auth0/nextjs-auth0";
 import LandingBanner from "../public/assets/LandingBanner.png";
-import paylesswithus from "../public/assets/paylesswithus.svg";
+import paylesswithus from "../public/assets/payless.png";
 import Link from "next/link";
 import ProductsCarousel from "./LandingProductsCarousel/ProductsCarousel";
 import Footer from "./Footer";
 import ShoppingBannerMobile from "../public/assets/ShoppingBannerMobile.svg";
+import LandingBannerDesktop from "../public/assets/LandingBannerDesktop.png";
 
 const Homecontainer = () => {
     const { user, error, isLoading } = useUser();
@@ -20,14 +21,14 @@ const Homecontainer = () => {
 
     const addusertoDB = () => {
         fetch(
-            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(creds),
-            }
+            //         `${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/addproductstocart`,
+            //         {
+            //             method: "POST",
+            //             headers: {
+            //                 "Content-Type": "application/json",
+            //             },
+            //             body: JSON.stringify(creds),
+            //         }
         )
             .then((res) => res.json())
             .then((data) => {
@@ -35,7 +36,7 @@ const Homecontainer = () => {
             })
             .catch((err) => console.log(err));
 
-        // console.log(creds);
+        //     // console.log(creds);
     };
 
     const searchuserinDB = () => {
@@ -49,7 +50,7 @@ const Homecontainer = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.sucess === "nosucess") {
-                    console.log("User not found");
+
                     addusertoDB();
                 }
             })
@@ -58,7 +59,7 @@ const Homecontainer = () => {
 
     useEffect(() => {
         if (user) {
-            console.log(user);
+
             localStorage.setItem("useremail", user.email);
 
             const useremail = localStorage.getItem("useremail");
@@ -70,7 +71,7 @@ const Homecontainer = () => {
 
     useEffect(() => {
         // window is accessible here.
-        console.log("window.innerHeight", window.innerHeight);
+
         setwin(window.innerHeight);
     }, []);
 
@@ -96,9 +97,9 @@ const Homecontainer = () => {
                 />
             </div>
 
-            <div className={styles.imagediv2}  >
+            {/* <div className={styles.imagediv2}  >
 
-                {/* on click navigate to the #products id  */}
+                
 
                 <img src="https://i.ibb.co/L6bDrkF/Grand.png" alt="" onClick={() => { gotoproducts() }} className={styles.grandMobile} />
 
@@ -108,11 +109,20 @@ const Homecontainer = () => {
 
 
 
+            </div> */}
+
+            {/* <div className={styles.ImageBannerDiv1}>
+                <div className={styles.ImageBannerDiv2} >
+                    <Image src="https://i.ibb.co/3WDgNt7/Shop-Coders-LB2.png" height={90} width={728} className={styles.grandDesktop} priority alt="Grand new year sale" placeholder="shimmer" />
+                </div>
+            </div> */}
+
+
+            <div className={styles.ImageBannerDiv1}>
+                <div className={styles.ImageBannerDiv2}>
+                    <Image src="https://i.ibb.co/DM53bY2/LB-XL-D.png" height={300} width={1500} className={styles.grandDesktop} priority alt="Grand new year sale" placeholder="shimmer" />
+                </div>
             </div>
-
-            <hr className={styles.hrbar1} />
-
-
 
 
             <div id="products">
@@ -120,6 +130,8 @@ const Homecontainer = () => {
             </div>
 
             <hr className={styles.hrbar} />
+            <br />
+            <br />
 
             <div className={styles.landingContent}>
 
@@ -151,7 +163,7 @@ const Homecontainer = () => {
                         <Image
                             src={whyshopwithus}
                             width={600}
-                            height={600}
+                            height={400}
                             alt="wear"
                             className={styles.image1}
                             priority="true"
@@ -174,6 +186,9 @@ const Homecontainer = () => {
                 />
             </div>
 
+            <br />
+            <br />
+
             <div className={styles.landingContent}>
 
 
@@ -182,8 +197,8 @@ const Homecontainer = () => {
                     <div className={styles.imagediv2_imgdiv}>
                         <Image
                             src={paylesswithus}
-                            width={600}
-                            height={600}
+                            width={500}
+                            height={500}
                             alt="wear"
                             className={styles.image1}
                             priority="true"

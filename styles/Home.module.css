@@ -25,9 +25,22 @@
   justify-content: center;
 }
 
+.ImageBannerDiv1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.ImageBannerDiv2 {
+  display: flex;
+  min-width: 80vw;
+  justify-content: center;
+  max-width: 80vw;
+  position: relative;
+  border-radius: 10px;
+}
+
 .grandDesktop {
-  object-fit: contain !important;
-  max-width: 80vw !important;
   border-radius: 10px;
   cursor: pointer;
 }

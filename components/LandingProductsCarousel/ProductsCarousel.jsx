@@ -36,26 +36,29 @@ const ProductsCarousel = () => {
 
     const handleMouse1 = () => {
         clearTimeout(resetTimeout);
-        console.log("Mouse Enter");
+
         setAutoPlay(false);
     };
 
     const handleMouse2 = () => {
         setAutoPlay(true);
 
-        console.log("Mouse Leave");
+
     };
 
     const handleEnd = () => {
         clearTimeout(resetTimeout);
-        console.log(carouselRef?.current);
+
         resetTimeout = setTimeout(() => {
             carouselRef?.current?.goTo(0);
         }, 2500);
     };
 
+
     useEffect(() => {
-        console.log(localStorage.getItem("useremail"));
+        // window is accessible here.
+
+        setwin(window.innerHeight);
     }, []);
 
     return (
@@ -194,6 +197,70 @@ const ProductsCarousel = () => {
                     </Carousel>
                 </div>
             </div> : null}
+
+            {(!user && win > 430) && <div className={styles.TeamCarousel} >
+
+                <h2> Our Top products for this season 🚀</h2>
+                <div onMouseEnter={handleMouse1} onMouseLeave={handleMouse2}>
+                    <Carousel
+
+                        ref={carouselRef}
+                        breakPoints={breakPoints}
+                        // enableAutoPlay
+                        enableAutoPlay={autoPlay}
+                        isRTL={false}
+                        showButton={true}
+                        showArrows={true}
+                        pagination={false}
+                        autoPlaySpeed={2000}
+                        onNextEnd={handleEnd}
+                    >
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            name="Red Linux T-shirt"
+                            price="$ 35"
+                            link="/"
+                        />
+
+                    </Carousel>
+                </div>
+            </div>}
         </>
     );
 };

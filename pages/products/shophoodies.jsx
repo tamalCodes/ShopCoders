@@ -6,7 +6,7 @@ import Products from "../../models/ProductSchema.js";
 import mongoose from 'mongoose'
 import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
 import Link from 'next/link';
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Head from 'next/head';
 
 const Shophoodies = ({ allproducts }) => {

@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className={styles.footer_flexbox1}>
                     <h4>Our Aim</h4>
                     <p>
-                        With Milan we aim at bringing all the various NGOs and donors under one single roof to ease the burden of going to find their appropriate donors and the appropriate communities to donate to. With the help of our search filters and ask platform, it becomes easier for the people to find their right community to serve.
+                        We plan on providing the community alot of swags and merchandise at an affordable price.
                     </p>
                 </div>
 
@@ -29,10 +29,12 @@ const Footer = () => {
                 </div>
 
                 <div className={styles.footer_flexbox3}>
-                    <h4>Something wrong ?</h4>
-                    <p>Feel free to report</p>
+                    <h4>Got something to report ?</h4>
+                    <p>You can submit a report to us by filling a form below !</p>
                     {/* <ReportIcon className={styles.footer_icons} /> */}
-                    <button type="submit" className={`btn btn-warning ${styles.footer_report_button}`}>Report us</button>
+                    <div className={styles.footer_reportbuttondiv}>
+                        <button type="submit" className={`btn btn-warning ${styles.footer_report_button}`}>Report us</button>
+                    </div>
                 </div>
 
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Image from "next/image";
+import Image from "next/legacy/image";
 import sales from "../public/assets/sale.svg";
 import Head from "next/head";
 import styles from "../styles/Shoptshirts.module.css"

@@ -2,7 +2,7 @@ import connectDb from "../../../middleware/db";
 import Users from "../../../models/UserSchema";
 
 const handler = async (req, res) => {
-  console.log(req.body);
+
   const {
     email,
     cartproducts,

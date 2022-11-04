@@ -31,6 +31,7 @@ const CarouselItemTeam = ({ phot, name, price }) => {
                 sx={{
                     paddingTop: "10px",
                     background: "#00000",
+                    borderRadius: "10px !important",
                     // on hover make the cursor pointer
                     "&:hover": {
                         cursor: "pointer",
@@ -41,7 +42,7 @@ const CarouselItemTeam = ({ phot, name, price }) => {
                 <Card
                     sx={{
                         background: "#121319",
-                        borderRadius: "5px!important",
+                        borderRadius: "10px !important",
                         padding: "0px",
                         maxWidth: "300px !important",
                         minWidth: "300px !important",

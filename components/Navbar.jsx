@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import ShopContext from '../context/ShopContext';
 import { useUser } from "@auth0/nextjs-auth0";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const Navbar = () => {
 
@@ -17,11 +17,12 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light ">
             <div className={`container-fluid ${styles.navbarparent}`}>
-                <Link href="/" passHref>
+                <Link href="/" passHref className={styles.brand}>
 
-                    <p className={styles.brand}>
+                    {/* <p className={styles.brand}>
                         ShopCoders
-                    </p>
+                    </p> */}
+                    ShopCoders
 
                 </Link>
 

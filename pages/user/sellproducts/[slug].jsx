@@ -14,7 +14,7 @@ import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
 import { FaAd, FaEdit, FaPlusCircle, FaRegEdit, FaRegPlayCircle } from "react-icons/fa";
 import { RiDeleteBin6Line, RiDeleteBinLine } from "react-icons/ri";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const Sellswags = ({ singleuser, usermail }) => {
     const context = useContext(ShopContext);
