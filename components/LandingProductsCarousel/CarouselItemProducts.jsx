@@ -41,7 +41,7 @@ const CarouselItemTeam = ({ phot, name, price }) => {
             >
                 <Card
                     sx={{
-                        background: "#121319",
+                        background: "#F2DEBA",
                         borderRadius: "10px !important",
                         padding: "0px",
                         maxWidth: "300px !important",
@@ -61,8 +61,9 @@ const CarouselItemTeam = ({ phot, name, price }) => {
                             alignItems: "center",
                             justifyContent: "center",
                             objectFit: "contain",
-                            maxWidth: "300px !important",
-                            minWidth: "300px !important",
+                            maxWidth: "250px !important",
+                            minWidth: "250px !important",
+                            margin: "auto",
                         }}
                     />
                     <CardContentNoPadding
@@ -77,16 +78,17 @@ const CarouselItemTeam = ({ phot, name, price }) => {
                             gutterBottom
                             variant="h6"
                             sx={{
-                                marginTop: "10px",
+
                                 fontWeight: "900px",
                                 paddingLeft: "10px",
+                                color: "#393E46",
                             }}
                         >
                             {name}
                         </Typography>
                         <Typography
                             variant="subtitle2"
-                            color="text.secondary"
+                            color="black"
                             sx={{ padding: "0px", paddingLeft: "10px" }}
                         >
                             {price}

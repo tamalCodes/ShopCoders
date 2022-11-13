@@ -23,6 +23,7 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
     const router = useRouter();
     const { user, error, isLoading } = useUser();
 
+
     const refreshData = () => {
         router.replace(router.asPath);
     }
@@ -46,7 +47,19 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
     const addproducttocart = async () => {
 
         if (!user) {
-            toast.error("Please login to add products to cart");
+
+            toast('🔴 Please login before making a purchase !', {
+                position: "top-right",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                onClose: () => {
+                    router.push("/api/auth/login");
+                }
+            });
             return;
         }
 
@@ -80,7 +93,7 @@ const Singleproduct = ({ detailedproduct, singleuser, usermail }) => {
 
         toast('🌈 Added to cart !', {
             position: "top-right",
-            autoClose: 3000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

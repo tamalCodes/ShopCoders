@@ -33,48 +33,79 @@ const Shophoodies = ({ allproducts }) => {
             </Head>
 
             <Navbar />
-            <div className={`container-fluid ${styles.shirtpage_parent}`}>
+            <div>
 
-                {allproducts.map((item) => {
-                    return (
-                        // <TshirtCard key={product._id} product={product} />
-                        <Link href={`/detailedproduct/${item.slug}&${creds}`} passHref={true} key={item._id}>
+                <div className={styles.shirtpage_header} >
 
-
-
-
-                            <div className={`card ${styles.itemscard_card}`} style={{ width: "18rem" }}>
-                                <Image src={item.img} className={`card-img-top ${styles.itemscard_img}`} alt="..." height={300} width={300} />
-
-                                <div className="card-body">
-
-                                    <h5 className={`card-title ${styles.itemscard_title}`}>{item.name}</h5>
+                    <div className={styles.ImageBannerDiv1}>
+                        <div className={styles.ImageBannerDiv2}>
+                            <Image src="https://i.ibb.co/T2ZC111/LB-XL-Hoodies.png" height={300} width={1500} className={styles.grandDesktop} priority alt="Grand new year sale" placeholder="shimmer" />
+                        </div>
+                    </div>
+                </div>
 
 
 
 
-                                    <h5 className={styles.itemcard_price}>$ {item.price}</h5>
+                <div className={`container-fluid ${styles.shirtpage_searchdiv}`}>
 
-                                    <BsFillCartFill
-                                        size={20}
-                                        style={{ fill: "#C70A80", marginRight: "1rem", cursor: "pointer" }}
-                                    />
+                    <div>
+                        <h1>All Hoodies</h1>
+                    </div>
 
-                                    <BsFillHeartFill
-                                        size={20}
-                                        style={{ fill: "#F24C4C", marginRight: "5px", cursor: "pointer" }}
-                                    />
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
 
+
+                </div>
+
+                <div className={`container-fluid ${styles.shirtpage_parent}`}>
+
+
+
+                    {allproducts.map((item) => {
+                        return (
+
+                            <Link href={`/detailedproduct/${item.slug}&${creds}`} passHref={true} key={item._id}>
+
+
+
+
+                                <div className={`card ${styles.itemscard_card}`} style={{ width: "15rem" }}>
+                                    <Image src={item.img} className={`card-img-top ${styles.itemscard_img}`} alt="..." height={300} width={300} />
+
+                                    <div className="card-body">
+
+                                        <h5 className={`card-title ${styles.itemscard_title}`}>{item.name}</h5>
+
+
+
+
+                                        <h5 className={styles.itemcard_price}>$ {item.price}</h5>
+
+                                        <BsFillCartFill
+                                            size={20}
+                                            style={{ fill: "#C70A80", marginRight: "1rem", cursor: "pointer" }}
+                                        />
+
+                                        <BsFillHeartFill
+                                            size={20}
+                                            style={{ fill: "#F24C4C", marginRight: "5px", cursor: "pointer" }}
+                                        />
+
+                                    </div>
                                 </div>
-                            </div>
 
 
-                        </Link>
-                    )
+                            </Link>
+                        )
 
-                })}
+                    })}
 
 
+                </div>
             </div>
 
         </>
