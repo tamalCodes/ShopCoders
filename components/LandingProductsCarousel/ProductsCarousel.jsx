@@ -152,54 +152,53 @@ const ProductsCarousel = () => {
                         onNextEnd={handleEnd}
                     >
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/ZLkD8qr/6.png"
+                            name="DaD codes T-shirt"
                             price="$ 35"
                             link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/LZX0F8G/7.png"
+                            name="Google-It T-shirt"
                             price="$ 35"
                             link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/drVKMRK/1.png"
+                            name="Developer T-shirt"
                             price="$ 35"
                             link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/Kb3vpLB/2.png"
+                            name="ESCR T-shirt"
                             price="$ 35"
                             link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/JmJ0JCL/3.png"
+                            name="Python T-shirt"
                             price="$ 35"
                             link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/LPkPf5j/4.png"
+                            name="Black Linux T-shirt"
                             price="$ 35"
                             link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/0sHTS8d/5.png"
+                            name="Sudo T-shirt"
                             price="$ 35"
                             link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            phot="https://i.ibb.co/ZLkD8qr/6.png"
                             name="Red Linux T-shirt"
                             price="$ 35"
                             link="https://shopcoders.com/product/red-linux-t-shirt/"
                         />
-
                     </Carousel>
                 </div>
             </div> : null}
@@ -223,42 +222,48 @@ const ProductsCarousel = () => {
                     >
                         <CarouselItemTeam
                             phot="https://i.ibb.co/ZLkD8qr/6.png"
-                            name="Red Linux T-shirt"
+                            name="DaD codes T-shirt"
                             price="$ 35"
                             link="/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/LZX0F8G/7.png"
+                            name="Google-It T-shirt"
                             price="$ 35"
                             link="/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/drVKMRK/1.png"
+                            name="Developer T-shirt"
                             price="$ 35"
                             link="/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/Kb3vpLB/2.png"
+                            name="ESCR T-shirt"
                             price="$ 35"
                             link="/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/JmJ0JCL/3.png"
+                            name="Python T-shirt"
                             price="$ 35"
                             link="/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
-                            name="Red Linux T-shirt"
+                            phot="https://i.ibb.co/LPkPf5j/4.png"
+                            name="Black Linux T-shirt"
                             price="$ 35"
                             link="/"
                         />
                         <CarouselItemTeam
-                            phot="https://i.ibb.co/YRTzCXy/7-removebg-preview.png"
+                            phot="https://i.ibb.co/0sHTS8d/5.png"
+                            name="Sudo T-shirt"
+                            price="$ 35"
+                            link="/"
+                        />
+                        <CarouselItemTeam
+                            phot="https://i.ibb.co/ZLkD8qr/6.png"
                             name="Red Linux T-shirt"
                             price="$ 35"
                             link="/"
