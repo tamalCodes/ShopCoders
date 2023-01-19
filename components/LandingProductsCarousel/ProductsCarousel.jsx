@@ -7,9 +7,10 @@ import { useUser } from "@auth0/nextjs-auth0";
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2 },
-    { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 4 },
+    { width: 768, itemsToShow: 2 },
+    { width: 1200, itemsToShow: 3 },
+
+
 ];
 
 const useStyles = makeStyles(() => ({
@@ -66,7 +67,7 @@ const ProductsCarousel = () => {
 
 
 
-            {(user && window.innerWidth > 431) ? <div className={styles.TeamCarousel} >
+            {/*   {(user && window.innerWidth > 431) ? <div className={styles.TeamCarousel} >
 
                 <h2>Our Top products for this season 🚀</h2>
                 <div onMouseEnter={handleMouse1} onMouseLeave={handleMouse2}>
@@ -271,7 +272,12 @@ const ProductsCarousel = () => {
 
                     </Carousel>
                 </div>
-            </div>}
+            </div>} */}
+
+
+            <div>
+
+            </div>
         </>
     );
 };

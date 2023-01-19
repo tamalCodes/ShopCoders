@@ -4,11 +4,25 @@
   align-items: center;
   justify-content: space-between;
   align-items: center;
+
+
+}
+
+.navbarparent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar {
+  background-color: #E8C287;
+  padding: 0 80px;
 }
 
 .brand {
   font-weight: normal;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-family: "Rubik Wet Paint", cursive;
   cursor: pointer;
   padding-top: 10px;

@@ -21,6 +21,7 @@ a {
   min-height: 60vh;
   font-family: "Ubuntu", sans-serif;
 }
+
 .ps_btn {
   width: 100%;
   max-width: 400px;
@@ -95,26 +96,56 @@ a {
 }
 
 @media screen and (max-width: 800px) {
+
   .success-wrapper,
   .cancel-wrapper {
     min-height: 69vh;
   }
+
   .success,
   .cancel {
     width: 370px;
     margin-top: 100px;
     padding: 20px;
   }
+
   .success {
     height: 350px;
   }
+
   .success h2 {
     font-size: 17px;
   }
+
   .btn-container {
     width: 300px;
     margin: auto;
   }
 }
 
-/* FOOTER */
+body {
+  background-color: #e8c287;
+}
+
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #007c73 #e8c18700;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #e8c18700;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #007c73;
+  border-radius: 10px;
+  border: 3px solid #e8c287;
+}

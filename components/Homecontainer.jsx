@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import Image from "next/legacy/image";
-import sales from "../public/assets/sale.svg";
+import ShopCodersBanner from "../public/assets/Landing/ShopCodersBanner.png";
 import whyshopwithus from "../public/assets/whyshop.png";
 import mobilegh from "../public/assets/MobileGithubImage.jpg";
 import { useUser } from "@auth0/nextjs-auth0";
@@ -13,6 +13,9 @@ import ProductsCarousel from "./LandingProductsCarousel/ProductsCarousel";
 import Footer from "./Footer";
 import ShoppingBannerMobile from "../public/assets/ShoppingBannerMobile.svg";
 import LandingBannerDesktop from "../public/assets/LandingBannerDesktop.png";
+import shoppingbtn from "../public/assets/Landing/ShopNowButton.png";
+import ProductsBanner from "./LandingComponents/ProductsBanner";
+import LandingBanner2 from "../public/assets/Landing/LandingBanner2.png";
 
 const Homecontainer = () => {
     const { user, error, isLoading } = useUser();
@@ -85,159 +88,102 @@ const Homecontainer = () => {
 
     return (
         <>
+            <div className={styles.herobanner} >
 
+                <div className={styles.hb_sub}>
+                    <div className={styles.hb_textdiv}>
 
-            <div className={styles.imagediv1}>
-                <Image
-                    src={mobilegh}
-                    width={700}
-                    height={700}
-                    alt="wear"
-                    className={styles.image1}
-                />
-            </div>
+                        <span>Trade-in-offer</span>
+                        <h1>Super value deal </h1>
+                        <h2>On all products</h2>
 
-            {/* <div className={styles.imagediv2}  >
-
-                
-
-                <img src="https://i.ibb.co/L6bDrkF/Grand.png" alt="" onClick={() => { gotoproducts() }} className={styles.grandMobile} />
-
-                <img src="https://i.ibb.co/KhJ619n/Landing-Banner.png" alt="" onClick={() => { gotoproducts() }} className={styles.grandDesktop} />
+                        <p>Save more with coupons & up to 70% off for black friday sale !</p>
 
 
 
+                    </div>
+
+                    <Image src={shoppingbtn} width={200} height={51} alt="shopping button " className={styles.hb_shopnowbtn} />
 
 
-            </div> */}
 
-            {/* <div className={styles.ImageBannerDiv1}>
-                <div className={styles.ImageBannerDiv2} >
-                    <Image src="https://i.ibb.co/3WDgNt7/Shop-Coders-LB2.png" height={90} width={728} className={styles.grandDesktop} priority alt="Grand new year sale" placeholder="shimmer" />
                 </div>
-            </div> */}
 
-
-            <div className={styles.ImageBannerDiv1}>
-                <div className={styles.ImageBannerDiv2}>
-                    <Image src="https://i.ibb.co/DM53bY2/LB-XL-D.png" height={300} width={1500} className={styles.grandDesktop} priority alt="Grand new year sale" placeholder="shimmer" />
-                </div>
             </div>
 
 
-            <div id="products">
-                <ProductsCarousel />
-            </div>
-
-            <hr className={styles.hrbar} />
-            <br />
-            <br />
-
-            <div className={styles.landingContent}>
+            <ProductsBanner />
 
 
-                <div className={styles.rowdesktop}>
 
-                    <div
-                        className={styles.imagediv2_textdiv}
 
-                    >
-                        <h2>Why shop with us ?</h2>
+
+            <div className={styles.shopcoderbanner2main}>
+                <div className={styles.shopcoderbanner2}>
+
+                    <div>
                         <p>
-                            We at ShopCoders offer you official merchandise from all the
-                            coding event. These are mostly left out/ not gave-away. We tied
-                            up with 50+ official code companies like Github, Digital Ocean
-                            to bring you the best of the swags at an affordable price !!
+                            A shop for coders, <br />
+                            by coders
                         </p>
-                        <p className={styles.imagediv2_textdiv_mobile_p}>
-                            We at ShopCoders offer you official merchandise,the best  swags from all the
-                            coding events at at an affordable price !
-                        </p>
-
-                        <div className={`${styles.exploreAndSales_btn_div}`}>
-                            <button className={`btn btn-warning ${styles.explorebtn}`}  >Explore other products</button>
-                        </div>
                     </div>
 
-                    <div className={styles.imagediv2_imgdiv}>
-                        <Image
-                            src={whyshopwithus}
-                            width={600}
-                            height={400}
-                            alt="wear"
-                            className={styles.image1}
-                            priority="true"
-                        />
-                    </div>
+                    <span>
+                        check out more of our amazing products below !
+                    </span>
 
                 </div>
-
-
             </div>
 
-            <div className={styles.landingContent_mobile} >
-                <Image
-                    src={ShoppingBannerMobile}
-                    width={500}
-                    height={500}
-                    alt="wear"
-                    className={styles.image1}
-                    priority="true"
-                />
+
+
+            <div className={styles.categorydiv}>
+
+                <div className={styles.category_banner1}>
+                    <div>
+
+                        <p>buy 1 get one free</p>
+
+                        <p>The best coder T&apos;s is on sale</p>
+
+                        <button type="button" >Explore TShirts</button>
+
+                    </div>
+                </div>
+
+                <div className={styles.category_banner2}>
+                    <div>
+
+                        <p>get&apos;em before they are sold     </p>
+
+                        <p>Check out our limited edition hoodies</p>
+
+                        <button type="button" >Explore Hoodies</button>
+
+                    </div>
+                </div>
+
             </div>
+            <div className={styles.categorydiv2}>
 
-            <br />
-            <br />
+                <div className={styles.category_banner3}>
+                    <div>
 
-            <div className={styles.landingContent}>
+                        <p> stickers, stickers, stickers  </p>
 
+                        <p>Get your hands on some amazing stickers.</p>
 
-                <div className={styles.rowdesktop}>
+                        <button type="button" >Explore stickers</button>
 
-                    <div className={styles.imagediv2_imgdiv}>
-                        <Image
-                            src={paylesswithus}
-                            width={500}
-                            height={500}
-                            alt="wear"
-                            className={styles.image1}
-                            priority="true"
-                        />
                     </div>
-
-                    <div
-                        className={styles.imagediv2_textdiv}
-
-                    >
-                        <h2>Pay less with us !</h2>
-                        <p>
-                            We at ShopCoders have ocassional sales, lottery days, and even
-                            we sponser other hackathons where you can get to select a swag
-                            as a winner. <br />
-                            In case you want to gift it to someone, we provide huge
-                            discounts from 20 all the way to 80% !!
-                        </p>
-
-
-                        <p className={styles.imagediv2_textdiv_mobile_p}>
-                            We at ShopCoders have ocassional sales, lottery days, and even
-                            we sponser other hackathons where you can get to select a swag
-                            as a winner.
-                        </p>
-
-                        <div className={`${styles.exploreAndSales_btn_div}`}>
-                            <button className={`btn btn-warning ${styles.explorebtn}`}  >Check out amazing sales</button>
-                        </div>
-                    </div>
-
-
-
                 </div>
 
             </div>
 
 
 
+
+            {/*  <Footer /> */}
 
         </>
     );

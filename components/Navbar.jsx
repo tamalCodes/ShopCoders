@@ -15,13 +15,11 @@ const Navbar = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light ">
-            <div className={`container-fluid ${styles.navbarparent}`}>
+        <nav className={`navbar navbar-expand-lg navbar-light ${styles.navbar} `}>
+            <div className={styles.navbarparent}>
                 <Link href="/" passHref className={styles.brand}>
 
-                    {/* <p className={styles.brand}>
-                        ShopCoders
-                    </p> */}
+
                     ShopCoders
 
                 </Link>

@@ -1,8 +1,16 @@
+.footer_main {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  /*   margin-bottom: 20px; */
+}
+
 .footer_parent {
   background-color: rgb(41, 39, 39);
   color: white;
-  position: absolute;
-  width: 100%;
+  /*  position: absolute; */
+  width: 90vw;
+  border-radius: 8px;
   padding-bottom: 20px;
 }
 
@@ -34,10 +42,12 @@
 .footer_flexparent p {
   font-size: 0.9rem;
 }
+
 .footer_reportbuttondiv {
   display: flex;
   justify-content: center;
 }
+
 .footer_report_button {
   font-family: "Poppins", sans-serif;
   color: black;
@@ -50,6 +60,7 @@
     min-width: 100vw;
     margin-top: 50px;
   }
+
   .footer_flexparent {
     flex-direction: column;
     padding-left: 20px;
@@ -61,6 +72,7 @@
     font-size: 1.8rem;
     margin-bottom: 20px;
   }
+
   .footer_flexparent p {
     font-size: 18px;
   }
