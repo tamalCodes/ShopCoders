@@ -43,6 +43,17 @@
     min-height: 24rem;
 }
 
+.pb_cardmain2 {
+    background-color: whitesmoke;
+    max-width: 15rem;
+    min-width: 15rem;
+    border-radius: 12px;
+    padding: 10px 10px;
+    cursor: pointer;
+    max-height: 26rem;
+    min-height: 26rem;
+}
+
 .pb_cardimgdiv {
     background-color: rgba(128, 128, 128, 0.407);
     border-radius: 12px;
@@ -74,6 +85,15 @@
     margin-top: 5px;
     font-weight: 600;
     color: #007c73;
+
+}
+
+.pb_cardtextdiv p:nth-child(4) {
+
+    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin-top: 5px;
 
 }
 
