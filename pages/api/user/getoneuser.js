@@ -1,4 +1,4 @@
-import connectDb from "../../../middleware/db";
+/* import connectDb from "../../../middleware/db";
 import Users from "../../../models/UserSchema";
 
 const handler = async (req, res) => {
@@ -15,3 +15,4 @@ const handler = async (req, res) => {
 };
 
 export default connectDb(handler);
+ */

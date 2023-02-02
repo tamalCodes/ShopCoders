@@ -1,9 +1,62 @@
+.shirtpage_main {
+    padding: 80px 80px;
+}
+
+
+.shirtpage_main_heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shirtpage_main_heading h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #212529;
+}
+
+.searchmaindiv {
+    max-width: 30%;
+    margin-bottom: 0px !important;
+}
+
+.searchmaindiv input {
+    font-family: "Poppins", sans-serif;
+    background-color: transparent;
+    border: #212529 1px solid;
+}
+
+.searchmaindiv input:focus {
+    font-family: "Poppins", sans-serif;
+    background-color: transparent;
+    border: #212529 1px solid;
+    box-shadow: none;
+}
+
+.searchmaindiv button {
+    font-family: "Poppins", sans-serif;
+    border: #212529 1px solid;
+    background-color: #007c73;
+    color: white;
+}
+
+.searchmaindiv button:hover {
+    font-family: "Poppins", sans-serif;
+    border: #212529 1px solid !important;
+    background-color: #007c73 !important;
+    color: white;
+}
+
+
+/* //* Product Cards */
+
 .pb_main {
     /*   height: 100vh; */
     width: 100%;
     background-position: right 0;
     background-size: cover;
     padding: 100px 80px;
+    margin-bottom: 5rem;
 }
 
 .pb_header1 {
@@ -37,21 +90,21 @@
     min-width: 15rem;
     border-radius: 12px;
     padding: 10px 10px;
-    cursor: pointer;
-    max-height: 24rem;
-    min-height: 24rem;
+    /*  cursor: pointer; */
+    position: relative;
+    /*   min-height: 26rem; */
+    max-height: 25rem;
+    min-height: 25rem;
 }
 
-.pb_cardmain2 {
-    background-color: whitesmoke;
-    max-width: 15rem;
-    min-width: 15rem;
-    border-radius: 12px;
-    padding: 10px 10px;
+.card_cart {
+    position: absolute;
+    right: 20px;
     cursor: pointer;
-    max-height: 26rem;
-    min-height: 26rem;
+    bottom: 20px;
+
 }
+
 
 .pb_cardimgdiv {
     background-color: rgba(128, 128, 128, 0.407);
@@ -73,7 +126,7 @@
     font-family: 'Poppins', sans-serif;
     margin-top: 10px;
     margin-bottom: 15px;
-    color: #007c73;
+    /*   color: #007c73; */
 }
 
 .pb_cardtextdiv p:nth-child(3) {
@@ -102,6 +155,16 @@
     .pb_header1,
     .pb_subheader1 {
         width: 100%;
+    }
+
+    .shirtpage_main_heading {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .searchmaindiv {
+        max-width: 100%;
     }
 
 }

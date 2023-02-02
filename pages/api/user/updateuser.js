@@ -1,4 +1,4 @@
-// gyansujan69@gmail.com"
+/* // gyansujan69@gmail.com"
 
 import connectDb from "../../../middleware/db";
 import User from "../../../models/UserSchema";
@@ -23,3 +23,4 @@ const handler = async (req, res) => {
 };
 
 export default connectDb(handler);
+ */

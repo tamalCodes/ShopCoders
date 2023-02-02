@@ -1,12 +1,39 @@
-import mongoose, { connect } from "mongoose";
+import mongoose from "mongoose";
 
-const connectDb = (handler) => async (req, res) => {
-  if (mongoose.connections[0].readyState) {
-    return handler(req, res);
+const connection = {};
+
+async function connect() {
+  if (connection.isConnected) {
+    console.log("Already connected");
+    return;
   }
 
-  await mongoose.connect(process.env.MONGO_URI);
-  return handler(req, res);
-};
+  if (mongoose.connections.length > 0) {
+    connection.isConnected = mongoose.connections[0].readyState;
+  }
 
-export default connectDb;
+  if (connection.isConnected === 1) {
+    console.log("Use previous connection");
+    return;
+  }
+
+  await mongoose.disconnect();
+
+  const db = await mongoose.connect(process.env.MONGO_URI);
+  console.log("New connection has been made 🚀");
+  connection.isConnected = db.connections[0].readyState;
+}
+
+async function disconnect() {
+  if (connection.isConnected) {
+    if (process.env.NODE_ENV === "production") {
+      await mongoose.disconnect();
+      connection.isConnected = false;
+    } else {
+      console.log("Not disconnected");
+    }
+  }
+}
+
+const db = { connect, disconnect };
+export default db;

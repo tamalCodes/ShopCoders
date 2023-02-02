@@ -1,13 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-  output: 'standalone',
+  experimental: {
+    appDir: true,
+  },
   images: {
     domains: [
       "i.ibb.co",
       "ibb.co",
       "lh3.googleusercontent.com",
       "avatars.githubusercontent.com",
+      "shareicon.net",
     ],
   },
 };

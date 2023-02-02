@@ -1,5 +1,4 @@
-// product schema
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const ProductSchema = new mongoose.Schema(
   {
@@ -20,7 +19,7 @@ const ProductSchema = new mongoose.Schema(
     },
 
     price: {
-      type: Number,
+      type: String,
       required: true,
     },
     category: {
@@ -41,5 +40,7 @@ const ProductSchema = new mongoose.Schema(
   { timetamps: true }
 );
 
-module.exports =
+const Products =
   mongoose.models.product || mongoose.model("product", ProductSchema);
+
+export default Products;

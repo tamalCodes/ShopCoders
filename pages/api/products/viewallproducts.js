@@ -1,10 +1,15 @@
-import connectDb from "../../../middleware/db";
+import db from "../../../middleware/db";
 import Products from "../../../models/ProductSchema";
 
 const handler = async (req, res) => {
-  let products = await Products.find();
-
-  res.status(200).json({ products });
+  try {
+    await db.connect();
+    let category = req.query.category;
+    const products = await Products.find({ category: category });
+    return res.status(200).json({ products });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export default connectDb(handler);
+export default handler;

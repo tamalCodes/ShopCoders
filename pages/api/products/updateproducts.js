@@ -1,4 +1,4 @@
-const Products = require("../../../models/ProductSchema");
+/* const Products = require("../../../models/ProductSchema");
 
 export default async function updateproducts(req, res) {
   try {
@@ -43,3 +43,4 @@ export default async function updateproducts(req, res) {
     res.json(error);
   }
 }
+ */

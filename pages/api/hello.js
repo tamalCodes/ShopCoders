@@ -1,9 +1,14 @@
-const connectToMongo = require("../../middleware/db");
-// import ProductModel from "../../models/Product";
+import db from "../../middleware/db";
+import Products from "../../models/ProductSchema";
 
-connectToMongo();
+const handler = async (req, res) => {
+  try {
+    await db.connect();
+    const products = await Products.find();
+    return res.status(200).json({ products });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-export default async function handler(req, res) {
-  // let products = await ProductModel.find();
-  res.json("products");
-}
+export default handler;

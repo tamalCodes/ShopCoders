@@ -1,331 +1,208 @@
 .mainparent {
-  display: flex;
+    display: flex;
 }
 
 .herobanner {
-  height: 100vh;
-  width: 100%;
-  background-position: right 0;
-  background-size: cover;
-  background-image: url("../public/assets/Landing/LandingBanner.png");
+    height: 100vh;
+    width: 100%;
+    background-position: right 0;
+    background-size: cover;
+    background-image: url("../public/assets/Landing/LandingBanner.png");
 
-  padding: 0 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
 }
 
 .hb_textdiv {
-  margin-bottom: 3rem;
+    margin-bottom: 3rem;
 }
 
 .hb_textdiv h1,
 .hb_textdiv h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 70px;
-  font-weight: 700;
-  line-height: 70px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 70px;
 }
 
 .hb_textdiv h2 {
-  color: #007c73;
+    color: #007c73;
 }
 
 .hb_textdiv span {
-  font-family: 'Poppins', sans-serif;
-  font-size: 20px;
-  letter-spacing: 0.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.1rem;
 }
 
 .hb_textdiv p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 24px;
-  width: 40%;
-  margin-top: 2rem;
-  letter-spacing: 0.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    width: 40%;
+    margin-top: 2rem;
+    letter-spacing: 0.1rem;
 
 }
 
 @media screen and (max-width: 1025px) {
-  .herobanner {
-    background-image: none;
-    background-color: #e8c287;
-    align-items: center;
-    text-align: center;
-  }
+    .herobanner {
+        background-image: none;
+        background-color: #e8c287;
+        align-items: center;
+        text-align: center;
+    }
 
-  .hb_textdiv p {
-    width: 100%;
+    .hb_textdiv p {
+        width: 100%;
 
-  }
+    }
 
 }
 
 @media screen and (max-width: 769px) {
 
-  .hb_textdiv h1,
-  .hb_textdiv h2 {
-    font-size: 50px;
-    line-height: 50px;
-  }
+    .hb_textdiv h1,
+    .hb_textdiv h2 {
+        font-size: 50px;
+        line-height: 50px;
+    }
 
-  .hb_textdiv p {
-    font-size: 18px;
-  }
+    .hb_textdiv p {
+        font-size: 18px;
+    }
 
-  .hb_textdiv span {
-    display: none;
-  }
+    .hb_textdiv span {
+        display: none;
+    }
 
-  .herobanner {
-    padding: 0 20px;
-  }
+    .herobanner {
+        padding: 0 20px;
+    }
 }
 
 
 .shopcoderbanner2 {
-  background-image: url("../public/assets/Landing/LandingBanner2.png");
-  height: 50vh;
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 90px;
+    background-image: url("../public/assets/Landing/LandingBanner2.png");
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 90px;
 }
 
 .shopcoderbanner2 p:nth-child(1) {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 60px;
-  font-weight: 700;
-  line-height: 70px;
-  letter-spacing: 0.1rem;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  color: black;
-}
-
-.shopcoderbanner2 span {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: black;
-  width: 40%;
-}
-
-@media screen and (max-width: 769px) {
-  .shopcoderbanner2 {
-    background-image: url("../public/assets/Landing/LandingBanner3.png");
-    background-position: center;
-    background-size: cover;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: auto !important;
-    padding-bottom: 10px;
-    max-width: 100vw;
-  }
-
-  .shopcoderbanner2 p:nth-child(1) {
     font-family: 'Montserrat', sans-serif;
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 700;
-    line-height: 50px;
+    line-height: 70px;
     letter-spacing: 0.1rem;
     margin-top: 30px;
     margin-bottom: 30px;
     color: black;
-  }
+}
 
-  .shopcoderbanner2 span {
-    font-size: 18px;
-    width: 100%;
-  }
+.shopcoderbanner2 span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+    width: 40%;
+}
+
+@media screen and (max-width: 769px) {
+    .shopcoderbanner2 {
+        background-image: url("../public/assets/Landing/LandingBanner3.png");
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        height: auto !important;
+        padding-bottom: 10px;
+        max-width: 100vw;
+    }
+
+    .shopcoderbanner2 p:nth-child(1) {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 50px;
+        letter-spacing: 0.1rem;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: black;
+    }
+
+    .shopcoderbanner2 span {
+        font-size: 18px;
+        width: 100%;
+    }
 }
 
 .categorydiv,
 .categorydiv2 {
-  display: flex;
-  padding: 100px 0px 100px 0px;
-  gap: 20px;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+    display: flex;
+    padding: 100px 0px 100px 0px;
+    gap: 20px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .categorydiv2 {
-  padding-top: 0px;
-  justify-content: center;
+    padding-top: 0px;
+    justify-content: center;
 }
 
 .category_banner1,
 .category_banner2,
 .category_banner3 {
-  background-image: url("../public/assets/Landing/Cat1.png");
+    background-image: url("../public/assets/Landing/Cat1.png");
 
-  background-position: center;
-  background-size: cover;
-  min-width: 600px;
-  max-width: 600px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding-right: 20px;
-  padding-top: 20px;
-  border-radius: 8px;
+    background-position: center;
+    background-size: cover;
+    min-width: 600px;
+    max-width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 20px;
+    padding-top: 20px;
+    border-radius: 8px;
 
 }
 
 .category_banner2 {
-  background-image: url("../public/assets/Landing/Cat2.png");
+    background-image: url("../public/assets/Landing/Cat2.png");
 }
 
 .category_banner3 {
-  background-image: url("../public/assets/Landing/Cat3.png");
-  align-items: flex-start;
-  padding-left: 20px;
-  padding-right: 0px;
-  min-width: 720px;
+    background-image: url("../public/assets/Landing/Cat3.png");
+    align-items: flex-start;
+    padding-left: 20px;
+    padding-right: 0px;
+    min-width: 720px;
 
-  max-width: 720px;
+    max-width: 720px;
 
 }
 
 .category_banner1 div,
 .category_banner2 div {
-  width: 58%;
-  text-align: right;
-  word-break: normal;
+    width: 58%;
+    text-align: right;
+    word-break: normal;
 
 }
 
 .category_banner1 div p:nth-child(1),
 .category_banner2 div p:nth-child(1),
 .category_banner3 div p:nth-child(1) {
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #1c1e20;
-  font-family: "Poppins", sans-serif;
-  line-height: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  margin-bottom: 40px;
-}
-
-.category_banner1 div p:nth-child(2),
-.category_banner2 div p:nth-child(2),
-.category_banner3 div p:nth-child(2) {
-  font-size: 38px;
-  color: black;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 38px;
-  font-weight: 700 !important;
-  letter-spacing: 0.1rem;
-  color: #007c73;
-
-}
-
-.category_banner2 div p:nth-child(2) {
-  color: #662A44;
-}
-
-.category_banner3 div p:nth-child(2) {
-  margin-top: 3.5rem;
-  color: #1c1e20;
-  max-width: 54%;
-}
-
-.category_banner1 div button,
-.category_banner2 div button,
-.category_banner3 div button {
-
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  margin-top: 10px;
-  cursor: pointer;
-  padding: 7px 20px;
-  border-radius: 5px;
-  animation: ease-in-out 0.5s;
-  background-color: #007c73;
-  color: white;
-}
-
-.category_banner1 div button:hover,
-.category_banner2 div button:hover,
-.category_banner3 div button:hover {
-  border: 1px solid #007c73;
-  /*  background-color: rgba(255, 255, 255, 0); */
-  background: transparent;
-  color: black;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  animation: ease-in-out 0.5s;
-}
-
-
-
-@media screen and (max-width: 1025px) {
-
-  .categorydiv,
-  .categorydiv2 {
-    padding: 100px 0px 15px 0px;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .categorydiv2 {
-    padding-top: 0px;
-    justify-content: center;
-  }
-
-  .category_banner1,
-  .category_banner2,
-  .category_banner3 {
-    background-image: url("../public/assets/Landing/Cat1Mobile.png");
-
-    background-position: center;
-    background-size: cover;
-    /*  min-width: 600px; */
-    max-width: 90vw;
-    min-width: 90vw;
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 20px;
-    border-radius: 8px;
-    background-repeat: no-repeat;
-  }
-
-  .category_banner2 {
-    background-image: url("../public/assets/Landing/Cat2Mobile.png");
-  }
-
-  .category_banner3 {
-    background-image: url("../public/assets/Landing/Cat3Mobile.png");
-    align-items: flex-start;
-    padding: 20px 20px;
-
-    text-align: center;
-  }
-
-  .category_banner1 div,
-  .category_banner2 div {
-    width: 100%;
-    text-align: center;
-    word-break: normal;
-
-  }
-
-  .category_banner1 div p:nth-child(1),
-  .category_banner2 div p:nth-child(1),
-  .category_banner3 div p:nth-child(1) {
     font-size: 12px;
     text-transform: uppercase;
     color: #1c1e20;
@@ -334,11 +211,11 @@
     font-weight: 600;
     letter-spacing: 0.1rem;
     margin-bottom: 40px;
-  }
+}
 
-  .category_banner1 div p:nth-child(2),
-  .category_banner2 div p:nth-child(2),
-  .category_banner3 div p:nth-child(2) {
+.category_banner1 div p:nth-child(2),
+.category_banner2 div p:nth-child(2),
+.category_banner3 div p:nth-child(2) {
     font-size: 38px;
     color: black;
     font-family: 'Montserrat', sans-serif;
@@ -347,21 +224,21 @@
     letter-spacing: 0.1rem;
     color: #007c73;
 
-  }
+}
 
-  .category_banner2 div p:nth-child(2) {
+.category_banner2 div p:nth-child(2) {
     color: #662A44;
-  }
+}
 
-  .category_banner3 div p:nth-child(2) {
+.category_banner3 div p:nth-child(2) {
     margin-top: 3.5rem;
     color: #1c1e20;
-    max-width: 100%;
-  }
+    max-width: 54%;
+}
 
-  .category_banner1 div button,
-  .category_banner2 div button,
-  .category_banner3 div button {
+.category_banner1 div button,
+.category_banner2 div button,
+.category_banner3 div button {
 
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -373,11 +250,11 @@
     animation: ease-in-out 0.5s;
     background-color: #007c73;
     color: white;
-  }
+}
 
-  .category_banner1 div button:hover,
-  .category_banner2 div button:hover,
-  .category_banner3 div button:hover {
+.category_banner1 div button:hover,
+.category_banner2 div button:hover,
+.category_banner3 div button:hover {
     border: 1px solid #007c73;
     /*  background-color: rgba(255, 255, 255, 0); */
     background: transparent;
@@ -386,5 +263,128 @@
     font-weight: 600;
     letter-spacing: 0.1rem;
     animation: ease-in-out 0.5s;
-  }
+}
+
+
+
+@media screen and (max-width: 1025px) {
+
+    .categorydiv,
+    .categorydiv2 {
+        padding: 100px 0px 15px 0px;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .categorydiv2 {
+        padding-top: 0px;
+        justify-content: center;
+    }
+
+    .category_banner1,
+    .category_banner2,
+    .category_banner3 {
+        background-image: url("../public/assets/Landing/Cat1Mobile.png");
+
+        background-position: center;
+        background-size: cover;
+        /*  min-width: 600px; */
+        max-width: 90vw;
+        min-width: 90vw;
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 20px;
+        border-radius: 8px;
+        background-repeat: no-repeat;
+    }
+
+    .category_banner2 {
+        background-image: url("../public/assets/Landing/Cat2Mobile.png");
+    }
+
+    .category_banner3 {
+        background-image: url("../public/assets/Landing/Cat3Mobile.png");
+        align-items: flex-start;
+        padding: 20px 20px;
+
+        text-align: center;
+    }
+
+    .category_banner1 div,
+    .category_banner2 div {
+        width: 100%;
+        text-align: center;
+        word-break: normal;
+
+    }
+
+    .category_banner1 div p:nth-child(1),
+    .category_banner2 div p:nth-child(1),
+    .category_banner3 div p:nth-child(1) {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #1c1e20;
+        font-family: "Poppins", sans-serif;
+        line-height: 12px;
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+        margin-bottom: 40px;
+    }
+
+    .category_banner1 div p:nth-child(2),
+    .category_banner2 div p:nth-child(2),
+    .category_banner3 div p:nth-child(2) {
+        font-size: 38px;
+        color: black;
+        font-family: 'Montserrat', sans-serif;
+        line-height: 38px;
+        font-weight: 700 !important;
+        letter-spacing: 0.1rem;
+        color: #007c73;
+
+    }
+
+    .category_banner2 div p:nth-child(2) {
+        color: #662A44;
+    }
+
+    .category_banner3 div p:nth-child(2) {
+        margin-top: 3.5rem;
+        color: #1c1e20;
+        max-width: 100%;
+    }
+
+    .category_banner1 div button,
+    .category_banner2 div button,
+    .category_banner3 div button {
+
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+        margin-top: 10px;
+        cursor: pointer;
+        padding: 7px 20px;
+        border-radius: 5px;
+        animation: ease-in-out 0.5s;
+        background-color: #007c73;
+        color: white;
+    }
+
+    .category_banner1 div button:hover,
+    .category_banner2 div button:hover,
+    .category_banner3 div button:hover {
+        border: 1px solid #007c73;
+        /*  background-color: rgba(255, 255, 255, 0); */
+        background: transparent;
+        color: black;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.1rem;
+        animation: ease-in-out 0.5s;
+    }
 }

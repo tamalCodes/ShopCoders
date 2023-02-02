@@ -1,7 +1,7 @@
-import connectDb from "../../../middleware/db";
+/* import connectDb from "../../../middleware/db";
 import User from "../../../models/UserSchema";
 
-const handler = async (req, res) => {
+const createUser = async (req, res) => {
   if (req.method == "POST") {
     let newuser = new User({
       name: req.body.name,
@@ -9,11 +9,12 @@ const handler = async (req, res) => {
       cart: req.body.cart,
     });
 
-    await newuser.save();
+    await newuser.save({ wtimeout: 120000 });
     res.status(200).json({ newuser });
   } else {
     res.status(400).json({ error: "This is not a good request" });
   }
 };
 
-export default connectDb(handler);
+export default createUser;
+ */

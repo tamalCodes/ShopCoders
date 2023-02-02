@@ -1,4 +1,4 @@
-import loadConfig from "next/dist/server/config";
+/* import loadConfig from "next/dist/server/config";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -42,3 +42,4 @@ export default async function handler(req, res) {
     res.status(405).end("Method Not Allowed");
   }
 }
+ */
