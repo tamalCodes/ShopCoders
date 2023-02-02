@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 async function fetchallShirts() {
     const res = await fetch(
-        `http://localhost:3000/api/products/viewallproducts?category=tshirts`
+        `${process.env.SERVER_URL}/api/products/viewallproducts?category=tshirts`
     );
     return res.json();
 }
