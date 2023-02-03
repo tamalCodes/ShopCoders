@@ -1,0 +1,133 @@
+.singleproduct_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #f5f5f500;
+    padding: 3rem;
+}
+
+.productbox {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    padding: 1rem;
+    padding-right: 0px;
+
+}
+
+.productbox img:nth-child(1) {
+    width: 380px;
+    height: 450px;
+    background-color: #C5C5C5;
+    border-radius: 8px;
+    max-height: 450px;
+    max-width: 380px;
+    object-fit: contain;
+}
+
+.product_textdiv {
+    padding-top: 20px;
+    width: 50%;
+    padding-right: 25px;
+}
+
+.product_textdiv h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.product_textdiv p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 0rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.product_textdiv p:nth-child(3) {
+    color: #007c73;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+.product_btndiv {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+}
+
+.product_btndiv img {
+    cursor: pointer;
+}
+
+.buybtn {
+    background-color: #e0a246 !important;
+    color: black;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+
+}
+
+
+@media screen and (max-width: 1000px) {
+    .productbox {
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+        max-width: 90vw;
+
+    }
+
+    .product_textdiv {
+        padding-right: 0px;
+    }
+
+    .productbox img:nth-child(1) {
+        /*  background-color: transparent; */
+        max-width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 660px) {
+    .productbox {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        max-width: 85vw;
+        min-width: 85vw;
+        padding: 0rem;
+        padding-top: 1rem;
+    }
+
+    .product_textdiv {
+        padding-right: 0px;
+    }
+
+    .productbox img:nth-child(1) {
+        width: 90%;
+        max-width: 90%;
+    }
+
+    .product_textdiv {
+        width: 90%;
+        text-align: center;
+    }
+
+    .product_btndiv {
+        width: 80%;
+        justify-content: center;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+}

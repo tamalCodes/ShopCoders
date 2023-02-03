@@ -1,16 +1,14 @@
-/* import connectDb from "../../../middleware/db";
+import connectDb from "../../../middleware/db";
 import Products from "../../../models/ProductSchema";
 
 const handler = async (req, res) => {
-
-  var singleproduct = [];
-  for (let index = 0; index <= 1; index++) {
-
-    let item = await Products.find({ slug: req.body[index].slug });
-    singleproduct.push(item);
+  try {
+    let id = req.query.id;
+    const product = await Products.findById(id);
+    return res.status(200).json({ product });
+  } catch (error) {
+    console.log(error);
   }
-  return res.status(200).json(singleproduct);
 };
 
 export default connectDb(handler);
- */
