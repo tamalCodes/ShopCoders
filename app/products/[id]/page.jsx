@@ -10,8 +10,8 @@ async function fetchproductdetails(id) {
     );
 
     if (res.status !== 200) {
-        alert("something went wrong");
-        return;
+        console.log("something went wrong");
+        return null;
     }
 
     return res.json();
@@ -29,7 +29,7 @@ const Singleproduct = async ({ params: { id } }) => {
 
     return (
         <>
-            <div className={styles.singleproduct_main}>
+            {product.product && <div className={styles.singleproduct_main}>
                 <div className={styles.productbox}>
                     <Image src={product.product.img} width={300} height={300} alt="detailed picture of the tshirt" />
 
@@ -45,7 +45,7 @@ const Singleproduct = async ({ params: { id } }) => {
                         <Buttondiv />
                     </div>
                 </div>
-            </div>
+            </div>}
 
         </>
     )
