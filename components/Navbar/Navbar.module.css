@@ -1,23 +1,8 @@
-.mainnav {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    align-items: center;
-
-
-}
-
 .navbarparent {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-}
-
-.navbar {
-    background-color: #E8C287;
-    padding: 0 80px;
 }
 
 .brand {
@@ -34,9 +19,9 @@
     color: black;
 }
 
-.mainnav ul {
-    display: flex;
-    justify-content: flex-end;
+
+.mainnav {
+    padding: 10px 80px !important;
 }
 
 .navbarul {
@@ -48,6 +33,26 @@
 
     font-family: "Poppins", sans-serif;
     color: black;
+}
+
+.navbar_cartdiv {
+    position: relative;
+}
+
+.navbar_cartdiv span {
+    position: absolute;
+    font-family: "Poppins", sans-serif;
+    background-color: rgb(211, 48, 48);
+    font-size: 15px;
+
+    padding: 0px 6px;
+    border-radius: 50%;
+    right: -18px;
+    bottom: 20px;
+}
+
+.navbarul img {
+    margin-left: 20px;
 }
 
 .navlinks {

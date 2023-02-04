@@ -8,8 +8,11 @@ import { showSuccessToast } from '@/middleware/toastMessage';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getStripe from '../../../services/GetStripe';
+import { useStore } from '@/global/store';
 
-const Buttondiv = () => {
+const Buttondiv = ({ product }) => {
+    const { cartArray } = useStore();
+
 
     //* STRIPE PAYMENT
 
@@ -70,10 +73,12 @@ const Buttondiv = () => {
                 limit={1}
             />
             <div className={styles.product_btndiv}>
-                <button className={`${styles.buybtn} btn`} >Buy now</button>
+                <button className={`${styles.buybtn} btn`} onClick={() => { stripeCheckout() }} >Buy now</button>
 
-
-                <Image src={cart} width={32} height={32} alt=" picture of the products" onClick={() => { stripeCheckout() }} />
+                <Image src={cart} width={32} height={32} alt=" picture of the products" onClick={() => {
+                    useStore.setState({ cartArray: [...cartArray, product.product] })
+                    showSuccessToast("Added to cart")
+                }} />
 
 
             </div>

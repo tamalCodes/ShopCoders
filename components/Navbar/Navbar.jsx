@@ -4,17 +4,21 @@ import React from 'react'
 import styles from "./Navbar.module.css"
 import Link from 'next/link'
 import { usePathname } from "next/navigation"
+import cart from "../../public/assets/Products/misc/cart.svg"
+import Image from 'next/image'
+import { useStore } from '@/global/store'
 
 
 const Navbar = () => {
 
     const router = usePathname();
+    const { cartArray } = useStore();
 
 
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-none">
+            <nav className={`navbar navbar-expand-lg bg-none ${styles.mainnav}`}>
                 <div className="container-fluid">
                     <Link href="/" passHref className={styles.brand}>
 
@@ -39,6 +43,11 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link href="/products/shophoodies" passHref className={`nav-link ${router === "/products/hoodies" && "active"}`} >Hoodies</Link>
                             </li>
+
+                            <div className={styles.navbar_cartdiv}>
+                                <Image src={cart} width={30} height={30} alt=" picture of the products" />
+                                <span>{cartArray.length}</span>
+                            </div>
 
                             {/* 
                             <li className={`nav-item ${styles.navlinks}`}>

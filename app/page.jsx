@@ -3,11 +3,14 @@ import styles from "../styles/Home.module.css";
 import Image from "next/legacy/image";
 import shoppingbtn from "../public/assets/Landing/ShopNowButton.png";
 import ProductsBanner from "./ProductsBanner";
+import StoreInitializer from "@/global/StoreInitializer";
 
 const Home = () => {
 
   return (
     <>
+
+      <StoreInitializer cartArray={[]} />
       <div className={styles.herobanner} >
 
         <div className={styles.hb_sub}>

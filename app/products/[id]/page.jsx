@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react'
 import Buttondiv from './Buttondiv';
 import styles from '../../../styles/SingleProduct.module.css'
+import { useStore } from '@/global/store';
 
 async function fetchproductdetails(id) {
     const res = await fetch(
@@ -19,8 +20,8 @@ async function fetchproductdetails(id) {
 
 
 const Singleproduct = async ({ params: { id } }) => {
-
     const product = await fetchproductdetails(id);
+
 
 
 
@@ -39,7 +40,8 @@ const Singleproduct = async ({ params: { id } }) => {
 
                         <p>Available qty : {product.product.qty} </p>
 
-                        <Buttondiv />
+                        <Buttondiv product={product} />
+
                     </div>
                 </div>
             </div>}
