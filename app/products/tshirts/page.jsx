@@ -1,10 +1,8 @@
 import React from 'react'
-import styles from './tshirts.module.css'
-import GH_Shirt4 from "../../../public/assets/Products/Shirt/GH_shirt5.webp"
+import styles from '../../../styles/tshirts.module.css'
 import cart from "../../../public/assets/Products/misc/cart.svg"
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 async function fetchallShirts() {
     const res = await fetch(

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React from 'react'
 import cart from "../../../public/assets/Products/misc/cart.svg"
-import styles from "./SingleProduct.module.css";
+import styles from '../../../styles/SingleProduct.module.css'
 import { showSuccessToast } from '@/middleware/toastMessage';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import React from 'react'
 import Buttondiv from './Buttondiv';
-import styles from "./SingleProduct.module.css";
-
+import styles from '../../../styles/SingleProduct.module.css'
 
 async function fetchproductdetails(id) {
     const res = await fetch(
@@ -13,23 +12,21 @@ async function fetchproductdetails(id) {
         console.log("something went wrong");
         return null;
     }
-
-    return res.json();
+    const product = await res.json();
+    return product;
 }
 
 
 
 const Singleproduct = async ({ params: { id } }) => {
 
-    const productdetails = fetchproductdetails(id);
-    const [product] = await Promise.all([productdetails]);
+    const product = await fetchproductdetails(id);
 
-    console.log(product.product);
 
 
     return (
         <>
-            {product.product && <div className={styles.singleproduct_main}>
+            {product && <div className={styles.singleproduct_main}>
                 <div className={styles.productbox}>
                     <Image src={product.product.img} width={300} height={300} alt="detailed picture of the tshirt" />
 
