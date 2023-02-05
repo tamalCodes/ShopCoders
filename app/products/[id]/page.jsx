@@ -24,7 +24,6 @@ const Singleproduct = async ({ params: { id } }) => {
 
 
 
-
     return (
         <>
             {product && <div className={styles.singleproduct_main}>
@@ -41,6 +40,8 @@ const Singleproduct = async ({ params: { id } }) => {
                         <p>Available qty : {product.product.qty} </p>
 
                         <Buttondiv product={product} />
+
+
 
                     </div>
                 </div>

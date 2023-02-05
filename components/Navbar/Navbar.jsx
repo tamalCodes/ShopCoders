@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./Navbar.module.css"
 import Link from 'next/link'
 import { usePathname } from "next/navigation"
@@ -14,11 +14,22 @@ const Navbar = () => {
     const router = usePathname();
     const { cartArray } = useStore();
 
+    const fetchUserCart = async () => {
+        const cartdetails = await fetch("http://localhost:3000/api/user/viewuserdetails?email=gyansujan69@gmail.com").then(res => res.json());
+        useStore.setState({ cartArray: cartdetails.user.cartproducts })
+    }
+
+    useEffect(() => {
+        fetchUserCart();
+    }, [window.location.pathname === "/"]);
+
 
 
     return (
         <>
-            <nav className={`navbar navbar-expand-lg bg-none ${styles.mainnav}`}>
+
+
+            <nav className={`navbar navbar-expand-lg bg-none sticky-top ${styles.mainnav}`}>
                 <div className="container-fluid">
                     <Link href="/" passHref className={styles.brand}>
 
@@ -44,22 +55,14 @@ const Navbar = () => {
                                 <Link href="/products/shophoodies" passHref className={`nav-link ${router === "/products/hoodies" && "active"}`} >Hoodies</Link>
                             </li>
 
-                            <div className={styles.navbar_cartdiv}>
-                                <Image src={cart} width={30} height={30} alt=" picture of the products" />
-                                <span>{cartArray.length}</span>
-                            </div>
+                            <Link href="/cart" passHref>
+                                <div className={styles.navbar_cartdiv}>
+                                    <Image src={cart} width={30} height={30} alt=" picture of the products" />
+                                    <span>{cartArray.length}</span>
+                                </div>
 
-                            {/* 
-                            <li className={`nav-item ${styles.navlinks}`}>
+                            </Link>
 
-                                {user ? (
-                                    <Image src={user.picture} alt="user" height={30} width={30} className={styles.userimage} onClick={() => { setState({ ...state, right: true }); }} />
-                                ) : (
-                                    <AiOutlineShoppingCart fontSize={"1.5rem"} onClick={() => { setState({ ...state, right: true }); }} />
-                                )}
-
-
-                            </li> */}
                         </ul>
                     </div>
                 </div>

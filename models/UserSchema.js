@@ -1,9 +1,12 @@
 // product schema
 const mongoose = require("mongoose");
-
 const UserSchema = new mongoose.Schema(
   {
     email: {
+      type: String,
+      required: true,
+    },
+    username: {
       type: String,
       required: true,
     },
@@ -23,7 +26,7 @@ const UserSchema = new mongoose.Schema(
         },
 
         price: {
-          type: Number,
+          type: String,
         },
         category: {
           type: String,
@@ -95,5 +98,6 @@ const UserSchema = new mongoose.Schema(
   { timetamps: true }
 );
 
-// module.exports = mongoose.models.Users || mongoose.model("Users", UserSchema);
-export default mongoose.models.Users || mongoose.model("Users", UserSchema);
+const Users = mongoose.models.user || mongoose.model("user", UserSchema);
+
+export default Users;

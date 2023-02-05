@@ -22,6 +22,11 @@
 
 .mainnav {
     padding: 10px 80px !important;
+    /*  background-color: #e8c287 !important; */
+    background: rgba(232, 194, 135, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
 }
 
 .navbarul {
@@ -37,6 +42,7 @@
 
 .navbar_cartdiv {
     position: relative;
+    cursor: pointer;
 }
 
 .navbar_cartdiv span {
@@ -44,7 +50,7 @@
     font-family: "Poppins", sans-serif;
     background-color: rgb(211, 48, 48);
     font-size: 15px;
-
+    color: white;
     padding: 0px 6px;
     border-radius: 50%;
     right: -18px;
@@ -83,4 +89,12 @@
 
 .userimage {
     border-radius: 50% !important;
+}
+
+@media screen and (max-width: 769px) {
+
+    .mainnav {
+        padding: 10px 20px !important;
+    }
+
 }

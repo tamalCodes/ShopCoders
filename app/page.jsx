@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import styles from "../styles/Home.module.css";
 import Image from "next/legacy/image";
@@ -6,6 +8,13 @@ import ProductsBanner from "./ProductsBanner";
 import StoreInitializer from "@/global/StoreInitializer";
 
 const Home = () => {
+  /* 
+    const [state, setstate] = useState(initialState);
+  
+    const fetchUserCart = async () => {
+      const cartdetails = await fetch("http://localhost:3000/api/user/viewuserdetails?email=gyansujan69@gmail.com").then(res => res.json());
+      useStore.setState({ cartArray: cartdetails.user.cartproducts })
+    } */
 
   return (
     <>

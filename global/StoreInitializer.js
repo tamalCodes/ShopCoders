@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-
 import { useStore } from "./store";
 
 function StoreInitializer({ cartArray }) {

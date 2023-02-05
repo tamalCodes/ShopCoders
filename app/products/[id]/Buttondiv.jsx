@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React from 'react'
 import cart from "../../../public/assets/Products/misc/cart.svg"
 import styles from '../../../styles/SingleProduct.module.css'
-import { showSuccessToast } from '@/middleware/toastMessage';
+import { showErrorToast, showSuccessToast } from '@/middleware/toastMessage';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getStripe from '../../../services/GetStripe';
@@ -12,7 +12,6 @@ import { useStore } from '@/global/store';
 
 const Buttondiv = ({ product }) => {
     const { cartArray } = useStore();
-
 
     //* STRIPE PAYMENT
 
@@ -54,6 +53,33 @@ const Buttondiv = ({ product }) => {
 
     }
 
+    const handleCart = async () => {
+        const cart = await fetch("http://localhost:3000/api/user/addtocart?email=gyansujan69@gmail.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(product.product)
+
+        });
+
+        if (cart.status !== 200) {
+            showErrorToast("Something went wrong");
+        } else {
+            useStore.setState({ cartArray: [...cartArray, product.product] })
+            showSuccessToast("Added to cart");
+        }
+
+        /*      const data = await cart.json();
+             console.log(data);
+             const { error } = data;
+             if (error) {
+                 return;
+             } */
+
+
+    }
+
 
     return (
         <>
@@ -76,8 +102,7 @@ const Buttondiv = ({ product }) => {
                 <button className={`${styles.buybtn} btn`} onClick={() => { stripeCheckout() }} >Buy now</button>
 
                 <Image src={cart} width={32} height={32} alt=" picture of the products" onClick={() => {
-                    useStore.setState({ cartArray: [...cartArray, product.product] })
-                    showSuccessToast("Added to cart")
+                    handleCart();
                 }} />
 
 
