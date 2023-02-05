@@ -10,8 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 import getStripe from '../../../services/GetStripe';
 import { useStore } from '@/global/store';
 
+
 const Buttondiv = ({ product }) => {
     const { cartArray } = useStore();
+    const pathname = usePathname();
 
     //* STRIPE PAYMENT
 
@@ -52,9 +54,8 @@ const Buttondiv = ({ product }) => {
         });
 
     }
-
     const handleCart = async () => {
-        const cart = await fetch("http://localhost:3000/api/user/addtocart?email=gyansujan69@gmail.com", {
+        const cart = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/addtocart?email=gyansujan69@gmail.com`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -69,15 +70,6 @@ const Buttondiv = ({ product }) => {
             useStore.setState({ cartArray: [...cartArray, product.product] })
             showSuccessToast("Added to cart");
         }
-
-        /*      const data = await cart.json();
-             console.log(data);
-             const { error } = data;
-             if (error) {
-                 return;
-             } */
-
-
     }
 
 

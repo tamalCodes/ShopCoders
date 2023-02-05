@@ -15,13 +15,16 @@ const Navbar = () => {
     const { cartArray } = useStore();
 
     const fetchUserCart = async () => {
-        const cartdetails = await fetch("http://localhost:3000/api/user/viewuserdetails?email=gyansujan69@gmail.com").then(res => res.json());
+        console.log("fetching user cart");
+        const cartdetails = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=gyansujan69@gmail.com`).then(res => res.json());
+        console.log(cartdetails);
         useStore.setState({ cartArray: cartdetails.user.cartproducts })
     }
 
     useEffect(() => {
         fetchUserCart();
-    }, [window.location.pathname === "/"]);
+        console.log(router);
+    }, [router === "/"]);
 
 
 

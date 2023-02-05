@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 async function fetchallShirts() {
     const res = await fetch(
-        `${process.env.SERVER_URL}/api/products/viewallproducts?category=tshirts`
+        `${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/viewallproducts?category=tshirts`
     );
     return res.json();
 }

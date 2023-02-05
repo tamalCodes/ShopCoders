@@ -6,7 +6,7 @@ import { useStore } from '@/global/store';
 
 async function fetchproductdetails(id) {
     const res = await fetch(
-        `${process.env.SERVER_URL}/api/products/viewproductbyid?id=${id}`
+        `${process.env.NEXT_PUBLIC_SHOP_URL}/api/products/viewproductbyid?id=${id}`
     );
 
     if (res.status !== 200) {
