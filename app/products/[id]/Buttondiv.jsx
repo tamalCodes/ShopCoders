@@ -13,7 +13,6 @@ import { useStore } from '@/global/store';
 
 const Buttondiv = ({ product }) => {
     const { cartArray } = useStore();
-    const pathname = usePathname();
 
     //* STRIPE PAYMENT
 
