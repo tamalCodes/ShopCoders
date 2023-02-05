@@ -4,4 +4,119 @@
 
 .cart_parent h1 {
     font-family: "Montserrat", sans-serif;
+    margin-top: 30px;
+}
+
+.cart_cardparent {
+    display: flex;
+    /* flex-direction: column;
+     */
+    align-items: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    gap: 2rem;
+    /*  justify-content: center; */
+    flex-grow: 1;
+    flex-basis: auto;
+
+}
+
+
+.cart_cartcard {
+    background-color: whitesmoke;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    padding: 10px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 550px;
+    min-width: 550px;
+    /* min-width: 600px; */
+
+}
+
+.cart_cartcard img {
+    width: 230px;
+    height: 280px;
+    background-color: #C5C5C5;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.cart_cardtextdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart_cardtextdiv>div:nth-child(1)>p:nth-child(1) {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+
+}
+
+.cart_cardtextdiv>div:nth-child(1)>p:nth-child(2) {
+    font-size: 25px;
+    font-family: "Poppins", sans-serif;
+    color: #1c1e20;
+
+}
+
+.cart_cardprice span {
+    font-size: 25px;
+    font-weight: 600;
+
+    font-family: "Poppins", sans-serif;
+}
+
+.cart_cardhr {
+    border: 1px solid #1c1e20;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cart_cardprice {
+    font-size: 25px;
+    color: #007c73;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+}
+
+.pb_cardmain {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .cart_mainparent {
+        padding: 20px 20px;
+    }
+
+    .cart_cartcard {
+        max-width: 90vw !important;
+        min-width: 300px
+    }
+}
+
+
+@media screen and (max-width:650px) {
+    .cart_cardparent {
+        justify-content: center;
+    }
+
+    .cart_cartcard {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        /* padding-right: 10px; */
+        text-align: center;
+    }
+
+    .cart_cartcard img {
+        width: 280px;
+    }
 }
