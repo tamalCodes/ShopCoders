@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useStore } from "./store";
 
 function StoreInitializer({ cartArray }) {

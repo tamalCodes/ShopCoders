@@ -11,14 +11,14 @@ const CartHeader = () => {
     const router = useRouter();
     useEffect(() => {
 
-        if (Cookies.get('name')) {
-            console.log("i am here");
+        if (Cookies.get('user_email')) {
+            console.log(Cookies.get('user_email'));
         } else {
             showErrorToast("Please login to view your cart");
-
+            router.push('/');
 
         }
-    }, [Cookies.get('name')]);
+    }, [Cookies.get('user_email')]);
 
     return (
 
@@ -37,7 +37,7 @@ const CartHeader = () => {
                 limit={1}
             />
 
-            <h1>Here's your cart</h1>
+            <h1>Here's your cart </h1>
         </>
 
     )

@@ -1,35 +1,46 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./Navbar.module.css"
 import Link from 'next/link'
 import { usePathname } from "next/navigation"
 import cart from "../../public/assets/Products/misc/cart.svg"
 import Image from 'next/image'
 import { useStore } from '@/global/store'
-
+import Authcard from '../auth/Auth'
+import Cookies from 'js-cookie'
 
 const Navbar = () => {
 
     const router = usePathname();
     const { cartArray } = useStore();
 
+    const [showauthmodal, setshowauthmodal] = useState(false);
+    const [isLoggedin, setisLoggedin] = useState(false);
+
     const fetchUserCart = async () => {
         console.log("fetching user cart");
-        const cartdetails = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=gyansujan69@gmail.com`).then(res => res.json());
+        const cartdetails = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${Cookies.get("user_email")}`).then(res => res.json());
         console.log(cartdetails);
         useStore.setState({ cartArray: cartdetails.user.cartproducts })
     }
 
     useEffect(() => {
-        fetchUserCart();
-        console.log(router);
-    }, [router === "/"]);
+        if (Cookies.get("user_email")) {
+            console.log(Cookies.get("user_email"));
+            setisLoggedin(true);
+            fetchUserCart();
+        } else {
+            setisLoggedin(false);
+        }
+    }, [router === "/", Cookies.get("user_email")]);
 
 
 
     return (
         <>
+
+            {showauthmodal && <Authcard setshowauthmodal={setshowauthmodal} showauthmodal={showauthmodal} />}
 
 
             <nav className={`navbar navbar-expand-lg bg-none sticky-top ${styles.mainnav}`}>
@@ -58,18 +69,24 @@ const Navbar = () => {
                                 <Link href="/products/shophoodies" passHref className={`nav-link ${router === "/products/hoodies" && "active"}`} >Hoodies</Link>
                             </li>
 
-                            <Link href="/cart" passHref>
+
+                            {!isLoggedin ? <button className={`btn ${styles.nav_loginbtn}`} onClick={() => {
+                                setshowauthmodal(!showauthmodal)
+                                document.body.style.overflow = "hidden"
+                                document.body.getElementsByClassName("navbar")[0].style.pointerEvents = "none"
+
+                            }}>Login</button> : <Link href="/cart" passHref>
                                 <div className={styles.navbar_cartdiv}>
                                     <Image src={cart} width={30} height={30} alt=" picture of the products" />
                                     <span>{cartArray.length}</span>
                                 </div>
 
-                            </Link>
+                            </Link>}
 
                         </ul>
                     </div>
-                </div>
-            </nav>
+                </div >
+            </nav >
         </>
     )
 }

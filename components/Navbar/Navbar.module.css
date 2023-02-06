@@ -91,6 +91,20 @@
     border-radius: 50% !important;
 }
 
+.nav_loginbtn {
+    background-color: #007c73 !important;
+    font-family: "Monteserrat", sans-serif !important;
+    font-weight: 600 !important;
+    color: white !important;
+}
+
+.nav_loginbtn:hover {
+    background-color: #007c73 !important;
+    font-family: "Monteserrat", sans-serif !important;
+    font-weight: 600;
+    color: white !important;
+}
+
 @media screen and (max-width: 769px) {
 
     .mainnav {

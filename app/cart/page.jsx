@@ -5,13 +5,19 @@ import React from 'react'
 import styles from "../../styles/Cart.module.css"
 import CartFooter from './CartFooter';
 import CartHeader from './CartHeader';
-
+import { cookies } from 'next/headers';
 
 const Cart = async () => {
 
-    const cartdetails = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=gyansujan69@gmail.com`).then(res => res.json());
+    const nextCookies = cookies();
+    const useremail = nextCookies.get("user_email")?.value;
+
+
+
+    const cartdetails = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${useremail}`).then(res => res.json());
 
     console.log(cartdetails);
+    console.log(useremail)
 
 
     return (
