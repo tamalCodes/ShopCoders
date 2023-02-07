@@ -13,7 +13,7 @@ const handler = async (req, res) => {
 
       await user.save();
       /*   console.log(user); */
-      res.revalidate("/cart");
+      /*   res.revalidate("/cart"); */
       return res.status(200).json(user);
     } else {
       // user does not exist
