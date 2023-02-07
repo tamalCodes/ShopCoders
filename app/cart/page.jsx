@@ -28,9 +28,7 @@ const Cart = async () => {
     const useremail = nextCookies.get("user_email")?.value;
 
     const cartdetails = await fetch(
-        `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${useremail}`,
-        { next: { revalidate: 10 } }
-    ).then((res) => res.json())
+        `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${useremail}`).then((res) => res.json())
 
     console.log(cartdetails);
 

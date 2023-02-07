@@ -10,10 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 import getStripe from '../../../services/GetStripe';
 import { useStore } from '@/global/store';
 import Cookies from 'js-cookie'
+import useSWR, { mutate } from "swr";
 
 
 const Buttondiv = ({ product }) => {
     const { cartArray } = useStore();
+    const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
     //* STRIPE PAYMENT
 
@@ -64,12 +66,14 @@ const Buttondiv = ({ product }) => {
 
         });
 
+        mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${Cookies.get("user_email")}`,);
+
         if (cart.status !== 200) {
             showErrorToast("Something went wrong");
         } else {
             useStore.setState({ cartArray: [...cartArray, product.product] })
             showSuccessToast("Added to cart");
-            /*  await cart.revalidate("/cart") */
+
         }
     }
 
