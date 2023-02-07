@@ -12,7 +12,9 @@ const handler = async (req, res) => {
       user.cartproducts.push(product);
 
       await user.save();
-      return res.status(200).json({ user });
+      /*   console.log(user); */
+      res.revalidate("/cart");
+      return res.status(200).json(user);
     } else {
       // user does not exist
       return res.status(404).json({ error: "User not found" });

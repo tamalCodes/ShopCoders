@@ -8,6 +8,7 @@ import CartHeader from './CartHeader';
 import { cookies } from 'next/headers';
 
 
+
 async function fetchUserCart() {
     const nextCookies = cookies();
     const useremail = nextCookies.get("user_email")?.value;
@@ -15,12 +16,24 @@ async function fetchUserCart() {
         `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${useremail}`,
         { cache: "no-store" }
     ).then((res) => res.json())
+
+    console.log(cartdetails);
+
     return cartdetails;
 }
 
 const Cart = async () => {
 
-    const cartdetails = await fetchUserCart();
+    const nextCookies = cookies();
+    const useremail = nextCookies.get("user_email")?.value;
+
+    const cartdetails = await fetch(
+        `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${useremail}`,
+        { cache: "no-store" }
+    ).then((res) => res.json())
+
+    console.log(cartdetails);
+
 
     return (
         <div className={styles.cart_mainparent}>

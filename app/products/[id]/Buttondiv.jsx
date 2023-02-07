@@ -69,17 +69,7 @@ const Buttondiv = ({ product }) => {
         } else {
             useStore.setState({ cartArray: [...cartArray, product.product] })
             showSuccessToast("Added to cart");
-            /* 
-                        await fetch(
-                            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${Cookies.get("user_email")}`
-                        ).then((res) => res.json()); */
-
-            await fetch(
-                `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${Cookies.get("user_email")}`,
-                { cache: "no-cache" }
-            ).then((res) => res.json())
-
-            /* await addtocart(); */
+            /*  await cart.revalidate("/cart") */
         }
     }
 
