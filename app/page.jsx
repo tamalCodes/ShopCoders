@@ -5,14 +5,27 @@ import styles from "../styles/Home.module.css";
 import Image from "next/legacy/image";
 import shoppingbtn from "../public/assets/Landing/ShopNowButton.png";
 import ProductsBanner from "./ProductsBanner";
-import StoreInitializer from "@/global/StoreInitializer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Home = () => {
 
   return (
     <>
-
-      <StoreInitializer cartArray={[]} />
+      <ToastContainer
+        position="top-right"
+        autoClose={800}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover={false}
+        closeButton={false}
+        draggable={false}
+        limit={1}
+      />
       <div className={styles.home_mainparent}>
 
         <div className={styles.herobanner} >

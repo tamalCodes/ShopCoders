@@ -6,19 +6,31 @@ import { showErrorToast } from '@/middleware/toastMessage';
 import { useRouter } from 'next/navigation';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "next-auth/react"
 
 const CartHeader = () => {
     const router = useRouter();
-    useEffect(() => {
+    /*  useEffect(() => {
+ 
+         if (Cookies.get('user_email')) {
+             console.log(Cookies.get('user_email'));
+         } else {
+             showErrorToast("Please login to view your cart");
+             router.push('/');
+ 
+         }
+     }, [Cookies.get('user_email')]); */
 
-        if (Cookies.get('user_email')) {
-            console.log(Cookies.get('user_email'));
-        } else {
+    const { status } = useSession({
+        required: true,
+        onUnauthenticated() {
             showErrorToast("Please login to view your cart");
-            router.push('/');
-
-        }
-    }, [Cookies.get('user_email')]);
+            setTimeout(() => {
+                router.push('/');
+            }
+                , 2000);
+        },
+    })
 
     return (
 

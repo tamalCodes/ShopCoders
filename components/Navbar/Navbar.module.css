@@ -22,7 +22,6 @@
 
 .mainnav {
     padding: 10px 80px !important;
-    /*  background-color: #e8c287 !important; */
     background: rgba(232, 194, 135, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -43,6 +42,7 @@
 .navbar_cartdiv {
     position: relative;
     cursor: pointer;
+    margin-right: 25px;
 }
 
 .navbar_cartdiv span {

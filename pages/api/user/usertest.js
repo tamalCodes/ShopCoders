@@ -7,22 +7,14 @@ const handler = async (req, res) => {
   try {
     const session = await getServerSession(req, res, authOptions);
 
+    console.log(session?.user);
+
     if (!session) {
       res.status(401).json({ message: "You must be logged in." });
       return;
     }
-    const user = await Users.findOne({ email: session.user.email });
 
-    if (user) {
-      const product = req.body;
-      console.log(product);
-      user.cartproducts.push(product);
-
-      await user.save();
-      return res.status(200).json(user);
-    } else {
-      return res.status(404).json({ error: "User not found" });
-    }
+    return res.status(200).json(session.user);
   } catch (error) {
     console.log(error);
   }

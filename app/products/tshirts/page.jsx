@@ -16,6 +16,8 @@ const Tshirts = async () => {
     const alltshirts = fetchallShirts();
     const [tshirts] = await Promise.all([alltshirts]);
 
+    /*  console.log(tshirts) */
+
 
     return (
         <>

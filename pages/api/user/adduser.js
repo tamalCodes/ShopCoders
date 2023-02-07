@@ -4,8 +4,6 @@ import Users from "../../../models/UserSchema";
 const handler = async (req, res) => {
   try {
     console.log(req.body);
-    /*   var username =
-      req.body.email.split("@")[0] + Math.floor(Math.random() * 1000); */
     const {
       name,
       email,

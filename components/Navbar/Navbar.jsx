@@ -6,35 +6,22 @@ import Link from 'next/link'
 import { usePathname } from "next/navigation"
 import cart from "../../public/assets/Products/misc/cart.svg"
 import Image from 'next/image'
-import { useStore } from '@/global/store'
 import Authcard from '../auth/Auth'
-import Cookies from 'js-cookie'
+import { useSession, signOut } from "next-auth/react"
+import useSWR from "swr";
+import { showErrorToast } from '@/middleware/toastMessage'
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Navbar = () => {
 
     const router = usePathname();
-    const { cartArray } = useStore();
-
+    const { data: session, status } = useSession()
     const [showauthmodal, setshowauthmodal] = useState(false);
-    const [isLoggedin, setisLoggedin] = useState(false);
 
-    const fetchUserCart = async () => {
-        console.log("fetching user cart");
-        const cartdetails = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${Cookies.get("user_email")}`).then(res => res.json());
-        console.log(cartdetails);
-        useStore.setState({ cartArray: cartdetails.user.cartproducts })
-    }
-
-    useEffect(() => {
-        if (Cookies.get("user_email")) {
-            console.log(Cookies.get("user_email"));
-            setisLoggedin(true);
-            fetchUserCart();
-        } else {
-            setisLoggedin(false);
-        }
-    }, [router === "/", Cookies.get("user_email")]);
-
+    const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${session?.user?.email}`, fetcher, {
+        revalidateOnFocus: false,
+    });
 
 
     return (
@@ -51,6 +38,7 @@ const Navbar = () => {
                         ShopCoders
 
                     </Link>
+
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -70,18 +58,30 @@ const Navbar = () => {
                             </li>
 
 
-                            {!isLoggedin ? <button className={`btn ${styles.nav_loginbtn}`} onClick={() => {
+                            {status !== "authenticated" ? <button className={`btn ${styles.nav_loginbtn}`} onClick={() => {
                                 setshowauthmodal(!showauthmodal)
                                 document.body.style.overflow = "hidden"
                                 document.body.getElementsByClassName("navbar")[0].style.pointerEvents = "none"
 
-                            }}>Login</button> : <Link href="/cart" passHref>
-                                <div className={styles.navbar_cartdiv}>
-                                    <Image src={cart} width={30} height={30} alt=" picture of the products" />
-                                    <span>{cartArray.length}</span>
-                                </div>
+                            }}>Login</button> : <>
 
-                            </Link>}
+                                <Link href="/cart" passHref>
+                                    <div className={styles.navbar_cartdiv}>
+                                        <Image src={cart} width={30} height={30} alt=" picture of the products" />
+                                        <span>{data?.user?.cartproducts.length}</span>
+                                    </div>
+
+
+                                </Link>
+
+                                <button className={`btn ${styles.nav_loginbtn}`} onClick={() => {
+                                    signOut()
+                                    showErrorToast("You have been logged out successfully")
+
+                                }}>Logout</button>
+
+
+                            </>}
 
                         </ul>
                     </div>
