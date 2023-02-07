@@ -3,11 +3,30 @@ import Users from "../../../models/UserSchema";
 
 const handler = async (req, res) => {
   try {
-    var username =
-      req.body.email.split("@")[0] + Math.floor(Math.random() * 1000);
+    console.log(req.body);
+    /*   var username =
+      req.body.email.split("@")[0] + Math.floor(Math.random() * 1000); */
+    const {
+      name,
+      email,
+      password,
+      username,
+      address,
+      state,
+      pincode,
+      city,
+      phone,
+    } = req.body;
     let newuser = new Users({
-      email: req.body.email,
+      name: name,
+      email: email,
+      password: password,
       username: username,
+      address: address,
+      state: state,
+      pincode: pincode,
+      city: city,
+      phone: phone,
     });
 
     await newuser.save();

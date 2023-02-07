@@ -7,18 +7,20 @@ import CartFooter from './CartFooter';
 import CartHeader from './CartHeader';
 import { cookies } from 'next/headers';
 
-const Cart = async () => {
 
+async function fetchUserCart() {
     const nextCookies = cookies();
     const useremail = nextCookies.get("user_email")?.value;
+    const cartdetails = await fetch(
+        `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${useremail}`,
+        { cache: "no-store" }
+    ).then((res) => res.json())
+    return cartdetails;
+}
 
+const Cart = async () => {
 
-
-    const cartdetails = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${useremail}`).then(res => res.json());
-
-    console.log(cartdetails);
-    console.log(useremail)
-
+    const cartdetails = await fetchUserCart();
 
     return (
         <div className={styles.cart_mainparent}>
@@ -58,10 +60,6 @@ const Cart = async () => {
                 <br />
 
                 <CartFooter />
-
-
-
-
 
             </div>
         </div>

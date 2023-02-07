@@ -9,6 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getStripe from '../../../services/GetStripe';
 import { useStore } from '@/global/store';
+import Cookies from 'js-cookie'
 
 
 const Buttondiv = ({ product }) => {
@@ -54,7 +55,7 @@ const Buttondiv = ({ product }) => {
 
     }
     const handleCart = async () => {
-        const cart = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/addtocart?email=gyansujan69@gmail.com`, {
+        const cart = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/addtocart?email=${Cookies.get("user_email")}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -68,6 +69,17 @@ const Buttondiv = ({ product }) => {
         } else {
             useStore.setState({ cartArray: [...cartArray, product.product] })
             showSuccessToast("Added to cart");
+            /* 
+                        await fetch(
+                            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${Cookies.get("user_email")}`
+                        ).then((res) => res.json()); */
+
+            await fetch(
+                `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${Cookies.get("user_email")}`,
+                { cache: "no-cache" }
+            ).then((res) => res.json())
+
+            /* await addtocart(); */
         }
     }
 
