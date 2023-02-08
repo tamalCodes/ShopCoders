@@ -63,7 +63,7 @@ const Navbar = () => {
                                 document.body.style.overflow = "hidden"
                                 document.body.getElementsByClassName("navbar")[0].style.pointerEvents = "none"
 
-                            }}>Login</button> : <>
+                            }}>Sign up now</button> : <>
 
                                 <Link href="/cart" passHref>
                                     <div className={styles.navbar_cartdiv}>

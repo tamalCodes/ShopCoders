@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema(
       required: true,
     },
     qty: {
-      type: String,
+      type: Number,
       required: true,
     },
     size: {
@@ -19,7 +19,7 @@ const ProductSchema = new mongoose.Schema(
     },
 
     price: {
-      type: String,
+      type: Number,
       required: true,
     },
     category: {

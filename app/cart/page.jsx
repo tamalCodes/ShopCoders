@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSession } from "next-auth/react"
+import getStripe from "../../services/GetStripe";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Cart = () => {
@@ -35,6 +36,32 @@ const Cart = () => {
 
     if (!data) return "I am loading...";
     if (error) return "there is an error";
+
+    const stripeCheckout = async () => {
+        const stripe = await getStripe();
+
+        const response = await fetch("/api/stripe", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data?.user?.cartproducts),
+        });
+
+        if (response.status === 500) {
+            return;
+        }
+
+        const stripeData = await response.json();
+        const { error } = stripeData;
+        if (error) {
+            return;
+        }
+
+        stripe.redirectToCheckout({
+            sessionId: stripeData.id,
+        });
+    };
 
     return (
         <>
@@ -77,7 +104,7 @@ const Cart = () => {
 
                                             <div>
                                                 <hr className={styles.cart_cardhr} />
-                                                <p className={styles.cart_cardprice}>${product.price}</p>
+                                                <p className={styles.cart_cardprice}>₹ {product.price}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -87,8 +114,29 @@ const Cart = () => {
                             </>)
                         })}
                     </div>
+                    <br />
+                    <br />
+
+                    <hr />
+
+                    <h1 style={{ fontSize: "40px" }}> Your cart total is : <span style={{ color: "#007c73", fontWeight: "600" }}>
+                        ₹ {
+
+                            data?.user && data?.user?.cartproducts.reduce((acc, curr) => {
+                                return acc + curr.price
+
+                            }, 0)
+
+                        }</span> </h1>
 
 
+                    <button className={`btn ${styles.cart_placeorderbtn}`} onClick={() => {
+                        if (status !== "authenticated") {
+                            showErrorToast("Please login to place order");
+                            return;
+                        }
+                        stripeCheckout();
+                    }}>Place order</button>
 
 
                 </div>

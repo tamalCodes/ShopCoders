@@ -40,7 +40,7 @@ const Tshirts = async () => {
                                 <div className={styles.pb_cardtextdiv}>
                                     <p>{product.name}</p>
                                     <p>⭐⭐⭐⭐⭐</p>
-                                    <p>$ {product.price}</p>
+                                    <p>₹ {product.price}</p>
                                     {/*   <p>{product.desc}</p> */}
                                 </div>
                                 <div className={styles.card_cart}>

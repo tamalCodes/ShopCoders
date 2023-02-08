@@ -121,6 +121,10 @@
 
 }
 
+.auth_textarea {
+    min-height: 300px;
+}
+
 .auth_formdiv {
     display: flex;
     justify-content: space-between;

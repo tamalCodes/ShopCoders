@@ -14,6 +14,7 @@ import { useSession } from "next-auth/react"
 const Buttondiv = ({ product }) => {
     const { mutate } = useSWRConfig()
     const { data: session, status } = useSession()
+    console.log(product.product)
 
     //* STRIPE PAYMENT
 
@@ -26,18 +27,7 @@ const Buttondiv = ({ product }) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify([
-                {
-                    _id: "63dba5939d4e00c850a62b55",
-                    name: "Developer Tshirt",
-                    qty: "10",
-                    size: "XL",
-                    slug: "p5",
-                    price: "100",
-                    category: "tshirts",
-                    desc: "A shirt for the devs, but not by the devs.",
-                    img: "https://i.ibb.co/0FsVBt9/developer-removebg-preview.png",
-                    __v: 0,
-                },
+                product.product
             ]),
         });
 
@@ -95,6 +85,10 @@ const Buttondiv = ({ product }) => {
                 <button
                     className={`${styles.buybtn} btn`}
                     onClick={() => {
+                        if (status !== "authenticated") {
+                            showErrorToast("Please login to place order");
+                            return;
+                        }
                         stripeCheckout();
                     }}
                 >
@@ -107,6 +101,11 @@ const Buttondiv = ({ product }) => {
                     height={32}
                     alt=" picture of the products"
                     onClick={() => {
+
+                        if (status !== "authenticated") {
+                            showErrorToast("Please login to add to cart");
+                            return;
+                        }
                         handleCart();
                     }}
                 />

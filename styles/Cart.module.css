@@ -90,6 +90,24 @@
     text-decoration: none;
 }
 
+.cart_placeorderbtn {
+    background-color: #007c73 !important;
+    font-family: "Monteserrat", sans-serif !important;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    font-weight: 600 !important;
+    color: white !important;
+    margin-bottom: 50px;
+}
+
+.cart_placeorderbtn:hover {
+    background-color: #007c73 !important;
+    font-family: "Monteserrat", sans-serif !important;
+    font-weight: 600;
+    color: white !important;
+}
+
 @media screen and (max-width: 1000px) {
     .cart_mainparent {
         padding: 20px 20px;

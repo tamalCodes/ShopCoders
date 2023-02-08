@@ -4,20 +4,21 @@ import Image from "next/image";
 import React, { useState } from "react";
 import styles from "./Auth.module.css";
 import signupbanner from "../../public/assets/auth/signupbanner.svg";
-import Cookies from "js-cookie";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { showErrorToast, showSuccessToast } from "@/middleware/toastMessage";
 import { signIn } from "next-auth/react";
+import { AuthRegex } from "./authRegex";
 
 const Authcard = ({ showauthmodal, setshowauthmodal }) => {
     const [isLogin, setisLogin] = useState(false);
     const [creds, setcreds] = useState({
+        name: "",
         email: "",
         password: "",
         username: "",
         address: "",
-        state: "",
+        state: "Andhra Pradesh",
         pincode: "",
         city: "",
         phone: "",
@@ -28,33 +29,54 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
     };
 
     const handleSignup = async () => {
-        const newuser = await fetch(
-            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/adduser`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(creds),
-            }
-        );
 
-        if (newuser.status !== 200) {
-            showErrorToast("Something went wrong");
-        } else {
-            showSuccessToast("Signed up, please login");
-            setcreds({
-                name: "",
-                email: "",
-                password: "",
-                username: "",
-                address: "",
-                state: "",
-                pincode: "",
-                city: "",
-                phone: "",
-            });
-            setisLogin(true);
+        if (creds.name.length < 1 || creds.email.length < 1 || creds.password.length < 1 || creds.username.length < 1 || creds.address.length < 1 || creds.state.length < 1 || creds.pincode.length < 1 || creds.city.length < 1 || creds.phone.length < 1) {
+            console.log("Please fill all the fields");
+            showErrorToast("Please fill all the fields");
+            return;
+        }
+
+        if (!AuthRegex(creds)) {
+            return;
+        }
+
+        try {
+
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/adduser`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(creds),
+                }
+            );
+
+            if (res.status !== 200) {
+                showErrorToast("Something went wrong");
+
+            } else {
+                showSuccessToast("Signed you up, please login");
+                setisLogin(true);
+                setcreds({
+                    name: "",
+                    email: "",
+                    password: "",
+                    username: "",
+                    address: "",
+                    state: "Andhra Pradesh",
+                    pincode: "",
+                    city: "",
+                    phone: "",
+                })
+            }
+
+
+
+
+        } catch (error) {
+            showErrorToast(error);
         }
     };
 
@@ -68,6 +90,10 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                 email,
                 password,
             });
+
+            if (data.error) {
+                showErrorToast(data.error);
+            }
 
             console.log(data);
 
@@ -143,7 +169,7 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                     <div className={styles.auth_leftdiv}>
                         {isLogin ? (
                             <h1>
-                                Welcome to <br /> Shopcoders
+                                Login to <br /> Shopcoders
                             </h1>
                         ) : (
                             <h1>
@@ -182,9 +208,11 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                         </div>
                     </div>
 
-                    <h1 className={styles.auth_smallheader}>
+                    {!isLogin ? <h1 className={styles.auth_smallheader}>
                         Welcome to <br /> Shopcoders
-                    </h1>
+                    </h1> : <h1 className={styles.auth_smallheader}>
+                        Login to <br /> Shopcoders
+                    </h1>}
 
                     <div className={styles.auth_rightdiv} id="auth-rightdiv">
                         {!isLogin ? (
@@ -198,7 +226,7 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         autoFocus
                                         name="name"
                                         value={creds.name}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="name">Full name</label>
                                 </div>
@@ -210,7 +238,7 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         placeholder="name@example.com"
                                         name="email"
                                         value={creds.email}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="email">Email address</label>
                                 </div>
@@ -222,7 +250,7 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         placeholder="name@example.com"
                                         name="username"
                                         value={creds.username}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="floatingInput">
                                         Username (no special characters){" "}
@@ -236,10 +264,10 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         placeholder="name@example.com"
                                         name="password"
                                         value={creds.password}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="floatingInput">
-                                        Password (no special characters){" "}
+                                        Password
                                     </label>
                                 </div>
 
@@ -248,36 +276,40 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         class="form-select"
                                         id="floatingSelect"
                                         aria-label="Floating label select example"
+                                        onChange={(event) => {
+                                            setcreds({ ...creds, state: event.target.value });
+
+                                        }}
                                     >
                                         <option selected>Andhra Pradesh</option>
-                                        <option value="1">Arunachal Pradesh</option>
-                                        <option value="2">Assam</option>
-                                        <option value="3">Bihar</option>
-                                        <option value="4">Chhattisgarh</option>
-                                        <option value="5">Goa</option>
-                                        <option value="6">Gujarat</option>
-                                        <option value="7">Haryana</option>
-                                        <option value="8">Himachal Pradesh</option>
-                                        <option value="9">Jammu and Kashmir</option>
-                                        <option value="10">Jharkhand</option>
-                                        <option value="11">Karnataka</option>
-                                        <option value="12">Kerala</option>
-                                        <option value="13">Madhya Pradesh</option>
-                                        <option value="14">Maharashtra</option>
-                                        <option value="15">Manipur</option>
-                                        <option value="16">Meghalaya</option>
-                                        <option value="17">Mizoram</option>
-                                        <option value="18">Nagaland</option>
-                                        <option value="19">Odisha</option>
-                                        <option value="20">Punjab</option>
-                                        <option value="21">Rajasthan</option>
-                                        <option value="22">Sikkim</option>
-                                        <option value="23">Tamil Nadu</option>
-                                        <option value="24">Telangana</option>
-                                        <option value="25">Tripura</option>
-                                        <option value="26">Uttar Pradesh</option>
-                                        <option value="27">Uttarakhand</option>
-                                        <option value="28">West Bengal</option>
+                                        <option>Arunachal Pradesh</option>
+                                        <option>Assam</option>
+                                        <option>Bihar</option>
+                                        <option>Chhattisgarh</option>
+                                        <option>Goa</option>
+                                        <option>Gujarat</option>
+                                        <option>Haryana</option>
+                                        <option>Himachal Pradesh</option>
+                                        <option>Jammu and Kashmir</option>
+                                        <option>Jharkhand</option>
+                                        <option>Karnataka</option>
+                                        <option>Kerala</option>
+                                        <option>Madhya Pradesh</option>
+                                        <option>Maharashtra</option>
+                                        <option>Manipur</option>
+                                        <option>Meghalaya</option>
+                                        <option>Mizoram</option>
+                                        <option>Nagaland</option>
+                                        <option>Odisha</option>
+                                        <option>Punjab</option>
+                                        <option>Rajasthan</option>
+                                        <option>Sikkim</option>
+                                        <option>Tamil Nadu</option>
+                                        <option>Telangana</option>
+                                        <option>Tripura</option>
+                                        <option>Uttar Pradesh</option>
+                                        <option>Uttarakhand</option>
+                                        <option>West Bengal</option>
                                     </select>
                                     <label for="floatingSelect">Choose your state</label>
                                 </div>
@@ -290,7 +322,7 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         placeholder="name@example.com"
                                         name="pincode"
                                         value={creds.pincode}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="floatingInput">Pincode/Zipcode</label>
                                 </div>
@@ -302,19 +334,20 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         placeholder="name@example.com"
                                         name="city"
                                         value={creds.city}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="floatingInput">City (Full city name)</label>
                                 </div>
-                                <div class="form-floating mb-3">
+                                <div class="form-floating mb-3" style={{ minHeight: "180px" }}>
                                     <textarea
                                         type="text"
-                                        class="form-control"
+                                        className={`form-control ${styles.auth_textarea}}`}
                                         id="floatingInput"
                                         placeholder="name@example.com"
                                         name="address"
                                         value={creds.address}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
+                                        style={{ minHeight: "180px" }}
                                     />
                                     <label for="floatingInput">Your detailed adress</label>
                                 </div>
@@ -326,7 +359,7 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         placeholder="name@example.com"
                                         name="phone"
                                         value={creds.phone}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="floatingInput">Phone number</label>
                                 </div>
@@ -350,7 +383,7 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         placeholder="name@example.com"
                                         name="email"
                                         value={creds.email}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="email">Email address</label>
                                 </div>
@@ -363,7 +396,7 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                                         placeholder="name@example.com"
                                         name="password"
                                         value={creds.password}
-                                        onChange={handleChange}
+                                        onChange={handleChange} required
                                     />
                                     <label for="password">
                                         Password (no special characters){" "}

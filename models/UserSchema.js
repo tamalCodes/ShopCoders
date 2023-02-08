@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema(
           type: String,
         },
         qty: {
-          type: String,
+          type: Number,
         },
         size: {
           type: String,
@@ -34,7 +34,7 @@ const UserSchema = new mongoose.Schema(
         },
 
         price: {
-          type: String,
+          type: Number,
         },
         category: {
           type: String,

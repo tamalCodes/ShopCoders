@@ -35,7 +35,7 @@ const Singleproduct = async ({ params: { id } }) => {
 
                         <p>{product.product.desc}</p>
 
-                        <p>${product.product.price}</p>
+                        <p> ₹ {product.product.price}</p>
 
                         <p>Available qty : {product.product.qty} </p>
 
