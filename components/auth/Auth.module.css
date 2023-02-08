@@ -19,7 +19,7 @@
     border-radius: 12px;
     font-family: "Montserrat", sans-serif;
     width: auto;
-    height: 520px;
+    height: 600px;
     display: flex;
     gap: 2rem;
     position: relative;
@@ -50,7 +50,7 @@
 .auth_leftdiv h1 {
     font-size: 2.5rem;
     color: white;
-
+    text-align: center;
     padding: 0;
     font-weight: 200;
     /*  font-size: 32px; */
@@ -70,10 +70,26 @@
     margin-top: 8px;
 }
 
+.auth_leftdiv p:first-of-type {
+    text-align: center;
+}
+
+.auth_logodiv {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.auth_logodiv img {
+    width: 30px !important;
+    height: 30px !important;
+    cursor: pointer;
+}
+
 .auth_imgdiv {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 50px;
     flex-direction: column;
     align-items: center;
     gap: 1rem;

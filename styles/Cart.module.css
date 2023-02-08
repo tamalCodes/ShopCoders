@@ -73,10 +73,23 @@
     font-family: "Poppins", sans-serif;
 }
 
+
 .cart_cardhr {
     border: 1px solid #1c1e20;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.cart_pricediv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart_pricediv img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .cart_cardprice {
@@ -106,6 +119,20 @@
     font-family: "Monteserrat", sans-serif !important;
     font-weight: 600;
     color: white !important;
+}
+
+.cart_emptydiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+
+.cart_emptydiv h1 {
+    font-family: "Montserrat", sans-serif;
+    margin-top: 30px;
+    /*  text-align: center; */
 }
 
 @media screen and (max-width: 1000px) {

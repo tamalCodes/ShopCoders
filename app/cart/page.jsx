@@ -5,18 +5,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from "../../styles/Cart.module.css"
 import useSWR from "swr";
-import { showErrorToast } from '@/middleware/toastMessage';
+import { showErrorToast, showSuccessToast } from '@/middleware/toastMessage';
 import { useRouter } from 'next/navigation';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSession } from "next-auth/react"
 import getStripe from "../../services/GetStripe";
+import deleteicon from "../../public/assets/cart/deleteicon.png"
+import { useSWRConfig } from 'swr'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Cart = () => {
 
     const router = useRouter();
     const { data: session } = useSession()
+    const { mutate } = useSWRConfig()
 
     const { status } = useSession({
         required: true,
@@ -34,9 +37,13 @@ const Cart = () => {
     });
 
 
-    if (!data) return "I am loading...";
+    if (!data) return (<div className={styles.cart_emptydiv}>
+
+        <h1> Your cart is loading </h1>
+    </div>)
     if (error) return "there is an error";
 
+    //* Stripe checkout
     const stripeCheckout = async () => {
         const stripe = await getStripe();
 
@@ -63,6 +70,31 @@ const Cart = () => {
         });
     };
 
+    //* Remove from cart
+    const removeFromCart = async (product) => {
+
+        const cart = await fetch(
+            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/removefromcart`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(product),
+            }
+        );
+
+        console.log(cart.status);
+
+        if (cart.status !== 200) {
+            showErrorToast("Something went wrong");
+        } else {
+            showSuccessToast("Removed from cart");
+            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${session?.user?.email}`)
+        }
+
+    }
+
     return (
         <>
 
@@ -84,14 +116,16 @@ const Cart = () => {
             <div className={styles.cart_mainparent}>
                 <div className={styles.cart_parent}>
 
-                    <h1>Here's your cart </h1>
+                    {data?.user?.cartproducts.length > 0 ? <>
+
+                        <h1>Here's your cart </h1>
 
 
-                    <div className={styles.cart_cardparent}>
-                        {data?.user && data?.user?.cartproducts.map((product, index) => {
-                            return (<>
+                        <div className={styles.cart_cardparent}>
+                            {data?.user?.cartproducts.map((product, index) => {
+                                return (<>
 
-                                <Link passHref href={`/products/${product._id}`} className={styles.pb_cardmain} key={index}>
+                                    {/* <Link passHref href={`/products/${product._id}`} className={styles.pb_cardmain} key={index}> */}
                                     <div className={styles.cart_cartcard}>
                                         <Image src={product.img} width={380} height={450} alt="cart product" />
 
@@ -104,39 +138,51 @@ const Cart = () => {
 
                                             <div>
                                                 <hr className={styles.cart_cardhr} />
-                                                <p className={styles.cart_cardprice}>₹ {product.price}</p>
+                                                <div className={styles.cart_pricediv}>
+                                                    <p className={styles.cart_cardprice}>₹ {product.price}</p>
+                                                    <Image src={deleteicon} style={{ backgroundColor: "transparent" }} onClick={() => {
+                                                        removeFromCart(product)
+                                                    }} />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </Link>
+                                    {/*   </Link> */}
 
 
-                            </>)
-                        })}
-                    </div>
-                    <br />
-                    <br />
+                                </>)
+                            })}
+                        </div>
+                        <br />
+                        <br />
 
-                    <hr />
+                        <hr />
 
-                    <h1 style={{ fontSize: "40px" }}> Your cart total is : <span style={{ color: "#007c73", fontWeight: "600" }}>
-                        ₹ {
+                        <h1 style={{ fontSize: "40px" }}> Your cart total is : <span style={{ color: "#007c73", fontWeight: "600" }}>
+                            ₹ {
 
-                            data?.user && data?.user?.cartproducts.reduce((acc, curr) => {
-                                return acc + curr.price
+                                data?.user && data?.user?.cartproducts.reduce((acc, curr) => {
+                                    return acc + curr.price
 
-                            }, 0)
+                                }, 0)
 
-                        }</span> </h1>
+                            }</span> </h1>
 
 
-                    <button className={`btn ${styles.cart_placeorderbtn}`} onClick={() => {
-                        if (status !== "authenticated") {
-                            showErrorToast("Please login to place order");
-                            return;
-                        }
-                        stripeCheckout();
-                    }}>Place order</button>
+                        <button className={`btn ${styles.cart_placeorderbtn}`} onClick={() => {
+                            if (status !== "authenticated") {
+                                showErrorToast("Please login to place order");
+                                return;
+                            }
+                            stripeCheckout();
+                        }}>Place order</button>
+                    </> : <div className={styles.cart_emptydiv}>
+
+                        <h1> Your cart is empty </h1>
+                        <Link href={"/products/tshirts"} passHref>
+                            <button className={`btn ${styles.cart_placeorderbtn}`}>Add items to cart</button>
+                        </Link>
+                    </div>}
 
 
                 </div>

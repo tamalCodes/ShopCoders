@@ -68,7 +68,7 @@ const Navbar = () => {
                                 <Link href="/cart" passHref>
                                     <div className={styles.navbar_cartdiv}>
                                         <Image src={cart} width={30} height={30} alt=" picture of the products" />
-                                        <span>{data?.user?.cartproducts.length}</span>
+                                        <span>{data?.user?.cartproducts.length || 0}</span>
                                     </div>
 
 

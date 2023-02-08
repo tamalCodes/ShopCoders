@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import cart from "../../../public/assets/Products/misc/cart.svg";
 import styles from "../../../styles/SingleProduct.module.css";
 import { showErrorToast, showSuccessToast } from "@/middleware/toastMessage";
@@ -14,7 +14,11 @@ import { useSession } from "next-auth/react"
 const Buttondiv = ({ product }) => {
     const { mutate } = useSWRConfig()
     const { data: session, status } = useSession()
-    console.log(product.product)
+    const [creds, setcreds] = useState({
+        name: "",
+        email: "",
+    });
+
 
     //* STRIPE PAYMENT
 
@@ -46,7 +50,44 @@ const Buttondiv = ({ product }) => {
         });
     };
 
+    //* ADDING TO CART
+
     const handleCart = async () => {
+
+        const user = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${session?.user?.email}`)
+        const userData = await user.json();
+
+        if (userData.user === null) {
+            creds.name = session.user.name;
+            creds.email = session.user.email;
+            try {
+                const res = await fetch(
+                    `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/adduser`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(creds),
+                    }
+                );
+
+                if (res.status !== 200) {
+                    showErrorToast("Something went wrong");
+
+                } else {
+                    setcreds({
+                        name: "",
+                        email: "",
+                    })
+                }
+            } catch (error) {
+                showErrorToast(error);
+            }
+        }
+
+
+
         const cart = await fetch(
             `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/addtocart`,
             {

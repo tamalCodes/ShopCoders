@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { showErrorToast, showSuccessToast } from "@/middleware/toastMessage";
 import { signIn } from "next-auth/react";
 import { AuthRegex } from "./authRegex";
+import gh_logo from "../../public/assets/auth/gh_logo.png";
+import gg_logo from "../../public/assets/auth/gg_logo.png";
 
 const Authcard = ({ showauthmodal, setshowauthmodal }) => {
     const [isLogin, setisLogin] = useState(false);
@@ -71,10 +73,6 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                     phone: "",
                 })
             }
-
-
-
-
         } catch (error) {
             showErrorToast(error);
         }
@@ -124,6 +122,32 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
         }
     };
 
+    //* Github Login 
+    async function handleGithubSignin() {
+
+        try {
+            const data = await signIn('github', { callbackUrl: `${process.env.NEXT_PUBLIC_SHOP_URL}` });
+            if (data.error) {
+                showErrorToast(data.error);
+            }
+        } catch (error) {
+            showErrorToast(error);
+        }
+    }
+
+    //* Google Login
+    async function handleGoogleSignin() {
+
+        try {
+            const data = await signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_SHOP_URL}` });
+            if (data.error) {
+                showErrorToast(data.error);
+            }
+        } catch (error) {
+            showErrorToast(error);
+        }
+    }
+
     return (
         <>
             <ToastContainer
@@ -168,16 +192,28 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
 
                     <div className={styles.auth_leftdiv}>
                         {isLogin ? (
-                            <h1>
-                                Login to <br /> Shopcoders
-                            </h1>
+                            <>
+                                <h1>Login to <br /> ShopCoders</h1>
+                                <p>Continue with</p>
+                            </>
                         ) : (
-                            <h1>
-                                Welcome to <br /> Shopcoders
-                            </h1>
+                            <>
+                                <h1>Welcome to <br /> Shopcoders </h1>
+                                <p>Signup with</p>
+                            </>
+
                         )}
 
-                        <p>A shop for coders, by coders.</p>
+
+                        <div className={styles.auth_logodiv}>
+                            <Image src={gh_logo} width={40} height={40} onClick={() => {
+                                handleGithubSignin();
+                            }} />
+                            <Image src={gg_logo} width={40} height={40} onClick={() => {
+                                handleGoogleSignin();
+                            }} />
+
+                        </div>
 
                         <div className={styles.auth_imgdiv}>
                             <Image src={signupbanner} />
