@@ -54,7 +54,7 @@ const Buttondiv = ({ product }) => {
 
     const handleCart = async () => {
 
-        const user = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${session?.user?.email}`)
+        const user = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`)
         const userData = await user.json();
 
         if (userData.user === null) {
@@ -103,7 +103,7 @@ const Buttondiv = ({ product }) => {
             showErrorToast("Something went wrong");
         } else {
             showSuccessToast("Added to cart");
-            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${session?.user?.email}`)
+            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`)
         }
     };
 

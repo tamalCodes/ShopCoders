@@ -19,7 +19,7 @@ const Navbar = () => {
     const { data: session, status } = useSession()
     const [showauthmodal, setshowauthmodal] = useState(false);
 
-    const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${session?.user?.email}`, fetcher, {
+    const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`, fetcher, {
         revalidateOnFocus: false,
     });
 
@@ -54,7 +54,7 @@ const Navbar = () => {
                                 <Link href="/products/shopstickers" passHref className={`nav-link ${router === "/products/stickers" && "active"}`} >Stickers</Link>
                             </li>
                             <li className="nav-item">
-                                <Link href="/products/shophoodies" passHref className={`nav-link ${router === "/products/hoodies" && "active"}`} >Hoodies</Link>
+                                <Link href="/products/hoodies" passHref className={`nav-link ${router === "/products/hoodies" && "active"}`} >Hoodies</Link>
                             </li>
 
 

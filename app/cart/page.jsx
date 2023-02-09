@@ -32,7 +32,7 @@ const Cart = () => {
         },
     })
 
-    const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${session?.user?.email}`, fetcher, {
+    const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`, fetcher, {
         revalidateOnFocus: false,
     });
 
@@ -90,7 +90,7 @@ const Cart = () => {
             showErrorToast("Something went wrong");
         } else {
             showSuccessToast("Removed from cart");
-            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails?email=${session?.user?.email}`)
+            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`)
         }
 
     }
