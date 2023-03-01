@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import cart from "../../../public/assets/Products/misc/cart.svg";
+import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
 import styles from "../../../styles/SingleProduct.module.css";
 import { showErrorToast, showSuccessToast } from "@/middleware/toastMessage";
 import { ToastContainer } from "react-toastify";
@@ -18,6 +19,7 @@ const Buttondiv = ({ product }) => {
         name: "",
         email: "",
     });
+    const [purchasedQty, setpurchasedQty] = useState(0);
 
 
     //* STRIPE PAYMENT
@@ -54,8 +56,10 @@ const Buttondiv = ({ product }) => {
 
     const handleCart = async () => {
 
+
         const user = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`)
         const userData = await user.json();
+        console.log(userData)
 
         if (userData.user === null) {
             creds.name = session.user.name;
@@ -86,6 +90,13 @@ const Buttondiv = ({ product }) => {
             }
         }
 
+        if (purchasedQty > 0) {
+            product.product.totalPrice = product.product.price * purchasedQty;
+            product.product.purchasedQty = purchasedQty;
+        } else {
+            product.product.totalPrice = product.product.price;
+            product.product.purchasedQty = 1;
+        }
 
 
         const cart = await fetch(
@@ -107,6 +118,22 @@ const Buttondiv = ({ product }) => {
         }
     };
 
+    const addQty = () => {
+        setpurchasedQty(purchasedQty + 1);
+        if (purchasedQty >= product.product.qty) {
+            setpurchasedQty(product.product.qty);
+        }
+    };
+
+    const removeQty = () => {
+        setpurchasedQty(purchasedQty - 1);
+        if (purchasedQty <= 0) {
+            setpurchasedQty(0);
+        }
+    };
+
+
+
     return (
         <>
             <ToastContainer
@@ -122,6 +149,17 @@ const Buttondiv = ({ product }) => {
                 draggable={false}
                 limit={1}
             />
+
+            <div className={styles.product_qtydiv}>
+
+                <AiOutlinePlusSquare className={styles.qtybtn} onClick={addQty} />
+
+                <p>{purchasedQty}</p>
+
+                <AiOutlineMinusSquare className={styles.qtybtn} onClick={removeQty} />
+
+
+            </div>
             <div className={styles.product_btndiv}>
                 <button
                     className={`${styles.buybtn} btn`}

@@ -15,17 +15,13 @@ const handler = async (req, res) => {
 
     if (user) {
       const product = req.body;
-
       const foundProduct = user.cartproducts.find(
         (cartproduct) => cartproduct.slug === product.slug
       );
 
       if (foundProduct) {
-        foundProduct.totalPrice = foundProduct.totalPrice + product.totalPrice;
-        foundProduct.purchasedQty =
-          foundProduct.purchasedQty + product.purchasedQty;
-      } else {
-        user.cartproducts.push(product);
+        foundProduct.totalPrice = foundProduct.totalPrice - product.price;
+        foundProduct.purchasedQty = foundProduct.purchasedQty - 1;
       }
 
       await user.save();

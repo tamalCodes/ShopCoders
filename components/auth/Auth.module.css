@@ -189,6 +189,10 @@
     font-weight: 600;
 }
 
+.auth_smallsocialdiv {
+    display: none;
+}
+
 .signup_btn {
     background-color: #007c73 !important;
     color: white !important;
@@ -247,6 +251,19 @@
         margin-bottom: 0px;
         display: block;
         margin-top: 10px;
+    }
+
+    .auth_smallsocialdiv {
+        display: block;
+    }
+
+    .auth_smallsocialdiv hr {
+        width: 50%;
+        margin: auto;
+        height: 2px;
+        border: #007c73 1px solid;
+        background-color: #007c73;
+        margin-top: 40px;
     }
 
     .auth_rightdiv {

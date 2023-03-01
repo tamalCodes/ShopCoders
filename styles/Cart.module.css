@@ -33,13 +33,13 @@
     gap: 2rem;
     max-width: 550px;
     min-width: 550px;
-    /* min-width: 600px; */
+    min-height: 364px;
 
 }
 
 .cart_cartcard img {
     width: 230px;
-    height: 280px;
+    height: auto;
     background-color: #C5C5C5;
     border-radius: 8px;
     object-fit: contain;
@@ -66,6 +66,26 @@
 
 }
 
+.cart_qtydiv {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.cart_qtydiv p {
+    font-size: 25px;
+    font-family: "Poppins", sans-serif;
+    color: #1c1e20;
+    margin-bottom: 0px;
+}
+
+.qtybtn {
+    background: transparent !important;
+    width: 30px !important;
+    height: 30px !important;
+    cursor: pointer;
+}
+
 .cart_cardprice span {
     font-size: 25px;
     font-weight: 600;
@@ -87,6 +107,7 @@
 
 .cart_pricediv img {
     width: 30px;
+    max-width: 30px !important;
     height: 30px;
     margin-right: 10px;
     cursor: pointer;
@@ -135,14 +156,18 @@
     /*  text-align: center; */
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 700px) {
     .cart_mainparent {
         padding: 20px 20px;
     }
 
     .cart_cartcard {
-        max-width: 90vw !important;
-        min-width: 300px
+        max-width: 80vw;
+        min-width: 80vw;
+    }
+
+    .cart_cardtextdiv {
+        max-width: 70vw;
     }
 }
 
@@ -163,5 +188,19 @@
 
     .cart_cartcard img {
         width: 280px;
+        max-width: 70vw;
+    }
+
+    .cart_placeorderbtndiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .carttotal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

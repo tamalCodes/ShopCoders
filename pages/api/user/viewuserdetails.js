@@ -32,7 +32,7 @@ const handler = async (req, res) => {
     if (user) {
       return res.status(200).json({ user });
     } else {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(200).json({ user, error: "User not found" });
     }
   } catch (error) {
     console.log(error);

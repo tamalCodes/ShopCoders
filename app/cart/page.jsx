@@ -13,12 +13,12 @@ import { useSession } from "next-auth/react"
 import getStripe from "../../services/GetStripe";
 import deleteicon from "../../public/assets/cart/deleteicon.png"
 import { useSWRConfig } from 'swr'
+import { AiOutlineMinusSquare } from "react-icons/ai";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Cart = () => {
 
     const router = useRouter();
-    const { data: session } = useSession()
     const { mutate } = useSWRConfig()
 
     const { status } = useSession({
@@ -95,6 +95,26 @@ const Cart = () => {
 
     }
 
+    //* Reduce cart
+    const reduceCart = async (product) => {
+        const cart = await fetch(
+            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/reducecartitems`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(product),
+            }
+        );
+
+        if (cart.status !== 200) {
+            showErrorToast("Something went wrong");
+        } else {
+            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`)
+        }
+    }
+
     return (
         <>
 
@@ -133,13 +153,20 @@ const Cart = () => {
                                             <div>
                                                 <p>{product.name}</p>
                                                 <p>{product.desc}</p>
+                                                <br />
+                                                <div className={styles.cart_qtydiv}>
+                                                    <p>Quantity : {product.purchasedQty}</p>
+                                                    {product.purchasedQty > 1 && <AiOutlineMinusSquare className={styles.qtybtn} onClick={() => {
+                                                        reduceCart(product)
+                                                    }} />}
+                                                </div>
                                             </div>
 
 
                                             <div>
                                                 <hr className={styles.cart_cardhr} />
                                                 <div className={styles.cart_pricediv}>
-                                                    <p className={styles.cart_cardprice}>₹ {product.price}</p>
+                                                    <p className={styles.cart_cardprice}>₹ {product.totalPrice}</p>
                                                     <Image src={deleteicon} style={{ backgroundColor: "transparent" }} onClick={() => {
                                                         removeFromCart(product)
                                                     }} />
@@ -158,24 +185,28 @@ const Cart = () => {
 
                         <hr />
 
-                        <h1 style={{ fontSize: "40px" }}> Your cart total is : <span style={{ color: "#007c73", fontWeight: "600" }}>
+                        <h1 style={{ fontSize: "40px" }} className={styles.carttotal}> Your cart total is : <span style={{ color: "#007c73", fontWeight: "600" }}>
                             ₹ {
 
                                 data?.user && data?.user?.cartproducts.reduce((acc, curr) => {
-                                    return acc + curr.price
+                                    return acc + curr.totalPrice
 
                                 }, 0)
 
                             }</span> </h1>
 
 
-                        <button className={`btn ${styles.cart_placeorderbtn}`} onClick={() => {
-                            if (status !== "authenticated") {
-                                showErrorToast("Please login to place order");
-                                return;
-                            }
-                            stripeCheckout();
-                        }}>Place order</button>
+
+
+                        <div className={styles.cart_placeorderbtndiv}>
+                            <button className={`btn ${styles.cart_placeorderbtn}`} onClick={() => {
+                                if (status !== "authenticated") {
+                                    showErrorToast("Please login to place order");
+                                    return;
+                                }
+                                stripeCheckout();
+                            }}>Place order</button>
+                        </div>
                     </> : <div className={styles.cart_emptydiv}>
 
                         <h1> Your cart is empty </h1>

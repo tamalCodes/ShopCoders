@@ -77,6 +77,20 @@
 
 }
 
+.product_qtydiv {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 20px;
+    user-select: none;
+}
+
+.qtybtn {
+    background: transparent !important;
+    width: 30px !important;
+    height: 30px !important;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 1000px) {
     .productbox {

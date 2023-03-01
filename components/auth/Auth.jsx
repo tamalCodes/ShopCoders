@@ -250,6 +250,21 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                         Login to <br /> Shopcoders
                     </h1>}
 
+                    <div className={styles.auth_smallsocialdiv}>
+                        <div className={styles.auth_logodiv}>
+                            <Image src={gh_logo} width={40} height={40} onClick={() => {
+                                handleGithubSignin();
+                            }} />
+                            <Image src={gg_logo} width={40} height={40} onClick={() => {
+                                handleGoogleSignin();
+                            }} />
+
+                        </div>
+
+                        <hr />
+
+                    </div>
+
                     <div className={styles.auth_rightdiv} id="auth-rightdiv">
                         {!isLogin ? (
                             <>

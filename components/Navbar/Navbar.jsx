@@ -23,6 +23,12 @@ const Navbar = () => {
         revalidateOnFocus: false,
     });
 
+    const closeNavbar = () => {
+        if (window.innerWidth < 1000) {
+            document.getElementById("navbar_hamburger").click()
+        }
+    }
+
 
     return (
         <>
@@ -32,14 +38,14 @@ const Navbar = () => {
 
             <nav className={`navbar navbar-expand-lg bg-none sticky-top ${styles.mainnav}`}>
                 <div className="container-fluid">
-                    <Link href="/" passHref className={styles.brand}>
+                    <Link href="/" passHref className={styles.brand} onClick={() => { closeNavbar() }}>
 
 
                         ShopCoders
 
                     </Link>
 
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <button id='navbar_hamburger' className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse " id="navbarNavDropdown">
@@ -47,13 +53,13 @@ const Navbar = () => {
                             <li className="nav-item active">
                                 <Link className={`nav-link ${router === "/" && "active"}`} aria-current="page" href="/" passHref>Home</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item" onClick={() => { closeNavbar() }}>
                                 <Link href="/products/tshirts" passHref className={`nav-link ${router === "/products/tshirts" && "active"}`} >Tshirts</Link>
                             </li>
-                            <li className="nav-item">
+                            {/*  <li className="nav-item" onClick={() => { closeNavbar() }}>
                                 <Link href="/products/shopstickers" passHref className={`nav-link ${router === "/products/stickers" && "active"}`} >Stickers</Link>
-                            </li>
-                            <li className="nav-item">
+                            </li> */}
+                            <li className="nav-item" onClick={() => { closeNavbar() }}>
                                 <Link href="/products/hoodies" passHref className={`nav-link ${router === "/products/hoodies" && "active"}`} >Hoodies</Link>
                             </li>
 

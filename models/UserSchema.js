@@ -24,6 +24,7 @@ const UserSchema = new mongoose.Schema(
         qty: {
           type: Number,
         },
+
         size: {
           type: String,
         },
@@ -44,6 +45,13 @@ const UserSchema = new mongoose.Schema(
 
         img: {
           type: String,
+        },
+        purchasedQty: {
+          type: Number,
+          default: 0,
+        },
+        totalPrice: {
+          type: Number,
         },
       },
     ],
