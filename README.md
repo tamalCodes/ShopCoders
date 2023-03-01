@@ -23,10 +23,10 @@ Shopcoders is an E-Commerce platform,  made by the coders for the coders.  We ma
 <div align="center">
 
 **[Setup guidelines](https://github.com/IAmTamal/ShopCoders) 🛠**</br>
-**[Contributing guidelines](https://github.com/IAmTamal/ShopCoders) 🔐**</br>
+**[Contributing guidelines](https://github.com/IAmTamal/ShopCoders/blob/main/CONTRIBUTING.md) 🔐**</br>
 
-**[License](https://github.com/IAmTamal/ShopCoders) ✅**</br>
-**[Code of Conduct](https://github.com/IAmTamal/ShopCoders) ✅**</br>
+**[License](https://github.com/IAmTamal/ShopCoders/blob/main/LICENSE) ✅**</br>
+**[Code of Conduct](https://github.com/IAmTamal/ShopCoders/blob/main/CODE_OF_CONDUCT.md) ✅**</br>
 
 
 </div>
