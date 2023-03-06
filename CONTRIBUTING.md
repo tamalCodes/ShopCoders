@@ -12,6 +12,7 @@
 
 - `Fork` the repo to your account.
 - `git clone` to clone the repo
+- Make  a `.env` file where you put your `SERVER_URL` to be `http://localhost:3000`
 
 - Making a branch is **optional**, else contribute to the main branch of your forked repo.
 
