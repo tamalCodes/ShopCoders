@@ -31,7 +31,7 @@ const Cart = () => {
     });
 
     const { data, error } = useSWR(
-        `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`,
+        `${process.env.NEXT_PUBLIC_URL}/api/user/viewuserdetails`,
         fetcher,
         {
             revalidateOnFocus: false,
@@ -76,7 +76,7 @@ const Cart = () => {
     //* Remove from cart
     const removeFromCart = async (product) => {
         const cart = await fetch(
-            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/removefromcart`,
+            `${process.env.NEXT_PUBLIC_URL}/api/user/removefromcart`,
             {
                 method: "POST",
                 headers: {
@@ -92,14 +92,14 @@ const Cart = () => {
             showErrorToast("Something went wrong");
         } else {
             showSuccessToast("Removed from cart");
-            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`);
+            mutate(`${process.env.NEXT_PUBLIC_URL}/api/user/viewuserdetails`);
         }
     };
 
     //* Reduce cart
     const reduceCart = async (product) => {
         const cart = await fetch(
-            `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/reducecartitems`,
+            `${process.env.NEXT_PUBLIC_URL}/api/user/reducecartitems`,
             {
                 method: "POST",
                 headers: {
@@ -112,7 +112,7 @@ const Cart = () => {
         if (cart.status !== 200) {
             showErrorToast("Something went wrong");
         } else {
-            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`);
+            mutate(`${process.env.NEXT_PUBLIC_URL}/api/user/viewuserdetails`);
         }
     };
 

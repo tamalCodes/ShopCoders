@@ -29,7 +29,7 @@ const handleSignup = async (creds, setcreds, setauthtype) => {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/adduser`,
+      `${process.env.NEXT_PUBLIC_URL}/api/user/adduser`,
       {
         method: "POST",
         headers: {
@@ -122,7 +122,7 @@ const handleLogin = async (creds, setcreds) => {
 async function handleGithubSignin() {
   try {
     const data = await signIn("github", {
-      callbackUrl: `${process.env.NEXT_PUBLIC_SHOP_URL}`,
+      callbackUrl: `${process.env.NEXT_PUBLIC_URL}`,
     });
     if (data.error) {
       showErrorToast(data.error);
@@ -136,7 +136,7 @@ async function handleGithubSignin() {
 async function handleGoogleSignin() {
   try {
     const data = await signIn("google", {
-      callbackUrl: `${process.env.NEXT_PUBLIC_SHOP_URL}`,
+      callbackUrl: `${process.env.NEXT_PUBLIC_URL}`,
     });
     if (data.error) {
       showErrorToast(data.error);

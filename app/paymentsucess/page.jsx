@@ -16,10 +16,10 @@ const Authcard = () => {
 
     const handleResetCart = async () => {
 
-        const resetusercart = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/resetcart`)
+        const resetusercart = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/resetcart`)
 
         if (resetusercart.status === 200) {
-            mutate(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`)
+            mutate(`${process.env.NEXT_PUBLIC_URL}/api/user/viewuserdetails`)
         }
 
         router.push("/")
