@@ -1,10 +1,11 @@
-import k2 from "../../../public/assets/products/keyboards/k2.png";
-import k3 from "../../../public/assets/products/keyboards/k3.png";
-import k4 from "../../../public/assets/products/keyboards/k4.png";
+import k2 from "../../../public/assets/Products/keyboards/k2.png";
+import k3 from "../../../public/assets/Products/keyboards/k3.png";
+import k4 from "../../../public/assets/Products/keyboards/k4.png";
 
-import m1 from "../../../public/assets/products/monitor/m1.png";
-import m2 from "../../../public/assets/products/monitor/m2.png";
-import m3 from "../../../public/assets/products/monitor/m3.png";
+import m1 from "../../../public/assets/Products/monitor/m1.png";
+import m2 from "../../../public/assets/Products/monitor/m2.png";
+import m3 from "../../../public/assets/Products/monitor/m3.png";
+
 
 
 const bestSellerData = [
