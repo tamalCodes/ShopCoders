@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .blackheader {
+        @apply font-poppins text-black text-[5rem] leading-[5rem] font-[600] ml-[-4px];
+    }
+
+    .blackheader_tab {
+        @apply text-[4rem] leading-[4rem] break-all;
+    }
+
+    .blackheader_mobile {
+        @apply text-[2.4rem] leading-[2.4rem] break-all;
+    }
+
+
+    .blackheader2 {
+        @apply font-poppins text-black text-[4rem] leading-[5rem] font-[600] ml-[-4px] text-center;
+    }
+
+    .blackheader2_tab {
+        @apply text-[3rem] leading-[3rem] break-all;
+    }
+
+    .blackheader2_mobile {
+        @apply text-[2rem] leading-[2rem] break-all;
+    }
+
+
+    /* //* BRANDS STYLING FOR SIDEBAR */
+
+    .brands_container {
+        @apply flex items-center gap-2 cursor-default p-[10px] rounded-[8px];
+    }
+
+    .brands_container:hover {
+        @apply bg-slate-100;
+    }
+
+    .brands_text {
+        @apply font-poppins font-[400] text-[1.1rem] text-black tracking-[0.1rem]
+    }
+
+    .authinput {
+        @apply block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md shadow-sm;
+    }
+
+    .authinput:focus {
+        @apply outline-none ring-orange border-orange;
+    }
+
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #FF8400 #28282b00;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #28282b00;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #FF8400;
+    border-radius: 10px;
+}

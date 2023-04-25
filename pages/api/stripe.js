@@ -18,12 +18,12 @@ export default async function handler(req, res) {
             price_data: {
               currency: "inr",
               product_data: {
-                name: item.name,
-                images: [item.img],
+                name: item.productName,
+                images: [item.productImage],
               },
-              unit_amount: item.totalPrice * 100,
+              unit_amount: item.productPrice * 100,
             },
-            quantity: 1,
+            quantity: item.purchasedQty,
           };
         }),
         success_url: `${req.headers.origin}/paymentsucess`,

@@ -1,8 +1,11 @@
-// product schema
 const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema(
   {
-    name: {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
       type: String,
       required: true,
     },
@@ -18,33 +21,36 @@ const UserSchema = new mongoose.Schema(
     },
     cartproducts: [
       {
-        name: {
+        productType: {
           type: String,
+          required: true,
         },
-        qty: {
+        productName: {
+          type: String,
+          required: true,
+        },
+        productPrice: {
           type: Number,
+          required: true,
         },
-
-        size: {
+        productDescription: {
           type: String,
+          required: true,
         },
-        slug: {
+        productImage: {
           type: String,
+          required: true,
         },
-
-        price: {
+        productQty: {
           type: Number,
+          required: true,
         },
-        category: {
+        productSize: {
           type: String,
         },
-
-        desc: {
+        productSlug: {
           type: String,
-        },
-
-        img: {
-          type: String,
+          required: true,
         },
         purchasedQty: {
           type: Number,

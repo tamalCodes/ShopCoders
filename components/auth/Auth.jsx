@@ -1,26 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
-import styles from "./Auth.module.css";
-import signupbanner from "../../public/assets/auth/signupbanner.svg";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { showErrorToast, showSuccessToast } from "@/middleware/toastMessage";
-import { signIn } from "next-auth/react";
-import { AuthRegex } from "./authRegex";
+import React, { useRef, useState } from "react";
+import authbanner from "../../public/assets/auth/authbanner.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import gh_logo from "../../public/assets/auth/gh_logo.png";
 import gg_logo from "../../public/assets/auth/gg_logo.png";
+import { bearStore } from "@/global/store";
+import authLogic from "./authLogic";
 
 const Authcard = ({ showauthmodal, setshowauthmodal }) => {
-    const [isLogin, setisLogin] = useState(false);
+
+
+    const myRef = useRef(null);
+    const authtype = bearStore((state) => state.authtype);
+    const setauthtype = bearStore((state) => state.setauthtype);
     const [creds, setcreds] = useState({
-        name: "",
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
         username: "",
         address: "",
-        state: "Andhra Pradesh",
+        state: "",
         pincode: "",
         city: "",
         phone: "",
@@ -30,123 +33,9 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
         setcreds({ ...creds, [e.target.name]: e.target.value });
     };
 
-    const handleSignup = async () => {
-
-        if (creds.name.length < 1 || creds.email.length < 1 || creds.password.length < 1 || creds.username.length < 1 || creds.address.length < 1 || creds.state.length < 1 || creds.pincode.length < 1 || creds.city.length < 1 || creds.phone.length < 1) {
-            console.log("Please fill all the fields");
-            showErrorToast("Please fill all the fields");
-            return;
-        }
-
-        if (!AuthRegex(creds)) {
-            return;
-        }
-
-        try {
-
-            const res = await fetch(
-                `${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/adduser`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(creds),
-                }
-            );
-
-            if (res.status !== 200) {
-                showErrorToast("Something went wrong");
-
-            } else {
-                showSuccessToast("Signed you up, please login");
-                setisLogin(true);
-                setcreds({
-                    name: "",
-                    email: "",
-                    password: "",
-                    username: "",
-                    address: "",
-                    state: "Andhra Pradesh",
-                    pincode: "",
-                    city: "",
-                    phone: "",
-                })
-            }
-        } catch (error) {
-            showErrorToast(error);
-        }
+    const scrollToRef = () => {
+        myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
-
-    const handleLogin = async () => {
-
-        try {
-            const email = creds.email;
-            const password = creds.password;
-            const data = await signIn("credentials", {
-                redirect: false,
-                email,
-                password,
-            });
-
-            if (data.error) {
-                showErrorToast(data.error);
-            }
-
-            console.log(data);
-
-            if (data.ok) {
-                showSuccessToast("Logged in");
-
-                setTimeout(() => {
-                    setcreds({
-                        name: "",
-                        email: "",
-                        password: "",
-                        username: "",
-                        address: "",
-                        state: "",
-                        pincode: "",
-                        city: "",
-                        phone: "",
-                    });
-                    setshowauthmodal(false);
-                    document.body.style.overflow = "auto";
-                    document.body.getElementsByClassName(
-                        "navbar"
-                    )[0].style.pointerEvents = "auto";
-                }, 2200);
-            }
-        } catch (error) {
-            showErrorToast(error);
-        }
-    };
-
-    //* Github Login 
-    async function handleGithubSignin() {
-
-        try {
-            const data = await signIn('github', { callbackUrl: `${process.env.NEXT_PUBLIC_SHOP_URL}` });
-            if (data.error) {
-                showErrorToast(data.error);
-            }
-        } catch (error) {
-            showErrorToast(error);
-        }
-    }
-
-    //* Google Login
-    async function handleGoogleSignin() {
-
-        try {
-            const data = await signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_SHOP_URL}` });
-            if (data.error) {
-                showErrorToast(data.error);
-            }
-        } catch (error) {
-            showErrorToast(error);
-        }
-    }
 
     return (
         <>
@@ -164,332 +53,257 @@ const Authcard = ({ showauthmodal, setshowauthmodal }) => {
                 limit={1}
             />
 
-            <div className={styles.authparent}>
-                <div className={styles.authsub}>
-                    <div className={styles.auth_btndiv}>
+            <div className="fixed bg-[rgba(0,0,0,0.475)] backdrop-blur-[5px] flex justify-center items-center overflow-scroll h-screen w-screen z-[9900] px-5 py-0 inset-0">
+
+                <div className="bg-white overflow-hidden w-auto max_th:max-w-[85vw] h-[550px] flex items-center gap-8 relative rounded-xl">
+
+                    <div className="absolute z-[100] cursor-pointer bg-transparent right-[2%] top-2.5">
                         <button
                             onClick={() => {
                                 setshowauthmodal(!showauthmodal);
                                 document.body.style.overflow = "auto";
-                                document.body.getElementsByClassName(
-                                    "navbar"
-                                )[0].style.pointerEvents = "auto";
-                                setcreds({
-                                    email: "",
-                                    password: "",
-                                    username: "",
-                                    address: "",
-                                    state: "",
-                                    pincode: "",
-                                    city: "",
-                                    phone: "",
-                                });
                             }}
+
+                            className="h-[30px] w-[30px] font-semibold rounded-[50%] border-orange border-[solid] border-[2px]"
                         >
                             X
                         </button>
                     </div>
 
-                    <div className={styles.auth_leftdiv}>
-                        {isLogin ? (
-                            <>
-                                <h1>Login to <br /> ShopCoders</h1>
-                                <p>Continue with</p>
-                            </>
-                        ) : (
-                            <>
-                                <h1>Welcome to <br /> Shopcoders </h1>
-                                <p>Signup with</p>
-                            </>
-
-                        )}
 
 
-                        <div className={styles.auth_logodiv}>
-                            <Image src={gh_logo} width={40} height={40} onClick={() => {
-                                handleGithubSignin();
-                            }} />
-                            <Image src={gg_logo} width={40} height={40} onClick={() => {
-                                handleGoogleSignin();
-                            }} />
+                    <div className="grow-0 w-[380px] relative select-none p-12 max_th:hidden">
+                        <Image src={authbanner} className="w-[100%] object-contain " />
+                    </div>
 
-                        </div>
+                    <div className="grow w-[480px] overflow-scroll h-full p-12" id="authmodalsub_right font-poppins">
+                        <form className="font-poppins"  >
 
-                        <div className={styles.auth_imgdiv}>
-                            <Image src={signupbanner} />
 
-                            {!isLogin ? (
-                                <p>
-                                    Already a part of us ?{" "}
-                                    <span
-                                        onClick={() => {
-                                            setisLogin(true);
-                                        }}
-                                    >
-                                        Login
-                                    </span>
-                                </p>
-                            ) : (
-                                <p>
-                                    Not a member yet ?{" "}
-                                    <span
-                                        onClick={() => {
-                                            setisLogin(false);
-                                        }}
-                                    >
-                                        Signup
-                                    </span>
-                                </p>
+                            <h1 className="tracking-[2px] font-semibold mb-10 text-[2.5rem]  " ref={myRef} > {authtype === "login" ? "Login" : "Signup"}  </h1>
+
+
+                            <div className="flex  items-center  gap-[20px] mb-8 " >
+                                <Image src={gh_logo} width={40} height={40} onClick={() => {
+
+                                    authLogic.handleGithubSignin();
+                                }} />
+                                <Image src={gg_logo} width={40} height={40} onClick={() => {
+                                    authLogic.handleGoogleSignin();
+                                }} />
+
+                            </div>
+
+                            <p className="tracking-[2px] text-orange font-[600] text-[1.5rem] font-mont  mb-6  " >OR</p>
+
+                            {authtype === "signup" && (
+                                <div className="flex gap-[1rem] mb-[1.875rem]">
+                                    <div className="max_th:flex-col">
+                                        <label htmlFor="firstname" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                            First name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="authinput"
+                                            id="firstname"
+                                            aria-describedby="emailHelp"
+                                            name='firstName'
+                                            value={creds.firstName}
+                                            onChange={handleChange}
+                                            autoFocus
+                                        />
+                                    </div>
+                                    <div className="">
+                                        <label htmlFor="last name" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                            Last name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="authinput"
+                                            id="last name"
+                                            name='lastName'
+                                            value={creds.lastName}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </div>
                             )}
-                        </div>
-                    </div>
 
-                    {!isLogin ? <h1 className={styles.auth_smallheader}>
-                        Welcome to <br /> Shopcoders
-                    </h1> : <h1 className={styles.auth_smallheader}>
-                        Login to <br /> Shopcoders
-                    </h1>}
+                            <div className=" mb-[1.875rem]">
+                                <label htmlFor="exampleInputEmail1" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                    Email address
+                                </label>
+                                <input
+                                    type="email"
+                                    className="authinput"
+                                    id="exampleInputEmail1"
+                                    aria-describedby="emailHelp"
+                                    name="email"
+                                    value={creds.email}
+                                    onChange={handleChange}
+                                    autoFocus
+                                />
+                                {authtype === "signup" && <div id="emailHelp" className="mt-[10px]">
+                                    We'll never share your email with anyone else.
+                                </div>}
+                            </div>
 
-                    <div className={styles.auth_smallsocialdiv}>
-                        <div className={styles.auth_logodiv}>
-                            <Image src={gh_logo} width={40} height={40} onClick={() => {
-                                handleGithubSignin();
-                            }} />
-                            <Image src={gg_logo} width={40} height={40} onClick={() => {
-                                handleGoogleSignin();
-                            }} />
+                            <div className=" mb-[1.875rem]">
+                                <label htmlFor="exampleInputPassword1" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                    Password
+                                </label>
+                                <input
+                                    type="password"
+                                    className="authinput"
+                                    id="exampleInputPassword1"
+                                    name="password"
+                                    value={creds.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                        </div>
+                            {authtype === "signup" && (
+                                <>
 
-                        <hr />
+                                    <div className=" mb-[1.875rem]">
+                                        <label htmlFor="username" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                            Username
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="authinput"
+                                            id="username"
+                                            aria-describedby="username"
+                                            name="username"
+                                            value={creds.username}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
 
-                    </div>
+                                    <div className=" mb-[1.875rem]">
+                                        <label htmlFor="username" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                            Address
+                                        </label>
+                                        <textarea
+                                            type="text"
+                                            className="authinput h-[100px]"
+                                            id="username"
+                                            aria-describedby="address"
+                                            name="address"
+                                            value={creds.address}
+                                            onChange={handleChange}
+                                            placeholder="Write  your detailed address here"
+                                        />
+                                    </div>
 
-                    <div className={styles.auth_rightdiv} id="auth-rightdiv">
-                        {!isLogin ? (
-                            <>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="name"
-                                        placeholder="Tamal Das"
-                                        autoFocus
-                                        name="name"
-                                        value={creds.name}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="name">Full name</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="email"
-                                        placeholder="name@example.com"
-                                        name="email"
-                                        value={creds.email}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="email">Email address</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="floatingInput"
-                                        placeholder="name@example.com"
-                                        name="username"
-                                        value={creds.username}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="floatingInput">
-                                        Username (no special characters){" "}
-                                    </label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                        id="floatingInput"
-                                        placeholder="name@example.com"
-                                        name="password"
-                                        value={creds.password}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="floatingInput">
-                                        Password
-                                    </label>
-                                </div>
+                                    <div className=" mb-[1.875rem]">
+                                        <label htmlFor="username" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                            State
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="authinput"
+                                            id="username"
+                                            aria-describedby="state"
+                                            name="state"
+                                            value={creds.state}
+                                            onChange={handleChange}
+                                            placeholder="Uttar Pradesh"
+                                        />
+                                    </div>
+                                    <div className=" mb-[1.875rem]">
+                                        <label htmlFor="username" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                            City
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="authinput"
+                                            id="username"
+                                            aria-describedby="city"
+                                            name="city"
+                                            value={creds.city}
+                                            onChange={handleChange}
+                                            placeholder="Kolkata"
+                                        />
+                                    </div>
 
-                                <div class="form-floating mb-3">
-                                    <select
-                                        class="form-select"
-                                        id="floatingSelect"
-                                        aria-label="Floating label select example"
-                                        onChange={(event) => {
-                                            setcreds({ ...creds, state: event.target.value });
+                                    <div className=" mb-[1.875rem]">
+                                        <label htmlFor="username" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                            Pincode/Zipcode
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="authinput"
+                                            id="username"
+                                            aria-describedby="pincode/zipcode"
+                                            name="pincode"
+                                            value={creds.pincode}
+                                            onChange={handleChange}
+                                            placeholder="700111"
+                                        />
+                                    </div>
 
-                                        }}
-                                    >
-                                        <option selected>Andhra Pradesh</option>
-                                        <option>Arunachal Pradesh</option>
-                                        <option>Assam</option>
-                                        <option>Bihar</option>
-                                        <option>Chhattisgarh</option>
-                                        <option>Goa</option>
-                                        <option>Gujarat</option>
-                                        <option>Haryana</option>
-                                        <option>Himachal Pradesh</option>
-                                        <option>Jammu and Kashmir</option>
-                                        <option>Jharkhand</option>
-                                        <option>Karnataka</option>
-                                        <option>Kerala</option>
-                                        <option>Madhya Pradesh</option>
-                                        <option>Maharashtra</option>
-                                        <option>Manipur</option>
-                                        <option>Meghalaya</option>
-                                        <option>Mizoram</option>
-                                        <option>Nagaland</option>
-                                        <option>Odisha</option>
-                                        <option>Punjab</option>
-                                        <option>Rajasthan</option>
-                                        <option>Sikkim</option>
-                                        <option>Tamil Nadu</option>
-                                        <option>Telangana</option>
-                                        <option>Tripura</option>
-                                        <option>Uttar Pradesh</option>
-                                        <option>Uttarakhand</option>
-                                        <option>West Bengal</option>
-                                    </select>
-                                    <label for="floatingSelect">Choose your state</label>
-                                </div>
+                                    <div className=" mb-[1.875rem]">
+                                        <label htmlFor="username" className="font-mont font-semibold text-[1.1rem] text-black tracking-[0.1rem] ">
+                                            Phone number
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="authinput"
+                                            id="username"
+                                            aria-describedby="phone number"
+                                            name="phone"
+                                            value={creds.phone}
+                                            onChange={handleChange}
+                                            placeholder="+91 9876543210"
+                                        />
+                                    </div>
 
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="floatingInput"
-                                        placeholder="name@example.com"
-                                        name="pincode"
-                                        value={creds.pincode}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="floatingInput">Pincode/Zipcode</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="floatingInput"
-                                        placeholder="name@example.com"
-                                        name="city"
-                                        value={creds.city}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="floatingInput">City (Full city name)</label>
-                                </div>
-                                <div class="form-floating mb-3" style={{ minHeight: "180px" }}>
-                                    <textarea
-                                        type="text"
-                                        className={`form-control ${styles.auth_textarea}}`}
-                                        id="floatingInput"
-                                        placeholder="name@example.com"
-                                        name="address"
-                                        value={creds.address}
-                                        onChange={handleChange} required
-                                        style={{ minHeight: "180px" }}
-                                    />
-                                    <label for="floatingInput">Your detailed adress</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="floatingInput"
-                                        placeholder="name@example.com"
-                                        name="phone"
-                                        value={creds.phone}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="floatingInput">Phone number</label>
-                                </div>
+                                </>
 
-                                <button
-                                    className={`btn ${styles.signup_btn}`}
-                                    onClick={() => {
-                                        handleSignup();
-                                    }}
-                                >
-                                    Sign up
-                                </button>
-                            </>
-                        ) : (
-                            <>
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="email"
-                                        placeholder="name@example.com"
-                                        name="email"
-                                        value={creds.email}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="email">Email address</label>
-                                </div>
 
-                                <div class="form-floating mb-3">
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                        id="password"
-                                        placeholder="name@example.com"
-                                        name="password"
-                                        value={creds.password}
-                                        onChange={handleChange} required
-                                    />
-                                    <label for="password">
-                                        Password (no special characters){" "}
-                                    </label>
-                                </div>
-                                <button
-                                    className={`btn ${styles.signup_btn}`}
-                                    onClick={() => {
-                                        handleLogin();
-                                    }}
-                                >
-                                    Log in
-                                </button>
-                            </>
-                        )}
-
-                        <div className={styles.auth_smallchecktext}>
-                            {isLogin ? (
-                                <p>
-                                    Not a part of us yet ?{" "}
-                                    <span
-                                        onClick={() => {
-                                            setisLogin(false);
-                                        }}
-                                    >
-                                        Signup
-                                    </span>
-                                </p>
-                            ) : (
-                                <p>
-                                    Already a member ?{" "}
-                                    <span
-                                        onClick={() => {
-                                            setisLogin(true);
-                                        }}
-                                    >
-                                        Login
-                                    </span>
-                                </p>
                             )}
-                        </div>
+
+
+
+
+
+
+                            <p className="alreadytext">
+                                {authtype === "login" ? "Don't have an account? " : "Already have an account? "}
+                                <span
+                                    onClick={() => {
+                                        if (authtype === "login")
+                                            setauthtype("signup");
+                                        else
+                                            setauthtype("login");
+
+
+                                        scrollToRef(myRef);
+                                        setcreds({ firstName: "", lastName: "", userName: "", email: "", password: "" });
+
+                                    }}
+                                    className="text-orange font-semibold cursor-pointer"
+                                >
+                                    {authtype === "login" ? "Signup" : "Login"}
+                                </span>
+                            </p>
+
+
+                            <button type="submit" className="tracking-[1px] font-semibold mt-5 px-[30px] py-2.5 rounded-[5px] bg-orange text-white font-poppins  " onClick={(e) => {
+                                e.preventDefault();
+                                if (authtype === "login")
+                                    authLogic.handleLogin(creds, setcreds);
+                                else
+                                    authLogic.handleSignup(creds, setcreds, setauthtype);
+
+                            }} >
+                                {authtype === "login" ? "Login" : "Signup"}
+                            </button>
+                        </form>
                     </div>
+
+
                 </div>
             </div>
         </>

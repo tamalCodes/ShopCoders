@@ -4,7 +4,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import cart from "../../../public/assets/Products/misc/cart.svg";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
-import styles from "../../../styles/SingleProduct.module.css";
 import { showErrorToast, showSuccessToast } from "@/middleware/toastMessage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,12 +18,22 @@ const Buttondiv = ({ product }) => {
         name: "",
         email: "",
     });
-    const [purchasedQty, setpurchasedQty] = useState(0);
+    const [purchasedQty, setpurchasedQty] = useState(1);
 
 
     //* STRIPE PAYMENT
 
     const stripeCheckout = async () => {
+        console.log(product);
+
+        if (purchasedQty > 0) {
+            product.totalPrice = product.productPrice * purchasedQty;
+            product.purchasedQty = purchasedQty;
+        } else {
+            product.totalPrice = product.productPrice;
+            product.purchasedQty = 1;
+        }
+
         const stripe = await getStripe();
 
         const response = await fetch("/api/stripe", {
@@ -33,7 +42,7 @@ const Buttondiv = ({ product }) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify([
-                product.product
+                product
             ]),
         });
 
@@ -59,7 +68,6 @@ const Buttondiv = ({ product }) => {
 
         const user = await fetch(`${process.env.NEXT_PUBLIC_SHOP_URL}/api/user/viewuserdetails`)
         const userData = await user.json();
-        console.log(userData)
 
         if (userData.user === null) {
             creds.name = session.user.name;
@@ -91,12 +99,14 @@ const Buttondiv = ({ product }) => {
         }
 
         if (purchasedQty > 0) {
-            product.product.totalPrice = product.product.price * purchasedQty;
-            product.product.purchasedQty = purchasedQty;
+            product.totalPrice = product.productPrice * purchasedQty;
+            product.purchasedQty = purchasedQty;
         } else {
-            product.product.totalPrice = product.product.price;
-            product.product.purchasedQty = 1;
+            product.totalPrice = product.productPrice;
+            product.purchasedQty = 1;
         }
+
+        console.log(product);
 
 
         const cart = await fetch(
@@ -106,7 +116,7 @@ const Buttondiv = ({ product }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(product.product),
+                body: JSON.stringify(product),
             }
         );
 
@@ -119,14 +129,20 @@ const Buttondiv = ({ product }) => {
     };
 
     const addQty = () => {
-        setpurchasedQty(purchasedQty + 1);
-        if (purchasedQty >= product.product.qty) {
-            setpurchasedQty(product.product.qty);
+
+        setpurchasedQty(currentQty => {
+            return currentQty + 1;
+        })
+
+        if (purchasedQty >= product.productQty) {
+            setpurchasedQty(product.productQty);
         }
     };
 
     const removeQty = () => {
-        setpurchasedQty(purchasedQty - 1);
+        setpurchasedQty(currentQty => {
+            return currentQty - 1;
+        })
         if (purchasedQty <= 0) {
             setpurchasedQty(0);
         }
@@ -150,19 +166,19 @@ const Buttondiv = ({ product }) => {
                 limit={1}
             />
 
-            <div className={styles.product_qtydiv}>
+            <div className="flex items-center font-poppins text-[1.3rem] font-[600] select-none gap-[0.7rem] mt-[2rem] ">
 
-                <AiOutlinePlusSquare className={styles.qtybtn} onClick={addQty} />
+                <AiOutlinePlusSquare onClick={addQty} className="w-[30px] h-[30px] bg-transparent cursor-pointer " />
 
                 <p>{purchasedQty}</p>
 
-                <AiOutlineMinusSquare className={styles.qtybtn} onClick={removeQty} />
+                <AiOutlineMinusSquare onClick={removeQty} className="w-[30px] h-[30px] bg-transparent cursor-pointer " />
 
 
             </div>
-            <div className={styles.product_btndiv}>
+            <div className="mt-[1rem] flex gap-[2rem]" >
                 <button
-                    className={`${styles.buybtn} btn`}
+                    className={"w-[30%] h-[3rem] bg-orange text-white font-poppins font-[600] text-[1rem] tracking-[1px] rounded-md"}
                     onClick={() => {
                         if (status !== "authenticated") {
                             showErrorToast("Please login to place order");
@@ -174,11 +190,7 @@ const Buttondiv = ({ product }) => {
                     Buy now
                 </button>
 
-                <Image
-                    src={cart}
-                    width={32}
-                    height={32}
-                    alt=" picture of the products"
+                <div className="flex items-center gap-[1rem] border-orange border-[3px] border-solid px-[1rem] font-poppins font-[600] text-[1rem] tracking-[1px] rounded-md cursor-pointer "
                     onClick={() => {
 
                         if (status !== "authenticated") {
@@ -187,7 +199,15 @@ const Buttondiv = ({ product }) => {
                         }
                         handleCart();
                     }}
-                />
+                >
+                    <Image
+                        src={cart}
+                        width={28}
+                        height={28}
+                        alt=" picture of the products"
+                    />
+                    <p>Add to cart</p>
+                </div>
             </div>
         </>
     );

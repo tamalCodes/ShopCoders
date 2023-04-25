@@ -13,12 +13,16 @@ const handler = async (req, res) => {
     }
     const user = await Users.findOne({ email: session.user.email });
 
+
     if (user) {
       const product = req.body;
+      console.log(product);
 
       const foundProduct = user.cartproducts.find(
-        (cartproduct) => cartproduct.slug === product.slug
+        (cartproduct) => cartproduct.productSlug === product.productSlug
       );
+
+      console.log(foundProduct);
 
       if (foundProduct) {
         foundProduct.totalPrice = foundProduct.totalPrice + product.totalPrice;

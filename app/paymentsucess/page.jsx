@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import styles from "../../styles/Payment.module.css";
-import signupbanner from "../../public/assets/auth/signupbanner.svg";
+import signupbanner from "../../public/assets/auth/authbanner.png";
 import { useSession } from "next-auth/react"
 import { useSWRConfig } from 'swr'
 import { useRouter } from 'next/navigation'
@@ -33,16 +33,9 @@ const Authcard = () => {
             <div className={styles.authparent}>
                 <div className={styles.authsub}>
 
-                    <div className={styles.auth_leftdiv}>
+                    <div className={`${styles.auth_leftdiv} flex flex-col items-center justify-center`}>
 
-                        <h1>Thankyou for shopping with us</h1>
-
-
-
-
-                        <div className={styles.auth_imgdiv}>
-                            <Image src={signupbanner} />
-                        </div>
+                        <Image src={signupbanner} height={500} width={200} />
                     </div>
 
 

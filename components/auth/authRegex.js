@@ -1,40 +1,32 @@
 import { showErrorToast } from "@/middleware/toastMessage";
 
+const emailRegex =
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const phoneRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+const usernameRegex = /^[a-zA-Z0-9]+$/;
+const nameRegex = /^[a-zA-Z]+$/;
+
 export const AuthRegex = (creds) => {
-  const emailRegex =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  const phoneRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 
-  const nameRegex = /^[a-zA-Z]{3,}(?:\s[a-zA-Z]{3,})?$/;
+  if (creds.firstName && !nameRegex.test(creds.firstName)) {
+    showErrorToast("No special characters allowed in first name");
+    return false;
+  }
 
-  const usernameRegex = /^[a-zA-Z0-9]+$/;
+  if (creds.lastName && !nameRegex.test(creds.lastName)) {
+    showErrorToast("No special characters allowed in last name");
+    return false;
+  }
 
-  if (creds.name) {
-    const nameArray = creds.name.split(" ");
-    if (nameArray.length !== 2) {
-      console.log(nameArray);
+  if (creds.firstName && creds.firstName.length < 2) {
+    showErrorToast("First name must be bigger than 2 characters");
+    return false;
+  }
 
-      showErrorToast(
-        "Full Name should contain firstname and lastname separated by space"
-      );
-
-      return false;
-    }
-    if (nameArray[0].length < 3) {
-      showErrorToast("Your first name should be at least 3 characters long");
-
-      return false;
-    }
-    if (nameArray[1].length < 2) {
-      showErrorToast("Your last name should be at least 2 characters long");
-
-      return false;
-    }
-    if (!nameRegex.test(creds.name)) {
-      showErrorToast("Invalid Full Name, special characters not allowed");
-      return false;
-    }
+  if (creds.lastName && creds.lastName.length < 2) {
+    showErrorToast("Last name must be bigger than 2 characters");
+    return false;
   }
 
   if (creds.email && !emailRegex.test(creds.email)) {

@@ -4,6 +4,9 @@ import Users from "../../../models/UserSchema";
 const handler = async (req, res) => {
   try {
     console.log(req.body);
+
+
+
     const {
       name,
       email,
@@ -16,7 +19,8 @@ const handler = async (req, res) => {
       phone,
     } = req.body;
     let newuser = new Users({
-      name: name,
+      firstName: name.split(" ")[0],
+      lastName: name.split(" ")[1],
       email: email,
       password: password,
       username: username,

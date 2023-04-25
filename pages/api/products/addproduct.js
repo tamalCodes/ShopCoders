@@ -4,14 +4,15 @@ import Products from "../../../models/ProductSchema";
 const handler = async (req, res) => {
   try {
     let newprod = new Products({
-      name: req.body.name,
-      qty: req.body.qty,
-      size: req.body.size,
-      slug: req.body.slug,
-      price: req.body.price,
-      category: req.body.category,
-      desc: req.body.desc,
-      img: req.body.img,
+      productType: req.body.productType,
+      productName: req.body.productName,
+      productPrice: req.body.productPrice,
+      productImage: req.body.productImage,
+      productDescription: req.body.productDescription,
+      productQty: req.body.productQty,
+      productSize: req.body.productSize,
+      productSlug: req.body.productSlug,
+
     });
 
     await newprod.save();
