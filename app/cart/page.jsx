@@ -143,7 +143,7 @@ const Cart = () => {
 
                                     return (
                                         <>
-                                            <div className={`${styles.product_main} bg-white  rounded-[8px] text-black font-poppins w-[30rem]  mt-[3rem]  `} >
+                                            <div className={`${styles.product_main} bg-white  rounded-[8px] text-black font-poppins w-[30rem] max_tab:w-[auto]  mt-[3rem]  `} >
                                                 <div className='flex flex-col p-[2.5rem] ' >
                                                     <Image src={product.productImage} width={240} height={240} alt="detailed picture of the tshirt" />
 
@@ -194,7 +194,8 @@ const Cart = () => {
                                         </>
                                     );
                                 })}
-                                <div className={`${styles.product_main} border-orange border-solid border-[3px]  rounded-[8px] text-black font-poppins w-[30rem]  mt-[3rem] h-[20rem]  `} >
+
+                                <div className={`${styles.product_main} border-orange border-solid border-[3px]  rounded-[8px] text-black font-poppins w-[30rem] max_tab:w-[100%] mt-[3rem] h-[20rem]  `} >
                                     <div className='flex flex-col p-[2.5rem] ' >
 
 

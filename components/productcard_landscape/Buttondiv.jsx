@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import cart from "../../../public/assets/Products/misc/cart.svg";
+import cart from "../../public/assets/Products/misc/cart.svg";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
 import { showErrorToast, showSuccessToast } from "@/middleware/toastMessage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import getStripe from "../../../services/GetStripe";
+import getStripe from "../../services/GetStripe";
 import { useSWRConfig } from 'swr'
 import { useSession } from "next-auth/react"
 
@@ -24,7 +24,6 @@ const Buttondiv = ({ product }) => {
     //* STRIPE PAYMENT
 
     const stripeCheckout = async () => {
-        console.log(product);
 
         if (purchasedQty > 0) {
             product.totalPrice = product.productPrice * purchasedQty;
@@ -166,7 +165,7 @@ const Buttondiv = ({ product }) => {
                 limit={1}
             />
 
-            <div className="flex items-center font-poppins text-[1.3rem] font-[600] select-none gap-[0.7rem] mt-[2rem] ">
+            <div className="flex items-center max_tab:justify-center font-poppins text-[1.3rem] font-[600] select-none gap-[0.7rem] mt-[2rem] ">
 
                 <AiOutlinePlusSquare onClick={addQty} className="w-[30px] h-[30px] bg-transparent cursor-pointer " />
 
@@ -176,9 +175,9 @@ const Buttondiv = ({ product }) => {
 
 
             </div>
-            <div className="mt-[1rem] flex gap-[2rem]" >
+            <div className="mt-[2rem] flex gap-[2rem] max_md:flex-wrap max_tab:justify-center" >
                 <button
-                    className={"w-[30%] h-[3rem] bg-orange text-white font-poppins font-[600] text-[1rem] tracking-[1px] rounded-md"}
+                    className={"w-[100%] max_tab:w-[70%] h-[3rem] bg-orange text-white font-poppins font-[600] text-[1rem] tracking-[1px] rounded-md"}
                     onClick={() => {
                         if (status !== "authenticated") {
                             showErrorToast("Please login to place order");
@@ -190,7 +189,7 @@ const Buttondiv = ({ product }) => {
                     Buy now
                 </button>
 
-                <div className="flex items-center gap-[1rem] border-orange border-[3px] border-solid px-[1rem] font-poppins font-[600] text-[1rem] tracking-[1px] rounded-md cursor-pointer "
+                <button className=" w-[100%] max_tab:w-[70%] h-[3rem] flex items-center justify-center gap-[1rem] border-orange border-[3px] border-solid px-[1rem] font-poppins font-[600] text-[1rem] tracking-[1px] rounded-md cursor-pointer "
                     onClick={() => {
 
                         if (status !== "authenticated") {
@@ -207,7 +206,7 @@ const Buttondiv = ({ product }) => {
                         alt=" picture of the products"
                     />
                     <p>Add to cart</p>
-                </div>
+                </button>
             </div>
         </>
     );
